@@ -1,4 +1,5 @@
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
+import 'package:a_modern_forum_project/widgets/appbar/responsive_app_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -22,59 +23,48 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: Drawer(
-          child: ListView(
-        // Important: Remove any padding from the ListView.
-        padding: EdgeInsets.zero,
-        children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(
-              color: Colors.blue,
-            ),
-            child: Text('Drawer Header'),
-          ),
-          ListTile(
-            title: const Text('Item 1'),
-            onTap: () {
-              // Update the state of the app.
-              // ...
-            },
-          ),
-          ListTile(
-            title: const Text('Item 2'),
-            onTap: () {
-              // Update the state of the app.
-              // ...
-            },
-          ),
-        ],
-      )),
-      appBar: AppBar(
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.asset(
-              'assets/images/logo.png',
-              fit: BoxFit.contain,
-              height: 48,
-            ),
-            Container(
-                padding: const EdgeInsets.all(8),
-                child: const Text('Forum test'))
-          ],
-        ),
-      ),
-      body: LayoutBuilder(
+    return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-          if (ResponsiveDisplay.isSmallDevice(constraints)) {
-            return Text("hello small device ${constraints.maxWidth}");
-          } else if (ResponsiveDisplay.isMediumDevice(constraints)) {
-            return Text("hello medium device ${constraints.maxWidth}");
-          }
-          return Text("hello large device ${constraints.maxWidth}");
-        },
-      ),
-    );
+      final ScreenSize screenSize =
+          ResponsiveDisplay.getScreenSize(constraints);
+      return Scaffold(
+        drawer: ResponsiveDisplay.isLargeDevice(constraints)
+            ? null
+            : Drawer(
+                child: ListView(
+                // Important: Remove any padding from the ListView.
+                padding: EdgeInsets.zero,
+                children: [
+                  const DrawerHeader(
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                    ),
+                    child: Text('Drawer Header'),
+                  ),
+                  ListTile(
+                    title: const Text('Item 1'),
+                    onTap: () {
+                      // Update the state of the app.
+                      // ...
+                    },
+                  ),
+                  ListTile(
+                    title: const Text('Item 2'),
+                    onTap: () {
+                      // Update the state of the app.
+                      // ...
+                    },
+                  ),
+                ],
+              )),
+        appBar: ResponsiveAppBar(
+          screenSize: screenSize,
+        ),
+        body: Center(
+          child: Text(
+              "Device width is: ${constraints.maxWidth} (${ResponsiveDisplay.getScreenSize(constraints)})"),
+        ),
+      );
+    });
   }
 }
