@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 class ResponsiveAppBar extends StatefulWidget implements PreferredSizeWidget {
   final ScreenSize _screenSize;
 
-  const ResponsiveAppBar({Key? key, required ScreenSize screenSize})
-      : preferredSize = const Size.fromHeight(kToolbarHeight),
+  ResponsiveAppBar({Key? key, required ScreenSize screenSize})
+      : preferredSize = Size.fromHeight(screenSize == ScreenSize.large
+            ? LargeAppBar.appBarHeight
+            : SmallAppBar.appBarHeight),
         _screenSize = screenSize,
         super(key: key);
 
@@ -23,8 +25,8 @@ class _ResponsiveAppBarState extends State<ResponsiveAppBar> {
   Widget build(BuildContext context) {
     switch (widget._screenSize) {
       case ScreenSize.small:
-        return const SmallAppBar();
       case ScreenSize.medium:
+      return const SmallAppBar();
       case ScreenSize.large:
         return const LargeAppBar();
     }
