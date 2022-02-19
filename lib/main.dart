@@ -3,7 +3,7 @@ import 'package:a_modern_forum_project/widgets/appbar/responsive_app_bar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(App());
+  runApp(const App());
 }
 
 class App extends StatelessWidget {
@@ -60,9 +60,11 @@ class Home extends StatelessWidget {
         appBar: ResponsiveAppBar(
           screenSize: screenSize,
         ),
-        body: Center(
-          child: Text(
-              "Device width is: ${constraints.maxWidth} (${ResponsiveDisplay.getScreenSize(constraints)})"),
+        body: SingleChildScrollView(
+          child: Center(
+            child: Text(
+                "Device width is: ${constraints.maxWidth} (${ResponsiveDisplay.getScreenSize(constraints)})"),
+          ),
         ),
       );
     });

@@ -26,7 +26,7 @@ class _ResponsiveAppBarState extends State<ResponsiveAppBar> {
     switch (widget._screenSize) {
       case ScreenSize.small:
       case ScreenSize.medium:
-      return const SmallAppBar();
+        return const SmallAppBar();
       case ScreenSize.large:
         return const LargeAppBar();
     }

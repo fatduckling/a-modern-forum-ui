@@ -1,4 +1,4 @@
-import 'package:a_modern_forum_project/widgets/search/search_bar.dart';
+import 'package:a_modern_forum_project/widgets/search_bar/search_bar.dart';
 import 'package:flutter/material.dart';
 
 class LargeAppBar extends StatelessWidget {
