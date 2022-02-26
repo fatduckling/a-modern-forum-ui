@@ -1,5 +1,6 @@
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/appbar/responsive_app_bar.dart';
+import 'package:a_modern_forum_project/widgets/featured_posts/responsive_featured_posts.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -61,9 +62,12 @@ class Home extends StatelessWidget {
           screenSize: screenSize,
         ),
         body: SingleChildScrollView(
-          child: Center(
-            child: Text(
-                "Device width is: ${constraints.maxWidth} (${ResponsiveDisplay.getScreenSize(constraints)})"),
+          child: Column(
+            children: [
+              ResponsiveFeaturedPosts(
+                screenSize: screenSize,
+              ),
+            ],
           ),
         ),
       );
