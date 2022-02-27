@@ -8,35 +8,36 @@ class FeaturedPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        decoration: BoxDecoration(
-          borderRadius: const BorderRadius.all(Radius.circular(5)),
-          image: DecorationImage(
-            colorFilter: ColorFilter.mode(
-                Colors.black.withOpacity(0.4), BlendMode.dstATop),
-            image: const AssetImage("assets/images/placeholder.png"),
-            fit: BoxFit.cover,
-          ),
-        ),
-        height: 300,
-        margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+    return InkWell(
+        onTap: () {}, // Handle your callback
         child: Container(
-          margin: const EdgeInsets.all(10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              const Padding(
-                padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                child: Lead(
-                    text:
-                        "This is the titled of the featured This is the titled of the featured This is the titled of the featured posts and very more"),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(5)),
+              image: DecorationImage(
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.4), BlendMode.dstATop),
+                image: const AssetImage("assets/images/placeholder.png"),
+                fit: BoxFit.cover,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [UpDownVotes(), CommentCount()],
-              )
-            ],
-          ),
-        ));
+            ),
+            height: 300,
+            child: Container(
+              margin: const EdgeInsets.all(10),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  const Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    child: Lead(
+                        text:
+                            "This is the titled of the featured This is the titled of the featured This is the titled of the featured posts and very more"),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [UpDownVotes(), CommentCount()],
+                  )
+                ],
+              ),
+            )));
   }
 }

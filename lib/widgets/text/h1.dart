@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 class H1 extends StatelessWidget {
   final String _text;
 
-  const H1({Key? key, required String text})
-      : _text = text,
-        super(key: key);
+  const H1(this._text, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

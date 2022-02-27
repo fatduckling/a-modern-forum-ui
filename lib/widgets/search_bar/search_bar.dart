@@ -11,12 +11,6 @@ class SearchBar extends StatefulWidget {
 class _SearchBarState extends State<SearchBar> {
   late final _overlayEntry = createOverlayEntry();
 
-  @override
-  void initState() {
-    super.initState();
-    debugPrint("Initialised state");
-  }
-
   OverlayEntry createOverlayEntry() {
     RenderObject? renderObject = context.findRenderObject();
     if (renderObject == null) {

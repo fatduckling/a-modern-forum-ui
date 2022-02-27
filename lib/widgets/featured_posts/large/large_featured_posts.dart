@@ -21,7 +21,7 @@ class LargeFeaturedPosts extends StatelessWidget {
                 ),
                 Expanded(
                   flex: 8,
-                  child: H1(text: "Featured topics"),
+                  child: H1("Featured topics"),
                 ),
                 Spacer(
                   flex: 1,
@@ -46,13 +46,22 @@ class LargeFeaturedPosts extends StatelessWidget {
                   child: FeaturedPost(),
                   flex: 2,
                 ),
-                Expanded(
-                  child: FeaturedPost(),
-                  flex: 2,
+                SizedBox(
+                  width: 10,
                 ),
                 Expanded(
                   child: FeaturedPost(),
                   flex: 2,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: FeaturedPost(),
+                  flex: 2,
+                ),
+                SizedBox(
+                  width: 10,
                 ),
                 Expanded(
                   child: FeaturedPost(),

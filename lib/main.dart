@@ -1,6 +1,7 @@
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/appbar/responsive_app_bar.dart';
 import 'package:a_modern_forum_project/widgets/featured_posts/responsive_featured_posts.dart';
+import 'package:a_modern_forum_project/widgets/sort_filter_threads/responsive_sort_filter_threads.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -63,8 +64,15 @@ class Home extends StatelessWidget {
         ),
         body: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               ResponsiveFeaturedPosts(
+                screenSize: screenSize,
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              ResponsiveSortFilterThreads(
                 screenSize: screenSize,
               ),
             ],
