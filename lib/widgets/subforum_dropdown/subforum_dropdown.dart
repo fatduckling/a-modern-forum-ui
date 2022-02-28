@@ -1,4 +1,6 @@
+import 'package:a_modern_forum_project/utils/ScreenResizeObserver.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class SubforumDropdown extends StatefulWidget {
   const SubforumDropdown({Key? key}) : super(key: key);
@@ -8,24 +10,27 @@ class SubforumDropdown extends StatefulWidget {
 }
 
 class _SubforumDropdown extends State<SubforumDropdown> {
-  late final _overlayEntry = createOverlayEntry();
+  /// Used to show an overlay which provides subforum suggestions
+  final FocusNode _focusNode = FocusNode();
 
-  late FocusNode myFocusNode;
+  /// Displays the overlay under the dropdown button
+  late OverlayEntry _overlayEntry;
 
   @override
   void initState() {
     super.initState();
-    myFocusNode = FocusNode();
   }
 
   @override
   void dispose() {
-    // Clean up the focus node when the Form is disposed.
-    myFocusNode.dispose();
+    if (_overlayEntry.mounted) {
+      _overlayEntry.remove();
+    }
+    _focusNode.dispose();
     super.dispose();
   }
 
-  OverlayEntry createOverlayEntry() {
+  OverlayEntry createOverlayEntry(BuildContext context) {
     RenderObject? renderObject = context.findRenderObject();
     if (renderObject == null) {
       return OverlayEntry(
@@ -37,36 +42,40 @@ class _SubforumDropdown extends State<SubforumDropdown> {
       var offset = renderBox.localToGlobal(Offset.zero);
       return OverlayEntry(
           builder: (context) => Positioned(
-                left: offset.dx,
-                top: offset.dy + size.height + 5.0,
-                width: size.width,
-                child: Material(
-                  color: Colors.red,
-                  elevation: 4.0,
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    children: const <Widget>[
-                      ListTile(
-                        title: Text('Test'),
-                      ),
-                      ListTile(
-                        title: Text('Test 2'),
-                      )
-                    ],
+            left: offset.dx,
+            top: offset.dy + size.height + 5.0,
+            width: size.width,
+            child: Material(
+              color: Colors.red,
+              elevation: 4.0,
+              child: ListView(
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                children: const <Widget>[
+                  ListTile(
+                    title: Text('Test'),
                   ),
-                ),
-              ));
+                  ListTile(
+                    title: Text('Test 2'),
+                  )
+                ],
+              ),
+            ),
+          ));
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    _overlayEntry = createOverlayEntry(context);
+    context.watch<ScreenResizeNotifier>().addListener(() {
+      _focusNode.unfocus();
+    });
     return SizedBox(
       height: 40,
       width: 300,
       child: ElevatedButton(
-        focusNode: myFocusNode,
+        focusNode: _focusNode,
         onFocusChange: (hasFocus) {
           debugPrint("Has focus: " + hasFocus.toString());
           if (hasFocus) {
@@ -86,11 +95,15 @@ class _SubforumDropdown extends State<SubforumDropdown> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const <Widget>[
             Text("All Subforums"),
-            Icon(Icons.keyboard_arrow_down)
+            Icon(Icons.keyboard_arrow_down),
           ],
         ),
         onPressed: () {
-          myFocusNode.requestFocus();
+          if (_focusNode.hasFocus) {
+            _focusNode.unfocus();
+          } else {
+            _focusNode.requestFocus();
+          }
         },
       ),
     );
