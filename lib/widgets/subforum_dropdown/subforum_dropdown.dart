@@ -1,6 +1,7 @@
-import 'package:a_modern_forum_project/utils/ScreenResizeObserver.dart';
 import 'package:a_modern_forum_project/utils/scroll_observer.dart';
+import 'package:a_modern_forum_project/widgets/appbar/large/large_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_portal/flutter_portal.dart';
 import 'package:provider/provider.dart';
 
 class SubforumDropdown extends StatefulWidget {
@@ -14,8 +15,11 @@ class _SubforumDropdown extends State<SubforumDropdown> {
   /// Used to show an overlay which provides subforum suggestions
   final FocusNode _focusNode = FocusNode();
 
-  /// Displays the overlay under the dropdown button
-  late OverlayEntry _overlayEntry;
+  /// If true, the overlay menu will be open
+  bool _isMenuOpen = false;
+
+  /// Used to provide the coordinates of the overlay
+  final GlobalKey _buttonKey = GlobalKey();
 
   @override
   void initState() {
@@ -24,97 +28,70 @@ class _SubforumDropdown extends State<SubforumDropdown> {
 
   @override
   void dispose() {
-    if (_overlayEntry.mounted) {
-      _overlayEntry.remove();
-    }
     _focusNode.dispose();
     super.dispose();
   }
 
-  OverlayEntry createOverlayEntry() {
-    RenderObject? renderObject = context.findRenderObject();
-    if (renderObject == null) {
-      return OverlayEntry(
-        builder: (context) => Container(),
-      );
-    } else {
-      RenderBox renderBox = renderObject as RenderBox;
-      var size = renderBox.size;
-      var offset = renderBox.localToGlobal(Offset.zero);
-      return OverlayEntry(
-          builder: (context) => Positioned(
-                left: offset.dx,
-                top: offset.dy + size.height + 5.0,
-                width: size.width,
-                child: Material(
-                  color: Colors.red,
-                  elevation: 4.0,
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    children: const <Widget>[
-                      ListTile(
-                        title: Text('Test'),
-                      ),
-                      ListTile(
-                        title: Text('Test 2'),
-                      )
-                    ],
-                  ),
-                ),
-              ));
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    _overlayEntry = createOverlayEntry();
-    context.watch<ScreenResizeNotifier>().addListener(unFocus);
-    context.watch<ScrollObserver>().addListener(unFocus);
-    return SizedBox(
-      height: 40,
-      width: 300,
-      child: ElevatedButton(
-        focusNode: _focusNode,
-        onFocusChange: (hasFocus) {
-          print(
-              "HasFocus: ${hasFocus}, overlayMounted=${_overlayEntry.mounted}");
-          if (hasFocus && !_overlayEntry.mounted) {
-            print("Inserting");
-            Overlay.of(context)?.insert(
-              _overlayEntry,
-            );
-          } else if (_overlayEntry.mounted) {
-            _overlayEntry.remove();
-          }
-        },
-        style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20.0),
-            ),
+    context.watch<ScrollObserver>().addListener(() {
+      RenderObject? renderObject =
+          _buttonKey.currentContext?.findRenderObject();
+      if (renderObject != null) {
+        RenderBox box = renderObject as RenderBox;
+        Offset position = box.localToGlobal(Offset.zero);
+        if (position.dy < LargeAppBar.appBarHeight) {
+          setState(() {
+            _focusNode.unfocus();
+          });
+        }
+      }
+    });
+    return PortalEntry(
+        visible: _isMenuOpen,
+        portalAnchor: Alignment.topCenter,
+        childAnchor: Alignment.bottomCenter,
+        portal: Container(
+          margin: const EdgeInsets.only(top: 5),
+          decoration: const BoxDecoration(
+            color: Colors.red,
+            borderRadius: BorderRadius.all(Radius.circular(5)),
+          ),
+          width: 300,
+          height: 400,
+          child: const Center(
+            child: Text("Hello"),
           ),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const <Widget>[
-            Text("All Subforums"),
-            Icon(Icons.keyboard_arrow_down),
-          ],
-        ),
-        onPressed: () {
-          if (_focusNode.hasFocus) {
-            _focusNode.unfocus();
-          } else {
-            _focusNode.requestFocus();
-          }
-        },
-      ),
-    );
-  }
-
-  /// Hide the overlay
-  void unFocus() {
-    _focusNode.unfocus();
+        child: SizedBox(
+          height: 40,
+          width: 300,
+          child: ElevatedButton(
+            key: _buttonKey,
+            focusNode: _focusNode,
+            onFocusChange: (hasFocus) {
+              setState(() {
+                _isMenuOpen = hasFocus;
+              });
+            },
+            style: ButtonStyle(
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: const <Widget>[
+                Text("All Subforums"),
+                Icon(Icons.keyboard_arrow_down),
+              ],
+            ),
+            onPressed: () {
+              _focusNode.requestFocus();
+            },
+          ),
+        ));
   }
 }

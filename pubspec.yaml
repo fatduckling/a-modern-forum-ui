@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   outline_search_bar: ^2.3.0
   provider: ^6.0.2
+  flutter_portal: ^0.4.0
 
 dev_dependencies:
   flutter_test:
