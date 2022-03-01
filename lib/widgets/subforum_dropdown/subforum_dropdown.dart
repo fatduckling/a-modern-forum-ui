@@ -83,13 +83,20 @@ class _SubforumDropdown extends State<SubforumDropdown> {
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const <Widget>[
-                Text("All Subforums"),
-                Icon(Icons.keyboard_arrow_down),
+              children: <Widget>[
+                const Text("All Subforums"),
+                Icon(_isMenuOpen
+                    ? Icons.keyboard_arrow_up
+                    : Icons.keyboard_arrow_down),
               ],
             ),
             onPressed: () {
-              _focusNode.requestFocus();
+              if (_isMenuOpen) {
+                _focusNode.unfocus();
+              } else {
+                _focusNode.requestFocus();
+              }
+              // _focusNode.requestFocus();
             },
           ),
         ));

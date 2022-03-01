@@ -1,5 +1,6 @@
 import 'package:a_modern_forum_project/utils/ScreenResizeObserver.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_portal/flutter_portal.dart';
 import 'package:outline_search_bar/outline_search_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -14,76 +15,62 @@ class _SearchBarState extends State<SearchBar> {
   /// Used to show an overlay which provides search suggestions
   final FocusNode _focusNode = FocusNode();
 
-  /// Displays the overlay under the search bar
-  late OverlayEntry _overlayEntry;
+  /// If true, the overlay menu will be open
+  bool _isMenuOpen = false;
+
+  /// Used to provide the coordinates of the overlay
+  final GlobalKey _searchKey = GlobalKey();
+
+  /// The width of the overlay
+  double _overlayWidth = 300;
 
   @override
   void initState() {
     super.initState();
+    _focusNode.addListener(() {
+      setState(() {
+        _isMenuOpen = _focusNode.hasFocus;
+      });
+    });
   }
 
   @override
   void dispose() {
-    if (_overlayEntry.mounted) {
-      _overlayEntry.remove();
-    }
     _focusNode.dispose();
     super.dispose();
   }
 
-  OverlayEntry createOverlayEntry() {
-    RenderObject? renderObject = context.findRenderObject();
-    if (renderObject == null) {
-      return OverlayEntry(
-        builder: (context) => Container(),
-      );
-    } else {
-      RenderBox renderBox = renderObject as RenderBox;
-      var size = renderBox.size;
-      var offset = renderBox.localToGlobal(Offset.zero);
-      return OverlayEntry(
-          builder: (context) => Positioned(
-                left: offset.dx,
-                top: offset.dy + size.height + 5.0,
-                width: size.width,
-                child: Material(
-                  color: Colors.red,
-                  elevation: 4.0,
-                  child: ListView(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    children: const <Widget>[
-                      ListTile(
-                        title: Text('Test'),
-                      ),
-                      ListTile(
-                        title: Text('Test 2'),
-                      )
-                    ],
-                  ),
-                ),
-              ));
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    _overlayEntry = createOverlayEntry();
     context.watch<ScreenResizeNotifier>().addListener(() {
-      _focusNode.unfocus();
+      RenderObject? renderObject =
+          _searchKey.currentContext?.findRenderObject();
+      if (renderObject != null) {
+        RenderBox box = renderObject as RenderBox;
+        setState(() {
+          _overlayWidth = box.size.width;
+        });
+      }
     });
-    return Focus(
-        focusNode: _focusNode,
-        onFocusChange: (hasFocus) {
-          if (hasFocus && !_overlayEntry.mounted) {
-            Overlay.of(context)?.insert(
-              _overlayEntry,
-            );
-          } else if (_overlayEntry.mounted) {
-            _overlayEntry.remove();
-          }
-        },
+    return PortalEntry(
+        visible: _isMenuOpen,
+        portalAnchor: Alignment.topCenter,
+        childAnchor: Alignment.bottomCenter,
+        portal: Material(
+            borderRadius: const BorderRadius.all(Radius.circular(5)),
+            color: Colors.red,
+            child: SizedBox(
+              width: _overlayWidth,
+              height: 400,
+              child: const Center(
+                child: Text(
+                  "Hello",
+                ),
+              ),
+            )),
         child: OutlineSearchBar(
+            key: _searchKey,
+            focusNode: _focusNode,
             hintText: "Search",
             onTap: () {
               debugPrint("On tap!");
