@@ -1,4 +1,5 @@
 import 'package:a_modern_forum_project/utils/ScreenResizeObserver.dart';
+import 'package:a_modern_forum_project/utils/scroll_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +31,7 @@ class _SubforumDropdown extends State<SubforumDropdown> {
     super.dispose();
   }
 
-  OverlayEntry createOverlayEntry(BuildContext context) {
+  OverlayEntry createOverlayEntry() {
     RenderObject? renderObject = context.findRenderObject();
     if (renderObject == null) {
       return OverlayEntry(
@@ -42,45 +43,48 @@ class _SubforumDropdown extends State<SubforumDropdown> {
       var offset = renderBox.localToGlobal(Offset.zero);
       return OverlayEntry(
           builder: (context) => Positioned(
-            left: offset.dx,
-            top: offset.dy + size.height + 5.0,
-            width: size.width,
-            child: Material(
-              color: Colors.red,
-              elevation: 4.0,
-              child: ListView(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                children: const <Widget>[
-                  ListTile(
-                    title: Text('Test'),
+                left: offset.dx,
+                top: offset.dy + size.height + 5.0,
+                width: size.width,
+                child: Material(
+                  color: Colors.red,
+                  elevation: 4.0,
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    children: const <Widget>[
+                      ListTile(
+                        title: Text('Test'),
+                      ),
+                      ListTile(
+                        title: Text('Test 2'),
+                      )
+                    ],
                   ),
-                  ListTile(
-                    title: Text('Test 2'),
-                  )
-                ],
-              ),
-            ),
-          ));
+                ),
+              ));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    _overlayEntry = createOverlayEntry(context);
-    context.watch<ScreenResizeNotifier>().addListener(() {
-      _focusNode.unfocus();
-    });
+    _overlayEntry = createOverlayEntry();
+    context.watch<ScreenResizeNotifier>().addListener(unFocus);
+    context.watch<ScrollObserver>().addListener(unFocus);
     return SizedBox(
       height: 40,
       width: 300,
       child: ElevatedButton(
         focusNode: _focusNode,
         onFocusChange: (hasFocus) {
-          debugPrint("Has focus: " + hasFocus.toString());
-          if (hasFocus) {
-            Overlay.of(context)?.insert(_overlayEntry);
-          } else {
+          print(
+              "HasFocus: ${hasFocus}, overlayMounted=${_overlayEntry.mounted}");
+          if (hasFocus && !_overlayEntry.mounted) {
+            print("Inserting");
+            Overlay.of(context)?.insert(
+              _overlayEntry,
+            );
+          } else if (_overlayEntry.mounted) {
             _overlayEntry.remove();
           }
         },
@@ -107,5 +111,10 @@ class _SubforumDropdown extends State<SubforumDropdown> {
         },
       ),
     );
+  }
+
+  /// Hide the overlay
+  void unFocus() {
+    _focusNode.unfocus();
   }
 }

@@ -31,7 +31,7 @@ class _SearchBarState extends State<SearchBar> {
     super.dispose();
   }
 
-  OverlayEntry createOverlayEntry(BuildContext context) {
+  OverlayEntry createOverlayEntry() {
     RenderObject? renderObject = context.findRenderObject();
     if (renderObject == null) {
       return OverlayEntry(
@@ -43,41 +43,43 @@ class _SearchBarState extends State<SearchBar> {
       var offset = renderBox.localToGlobal(Offset.zero);
       return OverlayEntry(
           builder: (context) => Positioned(
-            left: offset.dx,
-            top: offset.dy + size.height + 5.0,
-            width: size.width,
-            child: Material(
-              color: Colors.red,
-              elevation: 4.0,
-              child: ListView(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                children: const <Widget>[
-                  ListTile(
-                    title: Text('Test'),
+                left: offset.dx,
+                top: offset.dy + size.height + 5.0,
+                width: size.width,
+                child: Material(
+                  color: Colors.red,
+                  elevation: 4.0,
+                  child: ListView(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    children: const <Widget>[
+                      ListTile(
+                        title: Text('Test'),
+                      ),
+                      ListTile(
+                        title: Text('Test 2'),
+                      )
+                    ],
                   ),
-                  ListTile(
-                    title: Text('Test 2'),
-                  )
-                ],
-              ),
-            ),
-          ));
+                ),
+              ));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    _overlayEntry = createOverlayEntry(context);
+    _overlayEntry = createOverlayEntry();
     context.watch<ScreenResizeNotifier>().addListener(() {
       _focusNode.unfocus();
     });
     return Focus(
         focusNode: _focusNode,
         onFocusChange: (hasFocus) {
-          if (hasFocus) {
-            Overlay.of(context)?.insert(_overlayEntry);
-          } else {
+          if (hasFocus && !_overlayEntry.mounted) {
+            Overlay.of(context)?.insert(
+              _overlayEntry,
+            );
+          } else if (_overlayEntry.mounted) {
             _overlayEntry.remove();
           }
         },
