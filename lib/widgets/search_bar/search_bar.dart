@@ -1,4 +1,4 @@
-import 'package:a_modern_forum_project/utils/ScreenResizeObserver.dart';
+import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:outline_search_bar/outline_search_bar.dart';
@@ -42,7 +42,7 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<ScreenResizeNotifier>().addListener(() {
+    context.watch<ScreenResizeObserver>().addListener(() {
       RenderObject? renderObject =
           _searchKey.currentContext?.findRenderObject();
       if (renderObject != null) {

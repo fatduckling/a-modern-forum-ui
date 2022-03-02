@@ -1,4 +1,4 @@
-import 'package:a_modern_forum_project/utils/scroll_observer.dart';
+import 'package:a_modern_forum_project/observers/scroll_observer.dart';
 import 'package:a_modern_forum_project/widgets/appbar/large/large_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
@@ -96,7 +96,6 @@ class _SubforumDropdown extends State<SubforumDropdown> {
               } else {
                 _focusNode.requestFocus();
               }
-              // _focusNode.requestFocus();
             },
           ),
         ));

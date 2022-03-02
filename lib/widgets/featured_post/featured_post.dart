@@ -1,4 +1,4 @@
-import 'package:a_modern_forum_project/widgets/comment_count/comment_count.dart';
+import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
 import 'package:a_modern_forum_project/widgets/text/lead.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
 import 'package:flutter/material.dart';
@@ -26,15 +26,17 @@ class FeaturedPost extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
-                    child: Lead(
-                        text:
-                            "This is the titled of the featured This is the titled of the featured This is the titled of the featured posts and very more"),
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    child: Lead("Post content" * 25),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [UpDownVotes(), CommentCount()],
+                    children: const [
+                      UpDownVotes(),
+                      IconWithText(icon: Icons.mode_comment, text: "34")
+                    ],
                   )
                 ],
               ),

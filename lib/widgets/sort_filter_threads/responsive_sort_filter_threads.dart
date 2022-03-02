@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 class ResponsiveSortFilterThreads extends StatefulWidget {
   final ScreenSize _screenSize;
 
-  const ResponsiveSortFilterThreads({Key? key, required ScreenSize screenSize})
+  const ResponsiveSortFilterThreads(ScreenSize screenSize, {Key? key})
       : _screenSize = screenSize,
         super(key: key);
 
@@ -19,7 +19,7 @@ class _ResponsiveSortFilterThreads extends State<ResponsiveSortFilterThreads> {
     switch (widget._screenSize) {
       case ScreenSize.small:
       case ScreenSize.medium:
-        return const Text("Unsupported for small or medium devices");
+      return const Center(child: Text("Unhandled small/medium screen sizes"));
       case ScreenSize.large:
         return const LargeSortFilterThreads();
     }
