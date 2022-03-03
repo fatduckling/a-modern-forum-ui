@@ -42,7 +42,7 @@ class _ThreadView extends State<ThreadView> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Spacer(
-          flex: 1,
+          flex: 2,
         ),
         Expanded(
             flex: 6,
@@ -57,37 +57,37 @@ class _ThreadView extends State<ThreadView> {
         const SizedBox(
           width: 10,
         ),
-        Expanded(
-            flex: 2,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    color: Colors.greenAccent,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  child: const Text("Hello world"),
-                ),
-                SizedBox(
-                  height: _fixedYPositionOffset,
-                ),
-                Container(
-                  key: _floatingWidgetKey,
-                  padding: EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  child: const Text("Hello world2"),
-                )
-              ],
-            )),
+        // Expanded(
+        //     flex: 2,
+        //     child: Column(
+        //       mainAxisSize: MainAxisSize.min,
+        //       mainAxisAlignment: MainAxisAlignment.start,
+        //       crossAxisAlignment: CrossAxisAlignment.start,
+        //       children: [
+        //         Container(
+        //           padding: EdgeInsets.all(20),
+        //           decoration: const BoxDecoration(
+        //             color: Colors.greenAccent,
+        //             borderRadius: BorderRadius.all(Radius.circular(10)),
+        //           ),
+        //           child: const Text("Hello world"),
+        //         ),
+        //         SizedBox(
+        //           height: _fixedYPositionOffset,
+        //         ),
+        //         Container(
+        //           key: _floatingWidgetKey,
+        //           padding: EdgeInsets.all(20),
+        //           decoration: const BoxDecoration(
+        //             color: Colors.red,
+        //             borderRadius: BorderRadius.all(Radius.circular(10)),
+        //           ),
+        //           child: const Text("Hello world2"),
+        //         )
+        //       ],
+        //     )),
         const Spacer(
-          flex: 1,
+          flex: 2,
         ),
       ],
     );

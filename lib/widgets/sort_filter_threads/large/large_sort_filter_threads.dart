@@ -14,14 +14,14 @@ class LargeSortFilterThreads extends StatelessWidget {
         Row(
           children: const [
             Spacer(
-              flex: 1,
+              flex: 2,
             ),
             Expanded(
-              flex: 8,
+              flex: 6,
               child: H1("Top Threads"),
             ),
             Spacer(
-              flex: 1,
+              flex: 2,
             ),
           ],
         ),
@@ -31,9 +31,10 @@ class LargeSortFilterThreads extends StatelessWidget {
         Row(
           children: [
             const Spacer(
-              flex: 1,
+              flex: 2,
             ),
             Expanded(
+              flex: 5,
               child: Container(
                   margin: const EdgeInsets.only(right: 40),
                   padding: const EdgeInsets.only(left: 30),
@@ -60,11 +61,10 @@ class LargeSortFilterThreads extends StatelessWidget {
                       )
                     ],
                   )),
-              flex: 7,
             ),
             const Expanded(flex: 1, child: MediumRoundedButton("Start thread")),
             const Spacer(
-              flex: 1,
+              flex: 2,
             )
           ],
         )
