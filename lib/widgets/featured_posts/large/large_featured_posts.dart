@@ -17,14 +17,14 @@ class LargeFeaturedPosts extends StatelessWidget {
             Row(
               children: const [
                 Spacer(
-                  flex: 1,
+                  flex: 2,
                 ),
                 Expanded(
-                  flex: 8,
+                  flex: 6,
                   child: H1("Featured topics"),
                 ),
                 Spacer(
-                  flex: 1,
+                  flex: 2,
                 ),
               ],
             ),
@@ -34,7 +34,7 @@ class LargeFeaturedPosts extends StatelessWidget {
             Row(
               children: const [
                 Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: Icon(
@@ -60,15 +60,8 @@ class LargeFeaturedPosts extends StatelessWidget {
                   child: FeaturedPost(),
                   flex: 2,
                 ),
-                SizedBox(
-                  width: 10,
-                ),
                 Expanded(
-                  child: FeaturedPost(),
-                  flex: 2,
-                ),
-                Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: Align(
                       alignment: Alignment.centerLeft,
                       child: Icon(

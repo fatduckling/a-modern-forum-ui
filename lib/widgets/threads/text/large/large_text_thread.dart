@@ -8,104 +8,119 @@ class LargeTextThread extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.all(20),
-      decoration: const BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-      ),
-      child: Column(children: [
-        // first row: shows user icon, subforum name, username, timestamp and save icon
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(crossAxisAlignment: CrossAxisAlignment.center, children: const [
-              Icon(
-                Icons.circle,
-                size: 36,
+    return Column(
+      children: [
+        InkWell(
+          borderRadius: BorderRadius.circular(10),
+          onTap: () {},
+          child: Ink(
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
+            padding: const EdgeInsets.all(20),
+            child: Column(children: [
+              // first row: shows user icon, subforum name, username, timestamp and save icon
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: const [
+                        Icon(
+                          Icons.circle,
+                          size: 36,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text("Posted in "),
+                        Text(
+                          "Other",
+                          style:
+                              TextStyle(decoration: TextDecoration.underline),
+                        ),
+                        Text(" by "),
+                        Text(
+                          "User123",
+                          style:
+                              TextStyle(decoration: TextDecoration.underline),
+                        ),
+                      ]),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: const [
+                      Text("6 hours ago"),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Icon(
+                        Icons.bookmark_border_outlined,
+                        size: 36,
+                      ),
+                    ],
+                  )
+                ],
               ),
-              SizedBox(
-                width: 10,
+              const SizedBox(
+                height: 10,
               ),
-              Text("Posted in "),
-              Text(
-                "Other",
-                style: TextStyle(decoration: TextDecoration.underline),
+              // second row: shows the post title and flair
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Expanded(
+                    child: Text("How to navigate this forum " * 5,
+                        style: const TextStyle(
+                            fontWeight: FontWeight.w500, fontSize: 24)),
+                  ),
+                  const SmallRoundedButton("Info")
+                ],
               ),
-              Text(" by "),
-              Text(
-                "User123",
-                style: TextStyle(decoration: TextDecoration.underline),
+              const SizedBox(
+                height: 10,
+              ),
+              // third row: text body
+              Row(
+                children: [
+                  Expanded(
+                      child: Text(
+                    "The quick brown fox jumped over the lazy dog. " * 60,
+                    overflow: TextOverflow.fade,
+                    maxLines: 6,
+                  )),
+                ],
+              ),
+              // fourth row: shows up/down votes, comment count and view count
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const UpDownVotes(),
+                  Row(
+                    children: const [
+                      IconWithText(icon: Icons.mode_comment, text: "34"),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      IconWithText(
+                          icon: Icons.remove_red_eye_outlined, text: "34")
+                    ],
+                  )
+                ],
               ),
             ]),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                Text("6 hours ago"),
-                SizedBox(
-                  width: 10,
-                ),
-                Icon(
-                  Icons.bookmark_border_outlined,
-                  size: 36,
-                ),
-              ],
-            )
-          ],
+          ),
         ),
         const SizedBox(
           height: 10,
-        ),
-        // second row: shows the post title and flair
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Expanded(
-              child: Text("How to navigate this forum " * 5,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w500, fontSize: 24)),
-            ),
-            const SmallRoundedButton("Info")
-          ],
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        // third row: text body
-        Row(
-          children: [
-            Expanded(
-                child: Text(
-              "The quick brown fox jumped over the lazy dog. " * 60,
-              overflow: TextOverflow.fade,
-              maxLines: 6,
-            )),
-          ],
-        ),
-        // fourth row: shows up/down votes, comment count and view count
-        const SizedBox(
-          height: 10,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const UpDownVotes(),
-            Row(
-              children: const [
-                IconWithText(icon: Icons.mode_comment, text: "34"),
-                SizedBox(
-                  width: 10,
-                ),
-                IconWithText(icon: Icons.remove_red_eye_outlined, text: "34")
-              ],
-            )
-          ],
         )
-      ]),
+      ],
     );
   }
 }

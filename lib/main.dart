@@ -1,6 +1,6 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
-import 'package:a_modern_forum_project/thread_view/thread_view.dart';
+import 'package:a_modern_forum_project/thread_view/responsive_thread_view.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/appbar/responsive_app_bar.dart';
 import 'package:a_modern_forum_project/widgets/featured_posts/responsive_featured_posts.dart';
@@ -32,9 +32,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Portal(
         child: const MaterialApp(
-          title: 'Welcome to flutter',
-          home: Home(),
-        ));
+      title: 'Welcome to flutter',
+      home: Home(),
+    ));
   }
 }
 
@@ -66,40 +66,40 @@ class Home extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.blue,
                       ),
-                        child: Text('Drawer Header'),
-                      ),
-                      ListTile(
-                        title: const Text('Item 1'),
-                        onTap: () {
-                          // Update the state of the app.
-                          // ...
-                        },
-                      ),
-                      ListTile(
-                        title: const Text('Item 2'),
-                        onTap: () {
-                          // Update the state of the app.
-                          // ...
-                        },
-                      ),
-                    ],
-                  )),
-              appBar: ResponsiveAppBar(
-                screenSize: screenSize,
-              ),
-              body: NotificationListener<ScrollNotification>(
-                onNotification: (notification) {
-                  if (notification is ScrollUpdateNotification) {
-                    ScrollObserver observer = context.read<ScrollObserver>();
-                    observer.onScroll(notification.metrics.pixels);
-                    return false;
-                  }
-                  return true;
-                },
-                child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
+                      child: Text('Drawer Header'),
+                    ),
+                    ListTile(
+                      title: const Text('Item 1'),
+                      onTap: () {
+                        // Update the state of the app.
+                        // ...
+                      },
+                    ),
+                    ListTile(
+                      title: const Text('Item 2'),
+                      onTap: () {
+                        // Update the state of the app.
+                        // ...
+                      },
+                    ),
+                  ],
+                )),
+          appBar: ResponsiveAppBar(
+            screenSize: screenSize,
+          ),
+          body: NotificationListener<ScrollNotification>(
+            onNotification: (notification) {
+              if (notification is ScrollUpdateNotification) {
+                ScrollObserver observer = context.read<ScrollObserver>();
+                observer.onScroll(notification.metrics.pixels);
+                return false;
+              }
+              return true;
+            },
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
                   ResponsiveFeaturedPosts(screenSize),
                   const SizedBox(
                     height: 50,
@@ -108,11 +108,11 @@ class Home extends StatelessWidget {
                   const SizedBox(
                     height: 50,
                   ),
-                  ThreadView(screenSize)
+                  ResponsiveThreadView(screenSize)
                 ],
-                  ),
-                ),
-              ));
-        });
+              ),
+            ),
+          ));
+    });
   }
 }

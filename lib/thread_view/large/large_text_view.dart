@@ -7,18 +7,14 @@ import 'package:a_modern_forum_project/widgets/threads/text/responsive_text_thre
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ThreadView extends StatefulWidget {
-  final ScreenSize _screenSize;
-
-  const ThreadView(ScreenSize screenSize, {Key? key})
-      : _screenSize = screenSize,
-        super(key: key);
+class LargeTextView extends StatefulWidget {
+  const LargeTextView({Key? key}) : super(key: key);
 
   @override
-  _ThreadView createState() => _ThreadView();
+  _LargeTextView createState() => _LargeTextView();
 }
 
-class _ThreadView extends State<ThreadView> {
+class _LargeTextView extends State<LargeTextView> {
   /// Used to increase the size of the SizedBox to give a 'sticky' effect
   double _fixedYPositionOffset = 0;
 
@@ -42,17 +38,17 @@ class _ThreadView extends State<ThreadView> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Spacer(
-          flex: 1,
+          flex: 2,
         ),
         Expanded(
-            flex: 6,
+            flex: 4,
             child: ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: 10,
                 itemBuilder: (buildContext, index) {
-                  return ResponsiveTextThread(widget._screenSize);
+                  return const ResponsiveTextThread(ScreenSize.large);
                 })),
         const SizedBox(
           width: 10,
@@ -64,30 +60,40 @@ class _ThreadView extends State<ThreadView> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  padding: EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    color: Colors.greenAccent,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  child: const Text("Hello world"),
+                Row(
+                  children: [
+                    Expanded(
+                        child: Container(
+                      padding: const EdgeInsets.all(20),
+                      decoration: const BoxDecoration(
+                        color: Colors.greenAccent,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: const Text("Hello world"),
+                    ))
+                  ],
                 ),
                 SizedBox(
                   height: _fixedYPositionOffset,
                 ),
-                Container(
-                  key: _floatingWidgetKey,
-                  padding: EdgeInsets.all(20),
-                  decoration: const BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  child: const Text("Hello world2"),
-                )
+                Row(
+                  children: [
+                    Expanded(
+                        child: Container(
+                      key: _floatingWidgetKey,
+                      padding: EdgeInsets.all(20),
+                      decoration: const BoxDecoration(
+                        color: Colors.red,
+                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                      ),
+                      child: const Text("Hello world"),
+                    ))
+                  ],
+                ),
               ],
             )),
         const Spacer(
-          flex: 1,
+          flex: 2,
         ),
       ],
     );
