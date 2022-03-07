@@ -9,6 +9,7 @@ class SmallIconButton extends StatelessWidget {
       child: Material(
         color: Colors.blue, // Button color
         child: InkWell(
+          hoverColor: Colors.green,
           splashColor: Colors.red, // Splash color
           onTap: () {},
           child: const SizedBox(

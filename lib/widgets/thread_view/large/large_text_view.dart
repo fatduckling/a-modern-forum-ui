@@ -120,10 +120,12 @@ class _LargeTextView extends State<LargeTextView> {
       ScrollObserver scrollObserver =
           Provider.of<ScrollObserver>(context, listen: false);
       scrollObserver.addListener(() {
-        setState(() {
-          _fixedYPositionOffset =
-              max(0, scrollObserver.scrollPosition - _originalKeyYPosition + 5);
-        });
+        if (mounted) {
+          setState(() {
+            _fixedYPositionOffset = max(
+                0, scrollObserver.scrollPosition - _originalKeyYPosition + 5);
+          });
+        }
       });
     }
   }

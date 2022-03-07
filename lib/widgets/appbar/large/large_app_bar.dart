@@ -1,3 +1,5 @@
+import 'package:a_modern_forum_project/routes/explore.dart';
+import 'package:a_modern_forum_project/routes/home.dart';
 import 'package:a_modern_forum_project/widgets/search_bar/search_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +41,12 @@ class LargeAppBar extends StatelessWidget {
               height: appBarHeight,
               child: TextButton(
                 style: style,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomeRoute()),
+                  );
+                },
                 child: const Text('Home'),
               ),
             ),
@@ -50,7 +57,13 @@ class LargeAppBar extends StatelessWidget {
               height: appBarHeight,
               child: TextButton(
                 style: style,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ExploreRoute()),
+                  );
+                },
                 child: const Text('Explore'),
               ),
             ),

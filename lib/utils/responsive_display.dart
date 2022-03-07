@@ -11,29 +11,41 @@ class ResponsiveDisplay {
   /// Large devices (desktops, 1280 and up)
   static const _breakpointLargeDevice = 1280;
 
-  /// Check if the device is considered small based on its box [constraints]
-  static bool isSmallDevice(final BoxConstraints constraints) {
-    final width = constraints.maxWidth;
+  /// Check if the device is considered small based on the page [width]
+  static bool isSmallDevice(final double width) {
     return width <= _breakpointSmallDevice;
   }
 
-  /// Check if the device is considered small based on its box [constraints]
-  static bool isMediumDevice(final BoxConstraints constraints) {
-    final width = constraints.maxWidth;
+  /// Check if the device is considered small based on the page [width]
+  static bool isMediumDevice(final double width) {
     return width > _breakpointSmallDevice && width < _breakpointLargeDevice;
   }
 
-  /// Check if the device is considered small based on its box [constraints]
-  static bool isLargeDevice(final BoxConstraints constraints) {
-    final width = constraints.maxWidth;
+  /// Check if the device is considered small based on the page [width]
+  static bool isLargeDevice(final double width) {
     return width >= _breakpointLargeDevice;
   }
 
   /// Return the screen size based on its box [constraints]
-  static ScreenSize getScreenSize(final BoxConstraints constraints) {
-    if (isLargeDevice(constraints)) {
+  static ScreenSize getScreenSizeFromBoxConstraints(
+      final BoxConstraints constraints) {
+    final double width = constraints.maxWidth;
+    if (isLargeDevice(width)) {
       return ScreenSize.large;
-    } else if (isMediumDevice(constraints)) {
+    } else if (isMediumDevice(width)) {
+      return ScreenSize.medium;
+    } else {
+      return ScreenSize.small;
+    }
+  }
+
+  /// Return the screen size based on the [buildContext]
+  static ScreenSize getScreenSizeFromBuildContext(
+      final BuildContext buildContext) {
+    final double width = MediaQuery.of(buildContext).size.width;
+    if (isLargeDevice(width)) {
+      return ScreenSize.large;
+    } else if (isMediumDevice(width)) {
       return ScreenSize.medium;
     } else {
       return ScreenSize.small;

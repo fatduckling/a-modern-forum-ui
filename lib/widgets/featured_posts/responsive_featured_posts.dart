@@ -3,11 +3,7 @@ import 'package:a_modern_forum_project/widgets/featured_posts/large/large_featur
 import 'package:flutter/material.dart';
 
 class ResponsiveFeaturedPosts extends StatefulWidget {
-  final ScreenSize _screenSize;
-
-  const ResponsiveFeaturedPosts(ScreenSize screenSize, {Key? key})
-      : _screenSize = screenSize,
-        super(key: key);
+  const ResponsiveFeaturedPosts({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _ResponsiveFeaturedPosts();
@@ -16,10 +12,12 @@ class ResponsiveFeaturedPosts extends StatefulWidget {
 class _ResponsiveFeaturedPosts extends State<ResponsiveFeaturedPosts> {
   @override
   Widget build(BuildContext context) {
-    switch (widget._screenSize) {
+    ScreenSize screenSize =
+        ResponsiveDisplay.getScreenSizeFromBuildContext(context);
+    switch (screenSize) {
       case ScreenSize.small:
       case ScreenSize.medium:
-      return const Center(child: Text("Unhandled small/medium screen sizes"));
+        return const Center(child: Text("Unhandled small/medium screen sizes"));
       case ScreenSize.large:
         return const LargeFeaturedPosts();
     }
