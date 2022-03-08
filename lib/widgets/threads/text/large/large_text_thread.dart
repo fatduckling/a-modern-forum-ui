@@ -104,12 +104,12 @@ class LargeTextThread extends StatelessWidget {
                   const UpDownVotes(),
                   Row(
                     children: const [
-                      IconWithText(icon: Icons.mode_comment, text: "34"),
+                      IconWithText(icon: Icons.mode_comment, text: "37"),
                       SizedBox(
                         width: 10,
                       ),
                       IconWithText(
-                          icon: Icons.remove_red_eye_outlined, text: "34")
+                          icon: Icons.remove_red_eye_outlined, text: "38")
                     ],
                   )
                 ],

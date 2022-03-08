@@ -35,7 +35,7 @@ class FeaturedPost extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
                       UpDownVotes(),
-                      IconWithText(icon: Icons.mode_comment, text: "34")
+                      IconWithText(icon: Icons.mode_comment, text: "36")
                     ],
                   )
                 ],

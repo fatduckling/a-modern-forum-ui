@@ -1,5 +1,6 @@
 import 'package:a_modern_forum_project/routes/explore.dart';
 import 'package:a_modern_forum_project/routes/home.dart';
+import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/search_bar/search_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -14,6 +15,7 @@ class LargeAppBar extends StatelessWidget {
     final ButtonStyle style = TextButton.styleFrom(
         primary: Theme.of(context).colorScheme.onPrimary,
         splashFactory: NoSplash.splashFactory);
+    final double width = MediaQuery.of(context).size.width;
     return AppBar(
       toolbarHeight: appBarHeight,
       automaticallyImplyLeading: true,
@@ -29,7 +31,8 @@ class LargeAppBar extends StatelessWidget {
             ),
             Container(
                 padding: const EdgeInsets.all(8),
-                child: const Text('Forum Name')),
+                child: Text(
+                    'Forum Name: $width ${ResponsiveDisplay.getScreenSizeFromBuildContext(context).name}')),
           ],
         ),
       ),

@@ -20,7 +20,7 @@ class _UpDownVotes extends State<UpDownVotes> {
         ),
         SmallIconButton(),
         Padding(
-            padding: EdgeInsets.only(left: 10, right: 10), child: Lead("34")),
+            padding: EdgeInsets.only(left: 10, right: 10), child: Lead("35")),
         SmallIconButton(),
       ],
     );
