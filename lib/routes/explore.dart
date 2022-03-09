@@ -28,44 +28,73 @@ class _ExploreRoute extends State<ExploreRoute> {
           const Spacer(
             flex: 2,
           ),
-          const Expanded(flex: 5, child: H1("Forum Explore")),
-              Expanded(
-                  flex: 1,
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: IconButton(
-                      iconSize: 40,
-                  icon: Icon(_isCompact
-                      ? Icons.view_comfortable_outlined
-                      : Icons.view_compact_outlined),
-                  onPressed: () {
-                    setState(() {
-                      _isCompact = !_isCompact;
-                    });
-                  },
-                ),
-                  )),
-              const Spacer(
-                flex: 2,
+          const Expanded(flex: 3, child: H1("Forum Explore")),
+          Expanded(
+            flex: 3,
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        _isCompact = !_isCompact;
+                      });
+                    },
+                    borderRadius: BorderRadius.circular(20),
+                    child: Ink(
+                      // color: Colors.red,
+                      padding: const EdgeInsets.only(top: 5, bottom: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(_isCompact ? "Compact" : "Expanded"),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Icon(
+                              _isCompact
+                                  ? Icons.view_comfortable_outlined
+                                  : Icons.view_compact_outlined,
+                              size: 40),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
               ),
-            ],
+            ),
           ),
-          const SizedBox(
-            height: 40,
+          const Spacer(
+            flex: 2,
+          ),
+        ],
       ),
-          Row(
-            children: [
-              const Spacer(
-                flex: 2,
-              ),
-              Expanded(
-                  flex: 6,
-                  child: ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 3,
-                      itemBuilder: (context, index) {
+      const SizedBox(
+        height: 30,
+      ),
+      Row(
+        children: [
+          const Spacer(
+            flex: 2,
+          ),
+          Expanded(
+              flex: 6,
+              child: ListView.builder(
+                  scrollDirection: Axis.vertical,
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: 3,
+                  itemBuilder: (context, index) {
                     return Column(
                       children: [
                         const SizedBox(
@@ -133,11 +162,11 @@ class _ExploreRoute extends State<ExploreRoute> {
                       ],
                     );
                   })),
-              const Spacer(
-                flex: 2,
-              ),
-            ],
-          )
-        ]));
+          const Spacer(
+            flex: 2,
+          ),
+        ],
+      )
+    ]));
   }
 }
