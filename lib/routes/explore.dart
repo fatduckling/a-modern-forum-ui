@@ -1,14 +1,23 @@
-import 'package:a_modern_forum_project/widgets/collapsed_subforum/responsive_collapsed_subforum.dart';
+import 'package:a_modern_forum_project/widgets/compact_subforum/responsive_compact_subforum.dart';
+import 'package:a_modern_forum_project/widgets/expanded_subforum/responsive_expanded_subforum.dart';
 import 'package:a_modern_forum_project/widgets/scaffold/main_scaffold.dart';
 import 'package:a_modern_forum_project/widgets/text/h1.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 
-class ExploreRoute extends StatelessWidget {
+class ExploreRoute extends StatefulWidget {
   const ExploreRoute({Key? key}) : super(key: key);
 
   @override
+  _ExploreRoute createState() => _ExploreRoute();
+}
+
+class _ExploreRoute extends State<ExploreRoute> {
+  /// Whether to show the compact view or the expanded view
+  bool _isCompact = false;
+
+  @override
   Widget build(BuildContext context) {
+    final ThemeData themeData = ThemeData();
     return MainScaffold(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
       const SizedBox(
@@ -20,78 +29,115 @@ class ExploreRoute extends StatelessWidget {
             flex: 2,
           ),
           const Expanded(flex: 5, child: H1("Forum Explore")),
-          Expanded(
-              flex: 1,
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: IconButton(
-                  iconSize: 40,
-                  icon: const Icon(Icons.grid_on),
-                  onPressed: () {},
+              Expanded(
+                  flex: 1,
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: IconButton(
+                      iconSize: 40,
+                  icon: Icon(_isCompact
+                      ? Icons.view_comfortable_outlined
+                      : Icons.view_compact_outlined),
+                  onPressed: () {
+                    setState(() {
+                      _isCompact = !_isCompact;
+                    });
+                  },
                 ),
-              )),
-          const Spacer(
-            flex: 2,
+                  )),
+              const Spacer(
+                flex: 2,
+              ),
+            ],
           ),
-        ],
+          const SizedBox(
+            height: 40,
       ),
-      const SizedBox(
-        height: 30,
-      ),
-      Row(
-        children: [
-          const Spacer(
-            flex: 2,
-          ),
-          Expanded(
-              flex: 6,
-              child: ListView.builder(
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: 3,
-                  itemBuilder: (context, index) {
-                    return Column(children: [
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Card(
-                        elevation: 0,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(15),
+          Row(
+            children: [
+              const Spacer(
+                flex: 2,
+              ),
+              Expanded(
+                  flex: 6,
+                  child: ListView.builder(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: 3,
+                      itemBuilder: (context, index) {
+                    return Column(
+                      children: [
+                        const SizedBox(
+                          height: 10,
                         ),
-                        clipBehavior: Clip.antiAlias,
-                        margin: EdgeInsets.zero,
-                        color: Colors.white,
-                        child: Theme(
-                            data: ThemeData()
-                                .copyWith(dividerColor: Colors.transparent),
-                            child: ExpansionTile(
-                              initiallyExpanded: true,
-                              title: Text(
-                                'General Astronomy $index',
-                                style: const TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 24,
-                                    color: Colors.black),
-                              ),
-                              children: const <Widget>[
-                                SizedBox(
-                                  height: 10,
+                        Card(
+                          color: Colors.white,
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                  color: Colors.transparent,
+                                  width: 0,
+                                  style: BorderStyle.none),
+                              borderRadius: BorderRadius.circular(15)),
+                          clipBehavior: Clip.antiAlias,
+                          margin: EdgeInsets.zero,
+                          child: Theme(
+                              data: themeData.copyWith(
+                                  dividerColor:
+                                      themeData.scaffoldBackgroundColor),
+                              child: ExpansionTile(
+                                collapsedBackgroundColor: Colors.white,
+                                initiallyExpanded: true,
+                                title: Text(
+                                  'General Astronomy $index',
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 24,
+                                      color: Colors.black),
                                 ),
-                                ResponsiveCollapsedSubforum(),
-                                ResponsiveCollapsedSubforum(),
-                                ResponsiveCollapsedSubforum(),
-                              ],
-                            )),
-                      )
-                    ]);
+                                children: <Widget>[
+                                  SizedBox(
+                                    height: 10,
+                                    child: Container(
+                                      color: themeData.scaffoldBackgroundColor,
+                                    ),
+                                  ),
+                                  _isCompact
+                                      ? const ResponsiveCompactSubforum()
+                                      : const ResponsiveExpandedSubforum(),
+                                  SizedBox(
+                                    height: 10,
+                                    child: Container(
+                                      color: themeData.scaffoldBackgroundColor,
+                                    ),
+                                  ),
+                                  _isCompact
+                                      ? const ResponsiveCompactSubforum()
+                                      : const ResponsiveExpandedSubforum(),
+                                  SizedBox(
+                                    height: 10,
+                                    child: Container(
+                                      color: themeData.scaffoldBackgroundColor,
+                                    ),
+                                  ),
+                                  _isCompact
+                                      ? const ResponsiveCompactSubforum()
+                                      : const ResponsiveExpandedSubforum(),
+                                ],
+                              )),
+                        ),
+                        const SizedBox(
+                          height: 40,
+                        ),
+                      ],
+                    );
                   })),
-          const Spacer(
-            flex: 2,
-          ),
-        ],
-      )
-    ]));
+              const Spacer(
+                flex: 2,
+              ),
+            ],
+          )
+        ]));
   }
 }
