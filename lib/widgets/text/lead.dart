@@ -12,7 +12,7 @@ class Lead extends StatelessWidget {
     return Text(
       _text,
       overflow: TextOverflow.ellipsis,
-      maxLines: 4,
+      maxLines: 1,
       softWrap: false,
       style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
     );
