@@ -1,3 +1,4 @@
+import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded/medium/medium_rounded_button.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded/small/small_rounded_button.dart';
 import 'package:a_modern_forum_project/widgets/subforum_dropdown/subforum_dropdown.dart';
@@ -14,14 +15,14 @@ class LargeSortFilterThreads extends StatelessWidget {
         Row(
           children: const [
             Spacer(
-              flex: 2,
+              flex: ResponsiveDisplay.pageBoundsFlex,
             ),
             Expanded(
-              flex: 6,
+              flex: 100 - (2 * ResponsiveDisplay.pageBoundsFlex),
               child: H1("Top Threads"),
             ),
             Spacer(
-              flex: 2,
+              flex: ResponsiveDisplay.pageBoundsFlex,
             ),
           ],
         ),
@@ -31,10 +32,10 @@ class LargeSortFilterThreads extends StatelessWidget {
         Row(
           children: [
             const Spacer(
-              flex: 2,
+              flex: ResponsiveDisplay.pageBoundsFlex,
             ),
             Expanded(
-              flex: 5,
+              flex: 55,
               child: Container(
                   margin: const EdgeInsets.only(right: 40),
                   padding: const EdgeInsets.only(left: 30),
@@ -62,9 +63,9 @@ class LargeSortFilterThreads extends StatelessWidget {
                     ],
                   )),
             ),
-            const Expanded(flex: 1, child: MediumRoundedButton("Start thread")),
+            const Expanded(flex: 8, child: MediumRoundedButton("Start thread")),
             const Spacer(
-              flex: 2,
+              flex: ResponsiveDisplay.pageBoundsFlex,
             )
           ],
         )

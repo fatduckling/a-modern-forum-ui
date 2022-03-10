@@ -1,3 +1,4 @@
+import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/compact_subforum/responsive_compact_subforum.dart';
 import 'package:a_modern_forum_project/widgets/expanded_subforum/responsive_expanded_subforum.dart';
 import 'package:a_modern_forum_project/widgets/scaffold/main_scaffold.dart';
@@ -20,23 +21,20 @@ class _ExploreRoute extends State<ExploreRoute> {
     final ThemeData themeData = ThemeData();
     return MainScaffold(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-      const SizedBox(
-        height: 50,
-      ),
-      Row(
-        children: [
-          const Spacer(
-            flex: 2,
+          const SizedBox(
+            height: 50,
           ),
-          const Expanded(flex: 3, child: H1("Forum Explore")),
-          Expanded(
-            flex: 3,
-            child: Align(
-              alignment: Alignment.centerRight,
+          Row(
+            children: [
+              const Spacer(
+                flex: ResponsiveDisplay.pageBoundsFlex,
+          ),
+              Expanded(
+                  flex: 100 - (ResponsiveDisplay.pageBoundsFlex * 2),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  const H1("Forum Explore"),
                   InkWell(
                     onTap: () {
                       setState(() {
@@ -48,17 +46,17 @@ class _ExploreRoute extends State<ExploreRoute> {
                       // color: Colors.red,
                       padding: const EdgeInsets.only(top: 5, bottom: 5),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Text(_isCompact ? "Compact" : "Expanded"),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Icon(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Text(_isCompact ? "Compact" : "Expanded"),
+                              const SizedBox(
+                                width: 10,
+                              ),
+                              Icon(
                               _isCompact
                                   ? Icons.view_comfortable_outlined
                                   : Icons.view_compact_outlined,
@@ -69,26 +67,24 @@ class _ExploreRoute extends State<ExploreRoute> {
                         ],
                       ),
                     ),
-                  )
+                  ),
                 ],
-              ),
-            ),
-          ),
+              )),
           const Spacer(
-            flex: 2,
+            flex: ResponsiveDisplay.pageBoundsFlex,
           ),
         ],
-      ),
-      const SizedBox(
-        height: 30,
-      ),
-      Row(
-        children: [
-          const Spacer(
-            flex: 2,
           ),
-          Expanded(
-              flex: 6,
+          const SizedBox(
+            height: 30,
+          ),
+          Row(
+            children: [
+              const Spacer(
+                flex: ResponsiveDisplay.pageBoundsFlex,
+          ),
+              Expanded(
+                  flex: 100 - (ResponsiveDisplay.pageBoundsFlex * 2),
               child: ListView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
@@ -100,73 +96,73 @@ class _ExploreRoute extends State<ExploreRoute> {
                         const SizedBox(
                           height: 10,
                         ),
-                        Card(
-                          color: Colors.white,
-                          elevation: 0,
-                          shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                  color: Colors.transparent,
-                                  width: 0,
-                                  style: BorderStyle.none),
-                              borderRadius: BorderRadius.circular(15)),
-                          clipBehavior: Clip.antiAlias,
-                          margin: EdgeInsets.zero,
-                          child: Theme(
-                              data: themeData.copyWith(
-                                  dividerColor:
+                            Card(
+                              color: Colors.white,
+                              elevation: 0,
+                              shape: RoundedRectangleBorder(
+                                  side: const BorderSide(
+                                      color: Colors.transparent,
+                                      width: 0,
+                                      style: BorderStyle.none),
+                                  borderRadius: BorderRadius.circular(15)),
+                              clipBehavior: Clip.antiAlias,
+                              margin: EdgeInsets.zero,
+                              child: Theme(
+                                  data: themeData.copyWith(
+                                      dividerColor:
                                       themeData.scaffoldBackgroundColor),
-                              child: ExpansionTile(
-                                collapsedBackgroundColor: Colors.white,
-                                initiallyExpanded: true,
-                                title: Text(
-                                  'General Astronomy $index',
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                      fontSize: 24,
-                                      color: Colors.black),
-                                ),
-                                children: <Widget>[
-                                  SizedBox(
-                                    height: 10,
-                                    child: Container(
-                                      color: themeData.scaffoldBackgroundColor,
+                                  child: ExpansionTile(
+                                    collapsedBackgroundColor: Colors.white,
+                                    initiallyExpanded: true,
+                                    title: Text(
+                                      'General Astronomy $index',
+                                      style: const TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 24,
+                                          color: Colors.black),
                                     ),
-                                  ),
-                                  _isCompact
-                                      ? const ResponsiveCompactSubforum()
-                                      : const ResponsiveExpandedSubforum(),
-                                  SizedBox(
-                                    height: 10,
-                                    child: Container(
-                                      color: themeData.scaffoldBackgroundColor,
-                                    ),
-                                  ),
-                                  _isCompact
-                                      ? const ResponsiveCompactSubforum()
-                                      : const ResponsiveExpandedSubforum(),
-                                  SizedBox(
-                                    height: 10,
-                                    child: Container(
-                                      color: themeData.scaffoldBackgroundColor,
-                                    ),
-                                  ),
-                                  _isCompact
-                                      ? const ResponsiveCompactSubforum()
-                                      : const ResponsiveExpandedSubforum(),
-                                ],
-                              )),
-                        ),
-                        const SizedBox(
-                          height: 40,
-                        ),
-                      ],
-                    );
-                  })),
-          const Spacer(
-            flex: 2,
+                                    children: <Widget>[
+                                      SizedBox(
+                                        height: 10,
+                                        child: Container(
+                                          color: themeData.scaffoldBackgroundColor,
+                                        ),
+                                      ),
+                                      _isCompact
+                                          ? const ResponsiveCompactSubforum()
+                                          : const ResponsiveExpandedSubforum(),
+                                      SizedBox(
+                                        height: 10,
+                                        child: Container(
+                                          color: themeData.scaffoldBackgroundColor,
+                                        ),
+                                      ),
+                                      _isCompact
+                                          ? const ResponsiveCompactSubforum()
+                                          : const ResponsiveExpandedSubforum(),
+                                      SizedBox(
+                                        height: 10,
+                                        child: Container(
+                                          color: themeData.scaffoldBackgroundColor,
+                                        ),
+                                      ),
+                                      _isCompact
+                                          ? const ResponsiveCompactSubforum()
+                                          : const ResponsiveExpandedSubforum(),
+                                    ],
+                                  )),
+                            ),
+                            const SizedBox(
+                              height: 40,
+                            ),
+                          ],
+                        );
+                      })),
+              const Spacer(
+                flex: ResponsiveDisplay.pageBoundsFlex,
           ),
-        ],
-      )
-    ]));
+            ],
+          )
+        ]));
   }
 }

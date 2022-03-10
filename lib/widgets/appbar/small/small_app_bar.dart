@@ -9,10 +9,11 @@ class SmallAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double width = MediaQuery.of(context).size.width;
     return AppBar(
       toolbarHeight: appBarHeight,
       title: Text(
-          'Forum Name: ${ResponsiveDisplay.getScreenSizeFromBuildContext(context).name}'),
+          'Forum Name: $width ${ResponsiveDisplay.getScreenSizeFromBuildContext(context).name}'),
     );
   }
 }

@@ -38,10 +38,10 @@ class _LargeTextView extends State<LargeTextView> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         const Spacer(
-          flex: 2,
+          flex: ResponsiveDisplay.pageBoundsFlex,
         ),
         Expanded(
-            flex: 4,
+            flex: 49,
             child: ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
@@ -54,7 +54,7 @@ class _LargeTextView extends State<LargeTextView> {
           width: 10,
         ),
         Expanded(
-            flex: 2,
+            flex: 14,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -93,7 +93,7 @@ class _LargeTextView extends State<LargeTextView> {
               ],
             )),
         const Spacer(
-          flex: 2,
+          flex: ResponsiveDisplay.pageBoundsFlex,
         ),
       ],
     );

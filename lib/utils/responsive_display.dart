@@ -5,11 +5,14 @@ enum ScreenSize { small, medium, large }
 
 /// Simple utility class used to determine whether the device is small, medium or large
 class ResponsiveDisplay {
-  /// Small devices (landscape phones, 768 and up)
-  static const _breakpointSmallDevice = 768;
+  /// The amount of flex to put in the left and right margins of the page
+  static const pageBoundsFlex = 18;
 
-  /// Large devices (desktops, 1280 and up)
-  static const _breakpointLargeDevice = 1280;
+  /// Small devices (landscape phones, 980 and up)
+  static const _breakpointSmallDevice = 980;
+
+  /// Large devices (desktops, 1780 and up)
+  static const _breakpointLargeDevice = 1780;
 
   /// Check if the device is considered small based on the page [width]
   static bool isSmallDevice(final double width) {
