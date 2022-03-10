@@ -7,7 +7,7 @@ class LargeFeaturedPosts extends StatelessWidget {
   /// Number of featured posts to display
   static const int numberOfFeaturedPosts = 4;
 
-  /// Add multiplier to flex to increase precision
+  /// Add multiplier to flex to increase precision for flex widgets
   static const int multiplier = 100;
 
   const LargeFeaturedPosts({Key? key}) : super(key: key);
