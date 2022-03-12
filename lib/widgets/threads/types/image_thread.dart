@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 class ImageThread extends StatefulWidget {
   final String _url;
 
+  /// Maximum height of an image
+  static const double maximumImageHeight = 400;
+
   const ImageThread({required String url, Key? key})
       : _url = url,
         super(key: key);
@@ -13,8 +16,7 @@ class ImageThread extends StatefulWidget {
 }
 
 class _ImageThread extends State<ImageThread> {
-  /// The loadingPr
-  /// ogress argument contains the current progress towards loading the image.
+  /// The loadingProgress argument contains the current progress towards loading the image.
   /// This argument will be non-null while the image is loading, but it will be null in the following cases:
   /// When the widget is first rendered before any bytes have been loaded.
   /// When an image has been fully loaded and is available to be painted.
@@ -53,7 +55,9 @@ class _ImageThread extends State<ImageThread> {
                 (_imageWidth > 0 && _imageHeight > 0);
         if (isFinishedLoading) {
           return SizedBox(
-            height: _imageHeight > 400 ? 400 : _imageHeight,
+            height: _imageHeight > ImageThread.maximumImageHeight
+                ? ImageThread.maximumImageHeight
+                : _imageHeight,
             child: AspectRatio(
               aspectRatio: _imageWidth / _imageHeight,
               child: child,
