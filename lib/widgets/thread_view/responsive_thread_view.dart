@@ -1,5 +1,5 @@
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
-import 'package:a_modern_forum_project/widgets/thread_view/large/large_text_view.dart';
+import 'package:a_modern_forum_project/widgets/thread_view/large/large_thread_view.dart';
 import 'package:flutter/material.dart';
 
 class ResponsiveThreadView extends StatelessWidget {
@@ -16,7 +16,7 @@ class ResponsiveThreadView extends StatelessWidget {
           child: Text("Not yet implemented"),
         );
       case ScreenSize.large:
-        return const LargeTextView();
+        return const LargeThreadView();
     }
   }
 }

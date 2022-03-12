@@ -3,18 +3,21 @@ import 'dart:math';
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/appbar/large/large_app_bar.dart';
-import 'package:a_modern_forum_project/widgets/threads/text/responsive_text_thread.dart';
+import 'package:a_modern_forum_project/widgets/threads/template/responsive_thread_template.dart';
+import 'package:a_modern_forum_project/widgets/threads/types/image_thread.dart';
+import 'package:a_modern_forum_project/widgets/threads/types/text_thread.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class LargeTextView extends StatefulWidget {
-  const LargeTextView({Key? key}) : super(key: key);
+/// Displays text posts for large devices
+class LargeThreadView extends StatefulWidget {
+  const LargeThreadView({Key? key}) : super(key: key);
 
   @override
-  _LargeTextView createState() => _LargeTextView();
+  _LargeThreadView createState() => _LargeThreadView();
 }
 
-class _LargeTextView extends State<LargeTextView> {
+class _LargeThreadView extends State<LargeThreadView> {
   /// Used to increase the size of the SizedBox to give a 'sticky' effect
   double _fixedYPositionOffset = 0;
 
@@ -48,7 +51,15 @@ class _LargeTextView extends State<LargeTextView> {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: 10,
                 itemBuilder: (buildContext, index) {
-                  return const ResponsiveTextThread(ScreenSize.large);
+                  if (index % 5 != 0) {
+                    return const ResponsiveThreadTemplate(
+                        threadBody: TextThread());
+                  } else {
+                    return const ResponsiveThreadTemplate(
+                        threadBody: ImageThread(
+                      url: "https://i.imgur.com/zBovHrK.jpg",
+                    ));
+                  }
                 })),
         const SizedBox(
           width: 10,
@@ -80,8 +91,8 @@ class _LargeTextView extends State<LargeTextView> {
                   children: [
                     Expanded(
                         child: Container(
-                      key: _floatingWidgetKey,
-                      padding: EdgeInsets.all(20),
+                          key: _floatingWidgetKey,
+                      padding: const EdgeInsets.all(20),
                       decoration: const BoxDecoration(
                         color: Colors.red,
                         borderRadius: BorderRadius.all(Radius.circular(10)),

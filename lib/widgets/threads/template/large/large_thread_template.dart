@@ -3,8 +3,14 @@ import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dar
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
 import 'package:flutter/material.dart';
 
-class LargeTextThread extends StatelessWidget {
-  const LargeTextThread({Key? key}) : super(key: key);
+/// Template for displaying threads on large devices
+class LargeThreadTemplate extends StatelessWidget {
+  /// The body of the thread
+  final Widget _threadBody;
+
+  const LargeThreadTemplate(Widget threadBody, {Key? key})
+      : _threadBody = threadBody,
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -82,17 +88,8 @@ class LargeTextThread extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              // third row: text body
-              Row(
-                children: [
-                  Expanded(
-                      child: Text(
-                    "The quick brown fox jumped over the lazy dog. " * 60,
-                    overflow: TextOverflow.fade,
-                    maxLines: 6,
-                  )),
-                ],
-              ),
+              // third row: thread body
+              _threadBody,
               // fourth row: shows up/down votes, comment count and view count
               const SizedBox(
                 height: 10,

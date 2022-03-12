@@ -23,62 +23,62 @@ class LargeExpandedSubforum extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(children: [
-                            const Icon(
+                          Row(children: const [
+                            Icon(
                               Icons.circle,
                               size: 48,
                             ),
-                            const SizedBox(
+                            SizedBox(
                               width: 10,
                             ),
                             Flexible(
                                 child: Text(
                               "Beginners Forum",
-                              style: const TextStyle(
+                              style: TextStyle(
                                   fontSize: 18, fontWeight: FontWeight.w500),
                               maxLines: 2,
                               softWrap: false,
                               overflow: TextOverflow.ellipsis,
                             )),
                           ]),
-                          Text("Text " * 100),
-                          SizedBox(
-                            height: 20,
+                          const SizedBox(
+                            height: 10,
                           ),
-                          RecentPost()
+                          Text("Text " * 100),
+                          const SizedBox(
+                            height: 25,
+                          ),
+                          const RecentPost()
                         ],
                       )),
                   Expanded(
                       flex: 1,
-                      child: Container(
-                        // color: Colors.green,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            VerticalDivider(color: Colors.black12),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Icon(
-                                  Icons.mode_comment_outlined,
-                                  size: 36,
-                                  color: Colors.blue,
-                                ),
-                                Text("123456"),
-                                SizedBox(
-                                  height: 30,
-                                ),
-                                Icon(
-                                  Icons.chat,
-                                  size: 36,
-                                  color: Colors.blue,
-                                ),
-                                Text("123456"),
-                              ],
-                            )
-                          ],
-                        ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          const VerticalDivider(color: Colors.black12),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: const [
+                              Icon(
+                                Icons.mode_comment_outlined,
+                                size: 36,
+                                color: Colors.blue,
+                              ),
+                              Text("123456"),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              Icon(
+                                Icons.chat,
+                                size: 36,
+                                color: Colors.blue,
+                              ),
+                              Text("123456"),
+                            ],
+                          )
+                        ],
                       )),
                 ],
               )),
