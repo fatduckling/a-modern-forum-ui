@@ -25,10 +25,10 @@ class IconWithText extends StatelessWidget {
           color: Colors.blue,
           size: 28,
         ),
-        Padding(
-          padding: const EdgeInsets.only(left: 5, bottom: 5),
-          child: Lead(_text),
-        )
+        const SizedBox(
+          width: 5,
+        ),
+        Lead(_text)
       ],
     );
   }

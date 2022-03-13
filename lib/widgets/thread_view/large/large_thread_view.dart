@@ -5,6 +5,7 @@ import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/appbar/large/large_app_bar.dart';
 import 'package:a_modern_forum_project/widgets/threads/template/responsive_thread_template.dart';
 import 'package:a_modern_forum_project/widgets/threads/types/image_thread.dart';
+import 'package:a_modern_forum_project/widgets/threads/types/poll_thread.dart';
 import 'package:a_modern_forum_project/widgets/threads/types/text_thread.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -51,7 +52,10 @@ class _LargeThreadView extends State<LargeThreadView> {
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: 10,
                 itemBuilder: (buildContext, index) {
-                  if (index % 5 != 0) {
+                  if (index == 0) {
+                    return const ResponsiveThreadTemplate(
+                        threadBody: PollThread());
+                  } else if (index % 5 != 0) {
                     return const ResponsiveThreadTemplate(
                         threadBody: TextThread());
                   } else {
