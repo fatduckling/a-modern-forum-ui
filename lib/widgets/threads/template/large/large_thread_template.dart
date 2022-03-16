@@ -1,3 +1,4 @@
+import 'package:a_modern_forum_project/routes/view_post.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded/small/small_rounded_button.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
@@ -18,7 +19,12 @@ class LargeThreadTemplate extends StatelessWidget {
       children: [
         InkWell(
           borderRadius: BorderRadius.circular(10),
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ViewPost()),
+            );
+          },
           child: Ink(
             decoration: const BoxDecoration(
               color: Colors.white,
@@ -44,13 +50,13 @@ class LargeThreadTemplate extends StatelessWidget {
                         Text(
                           "Other",
                           style:
-                              TextStyle(decoration: TextDecoration.underline),
+                          TextStyle(decoration: TextDecoration.underline),
                         ),
                         Text(" by "),
                         Text(
                           "User123",
                           style:
-                              TextStyle(decoration: TextDecoration.underline),
+                          TextStyle(decoration: TextDecoration.underline),
                         ),
                       ]),
                   Row(
