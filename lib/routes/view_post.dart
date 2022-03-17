@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 
 /// Used to display a thread and its comments
 class ViewPost extends StatelessWidget {
-  const ViewPost({Key? key}) : super(key: key);
+  final Widget thread;
+
+  const ViewPost(this.thread, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +16,7 @@ class ViewPost extends StatelessWidget {
       const SizedBox(
         height: 50,
       ),
+      // first row: breadcrumbs
       Row(
         children: const [
           Spacer(
@@ -28,6 +31,21 @@ class ViewPost extends StatelessWidget {
                 "How to navigate this forum"
               ])),
           Spacer(
+            flex: ResponsiveDisplay.pageBoundsFlex,
+          ),
+        ],
+      ),
+      const SizedBox(height: 30),
+      // second row: post details
+      Row(
+        children: [
+          const Spacer(
+            flex: ResponsiveDisplay.pageBoundsFlex,
+          ),
+          Expanded(
+              flex: 100 - (2 * ResponsiveDisplay.pageBoundsFlex),
+              child: thread),
+          const Spacer(
             flex: ResponsiveDisplay.pageBoundsFlex,
           ),
         ],

@@ -1,17 +1,17 @@
+import 'package:a_modern_forum_project/models/thread/thread_model.dart';
 import 'package:a_modern_forum_project/routes/view_post.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded/small/small_rounded_button.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
+import 'package:a_modern_forum_project/widgets/threads/template/responsive_thread_template.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
 import 'package:flutter/material.dart';
 
 /// Template for displaying threads on large devices
 class LargeThreadTemplate extends StatelessWidget {
-  /// The body of the thread
-  final Widget _threadBody;
+  /// Thread model holds the information of the thread
+  final ThreadModel threadModel;
 
-  const LargeThreadTemplate(Widget threadBody, {Key? key})
-      : _threadBody = threadBody,
-        super(key: key);
+  const LargeThreadTemplate(this.threadModel, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,12 +19,18 @@ class LargeThreadTemplate extends StatelessWidget {
       children: [
         InkWell(
           borderRadius: BorderRadius.circular(10),
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ViewPost()),
-            );
-          },
+          onTap: threadModel.isCompact
+              ? () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) {
+                      threadModel.isCompact = false;
+                      return ViewPost(
+                          ResponsiveThreadTemplate(threadModel: threadModel));
+                    }),
+                  );
+                }
+              : null,
           child: Ink(
             decoration: const BoxDecoration(
               color: Colors.white,
@@ -50,13 +56,13 @@ class LargeThreadTemplate extends StatelessWidget {
                         Text(
                           "Other",
                           style:
-                          TextStyle(decoration: TextDecoration.underline),
+                              TextStyle(decoration: TextDecoration.underline),
                         ),
                         Text(" by "),
                         Text(
                           "User123",
                           style:
-                          TextStyle(decoration: TextDecoration.underline),
+                              TextStyle(decoration: TextDecoration.underline),
                         ),
                       ]),
                   Row(
@@ -95,10 +101,10 @@ class LargeThreadTemplate extends StatelessWidget {
                 height: 10,
               ),
               // third row: thread body
-              _threadBody,
+              ResponsiveThreadTemplate.buildThreadBody(threadModel),
               // fourth row: shows up/down votes, comment count and view count
               const SizedBox(
-                height: 10,
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

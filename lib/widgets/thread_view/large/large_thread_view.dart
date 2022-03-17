@@ -1,12 +1,12 @@
 import 'dart:math';
 
+import 'package:a_modern_forum_project/models/thread/types/images_model.dart';
+import 'package:a_modern_forum_project/models/thread/types/poll_model.dart';
+import 'package:a_modern_forum_project/models/thread/types/text_model.dart';
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/appbar/large/large_app_bar.dart';
 import 'package:a_modern_forum_project/widgets/threads/template/responsive_thread_template.dart';
-import 'package:a_modern_forum_project/widgets/threads/types/image_thread.dart';
-import 'package:a_modern_forum_project/widgets/threads/types/poll_thread.dart';
-import 'package:a_modern_forum_project/widgets/threads/types/text_thread.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -53,16 +53,30 @@ class _LargeThreadView extends State<LargeThreadView> {
                 itemCount: 10,
                 itemBuilder: (buildContext, index) {
                   if (index == 0) {
-                    return const ResponsiveThreadTemplate(
-                        threadBody: PollThread());
+                    return ResponsiveThreadTemplate(
+                        threadModel: PollModel(
+                            isCompact: true,
+                            pollingData: {
+                              "Question_7": 34,
+                              "Question_1": 22,
+                              "Question_2": 42,
+                              "Question_3": 32,
+                              "Question_4": 62,
+                              "Question_5": 52,
+                              "Question_6": 12,
+                            },
+                            showingResults: false,
+                            allowMultipleAnswers: true));
                   } else if (index % 5 != 0) {
-                    return const ResponsiveThreadTemplate(
-                        threadBody: TextThread());
+                    return ResponsiveThreadTemplate(
+                        threadModel: TextModel(
+                            isCompact: true, text: "Hello world" * 200));
                   } else {
-                    return const ResponsiveThreadTemplate(
-                        threadBody: ImageThread(
-                      url: "https://i.imgur.com/zBovHrK.jpg",
-                    ));
+                    return ResponsiveThreadTemplate(
+                      threadModel: ImagesModel(
+                          isCompact: true,
+                          images: ["https://i.imgur.com/zBovHrK.jpg"]),
+                    );
                   }
                 })),
         const SizedBox(

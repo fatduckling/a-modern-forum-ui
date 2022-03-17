@@ -1,3 +1,4 @@
+import 'package:a_modern_forum_project/models/thread/types/poll_model.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded/small/small_rounded_button.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
@@ -5,7 +6,10 @@ import 'package:flutter/material.dart';
 
 /// Displays a polling thread where users can vote and a graph is displayed after
 class PollThread extends StatefulWidget {
-  const PollThread({Key? key}) : super(key: key);
+  /// Model holds information about the thread
+  final PollModel model;
+
+  const PollThread({required this.model, Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _PollThread();
@@ -15,7 +19,21 @@ class _PollThread extends State<PollThread> {
   /// If is true, the results will show, otherwise the voting option widget will show
   bool _isShowingGraph = false;
 
-  final List<bool> _checkboxValues = [for (int i = 1; i <= 6; i++) i % 2 == 0];
+  /// Maps the option index to a boolean representing whether the value is checked or not
+  final List<bool> _checkboxValues = [];
+
+  /// Options to choose from
+  final List<String> _options = [];
+
+  @override
+  void initState() {
+    super.initState();
+    final pollingData = widget.model.pollingData;
+    pollingData.forEach((optionName, count) {
+      _checkboxValues.add(false);
+      _options.add(optionName);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -56,12 +74,19 @@ class _PollThread extends State<PollThread> {
               return CheckboxListTile(
                 contentPadding: EdgeInsets.zero,
                 controlAffinity: ListTileControlAffinity.leading,
-                title: Text("Option $index"),
+                title: Text(_options[index]),
                 value: _checkboxValues[index],
                 onChanged: (newValue) {
                   bool disabled = newValue == null;
                   bool isChecked = !disabled && newValue;
                   setState(() {
+                    if (!widget.model.allowMultipleAnswers) {
+                      for (int i = 0;
+                          i < widget.model.pollingData.length;
+                          i++) {
+                        _checkboxValues[i] = false;
+                      }
+                    }
                     _checkboxValues[index] = isChecked;
                   });
                 },
@@ -90,14 +115,10 @@ class _PollThread extends State<PollThread> {
           domainFn: (VotingData votingData, _) => votingData.option,
           measureFn: (VotingData votingData, _) => votingData.count,
           labelAccessorFn: (VotingData data, _) => data.count.toString(),
-          data: [
-            VotingData("Yes I think it works", 121),
-            VotingData("No it won't work", 234),
-            VotingData("c", 21),
-            VotingData("d", 13),
-            VotingData("e", 44),
-            VotingData("f", 99),
-          ])
+          data: _options.map((String optionName) {
+            int count = widget.model.pollingData[optionName] ?? 0;
+            return VotingData(optionName, count);
+          }).toList(growable: false))
     ];
     return SizedBox(
       height: 500,
@@ -107,7 +128,7 @@ class _PollThread extends State<PollThread> {
         vertical: false,
         barRendererDecorator: charts.BarLabelDecorator<String>(),
         primaryMeasureAxis:
-            const charts.NumericAxisSpec(renderSpec: charts.NoneRenderSpec()),
+        const charts.NumericAxisSpec(renderSpec: charts.NoneRenderSpec()),
       ),
     );
   }

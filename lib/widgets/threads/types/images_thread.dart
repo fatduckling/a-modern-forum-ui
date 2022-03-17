@@ -1,21 +1,22 @@
+import 'package:a_modern_forum_project/models/thread/types/images_model.dart';
+import 'package:a_modern_forum_project/widgets/text/error.dart';
 import 'package:flutter/material.dart';
 
 /// Shows an user-uploaded image in a thread
-class ImageThread extends StatefulWidget {
-  final String _url;
-
+class ImagesThread extends StatefulWidget {
   /// Maximum height of an image
   static const double maximumImageHeight = 400;
 
-  const ImageThread({required String url, Key? key})
-      : _url = url,
-        super(key: key);
+  /// Model holds information about the thread
+  final ImagesModel model;
+
+  const ImagesThread({required this.model, Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() => _ImageThread();
 }
 
-class _ImageThread extends State<ImageThread> {
+class _ImageThread extends State<ImagesThread> {
   /// The loadingProgress argument contains the current progress towards loading the image.
   /// This argument will be non-null while the image is loading, but it will be null in the following cases:
   /// When the widget is first rendered before any bytes have been loaded.
@@ -37,15 +38,12 @@ class _ImageThread extends State<ImageThread> {
   @override
   Widget build(BuildContext context) {
     Image image = Image.network(
-      widget._url,
+      widget.model.images.first,
       fit: BoxFit.cover,
       errorBuilder:
           (BuildContext context, Object error, StackTrace? stackTrace) {
-        return const Text(
-          "An error has occurred while trying to load this image",
-          textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
-        );
+        return const ErrorText(
+            "An error has occurred while trying to load this image");
       },
       loadingBuilder:
           (BuildContext ctx, Widget child, ImageChunkEvent? loadingProgress) {
@@ -55,8 +53,8 @@ class _ImageThread extends State<ImageThread> {
                 (_imageWidth > 0 && _imageHeight > 0);
         if (isFinishedLoading) {
           return SizedBox(
-            height: _imageHeight > ImageThread.maximumImageHeight
-                ? ImageThread.maximumImageHeight
+            height: _imageHeight > ImagesThread.maximumImageHeight
+                ? ImagesThread.maximumImageHeight
                 : _imageHeight,
             child: AspectRatio(
               aspectRatio: _imageWidth / _imageHeight,
@@ -70,7 +68,7 @@ class _ImageThread extends State<ImageThread> {
                 : loadingProgress.expectedTotalBytes as int;
             _loadingPercent = total > 0
                 ? (loadingProgress.cumulativeBytesLoaded.toDouble() /
-                    total.toDouble())
+                total.toDouble())
                 : -1;
           }
           return Center(
