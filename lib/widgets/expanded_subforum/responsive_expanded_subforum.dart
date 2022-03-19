@@ -8,13 +8,13 @@ class ResponsiveExpandedSubforum extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenSize screenSize =
-        ResponsiveDisplay.getScreenSizeFromBuildContext(context);
+    ScreenSize screenSize = ResponsiveDisplay.getScreenSizeFromContext(context);
     switch (screenSize) {
       case ScreenSize.small:
       case ScreenSize.medium:
         return const Center(child: Text("Unhandled small/medium screen sizes"));
       case ScreenSize.large:
+      case ScreenSize.extraLarge:
         return const LargeExpandedSubforum();
     }
   }

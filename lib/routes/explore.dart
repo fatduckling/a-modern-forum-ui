@@ -18,19 +18,21 @@ class _ExploreRoute extends State<ExploreRoute> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenSize size = ResponsiveDisplay.getScreenSizeFromContext(context);
+    final pageBoundsFlex = ResponsiveDisplay.getPageBoundsFlex(size);
     final ThemeData themeData = ThemeData();
     return MainScaffold(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-          const SizedBox(
-            height: 50,
+      const SizedBox(
+        height: 50,
+      ),
+      Row(
+        children: [
+          Spacer(
+            flex: pageBoundsFlex,
           ),
-          Row(
-            children: [
-              const Spacer(
-                flex: ResponsiveDisplay.pageBoundsFlex,
-          ),
-              Expanded(
-                  flex: 100 - (ResponsiveDisplay.pageBoundsFlex * 2),
+          Expanded(
+              flex: 100 - (pageBoundsFlex * 2),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -42,21 +44,21 @@ class _ExploreRoute extends State<ExploreRoute> {
                       });
                     },
                     borderRadius: BorderRadius.circular(20),
-                    child: Ink(
-                      // color: Colors.red,
-                      padding: const EdgeInsets.only(top: 5, bottom: 5),
-                      child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Text(_isCompact ? "Compact" : "Expanded"),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
+                        child: Ink(
+                          // color: Colors.red,
+                          padding: const EdgeInsets.only(top: 5, bottom: 5),
+                          child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Text(_isCompact ? "Compact" : "Expanded"),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Icon(
                               _isCompact
                                   ? Icons.view_comfortable_outlined
                                   : Icons.view_compact_outlined,
@@ -70,21 +72,21 @@ class _ExploreRoute extends State<ExploreRoute> {
                   ),
                 ],
               )),
-          const Spacer(
-            flex: ResponsiveDisplay.pageBoundsFlex,
+          Spacer(
+            flex: pageBoundsFlex,
           ),
         ],
+      ),
+      const SizedBox(
+        height: 30,
+      ),
+      Row(
+        children: [
+          Spacer(
+            flex: pageBoundsFlex,
           ),
-          const SizedBox(
-            height: 30,
-          ),
-          Row(
-            children: [
-              const Spacer(
-                flex: ResponsiveDisplay.pageBoundsFlex,
-          ),
-              Expanded(
-                  flex: 100 - (ResponsiveDisplay.pageBoundsFlex * 2),
+          Expanded(
+              flex: 100 - (pageBoundsFlex * 2),
               child: ListView.builder(
                   scrollDirection: Axis.vertical,
                   shrinkWrap: true,
@@ -96,73 +98,73 @@ class _ExploreRoute extends State<ExploreRoute> {
                         const SizedBox(
                           height: 10,
                         ),
-                            Card(
-                              color: Colors.white,
-                              elevation: 0,
-                              shape: RoundedRectangleBorder(
-                                  side: const BorderSide(
-                                      color: Colors.transparent,
-                                      width: 0,
-                                      style: BorderStyle.none),
-                                  borderRadius: BorderRadius.circular(15)),
-                              clipBehavior: Clip.antiAlias,
-                              margin: EdgeInsets.zero,
-                              child: Theme(
-                                  data: themeData.copyWith(
-                                      dividerColor:
+                        Card(
+                          color: Colors.white,
+                          elevation: 0,
+                          shape: RoundedRectangleBorder(
+                              side: const BorderSide(
+                                  color: Colors.transparent,
+                                  width: 0,
+                                  style: BorderStyle.none),
+                              borderRadius: BorderRadius.circular(15)),
+                          clipBehavior: Clip.antiAlias,
+                          margin: EdgeInsets.zero,
+                          child: Theme(
+                              data: themeData.copyWith(
+                                  dividerColor:
                                       themeData.scaffoldBackgroundColor),
-                                  child: ExpansionTile(
-                                    collapsedBackgroundColor: Colors.white,
-                                    initiallyExpanded: true,
-                                    title: Text(
-                                      'General Astronomy $index',
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 24,
-                                          color: Colors.black),
+                              child: ExpansionTile(
+                                collapsedBackgroundColor: Colors.white,
+                                initiallyExpanded: true,
+                                title: Text(
+                                  'General Astronomy $index',
+                                  style: const TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 24,
+                                      color: Colors.black),
+                                ),
+                                children: <Widget>[
+                                  SizedBox(
+                                    height: 10,
+                                    child: Container(
+                                      color: themeData.scaffoldBackgroundColor,
                                     ),
-                                    children: <Widget>[
-                                      SizedBox(
-                                        height: 10,
-                                        child: Container(
-                                          color: themeData.scaffoldBackgroundColor,
-                                        ),
-                                      ),
-                                      _isCompact
-                                          ? const ResponsiveCompactSubforum()
-                                          : const ResponsiveExpandedSubforum(),
-                                      SizedBox(
-                                        height: 10,
-                                        child: Container(
-                                          color: themeData.scaffoldBackgroundColor,
-                                        ),
-                                      ),
-                                      _isCompact
-                                          ? const ResponsiveCompactSubforum()
-                                          : const ResponsiveExpandedSubforum(),
-                                      SizedBox(
-                                        height: 10,
-                                        child: Container(
-                                          color: themeData.scaffoldBackgroundColor,
-                                        ),
-                                      ),
-                                      _isCompact
-                                          ? const ResponsiveCompactSubforum()
-                                          : const ResponsiveExpandedSubforum(),
-                                    ],
-                                  )),
-                            ),
-                            const SizedBox(
-                              height: 40,
-                            ),
-                          ],
-                        );
-                      })),
-              const Spacer(
-                flex: ResponsiveDisplay.pageBoundsFlex,
+                                  ),
+                                  _isCompact
+                                      ? const ResponsiveCompactSubforum()
+                                      : const ResponsiveExpandedSubforum(),
+                                  SizedBox(
+                                    height: 10,
+                                    child: Container(
+                                      color: themeData.scaffoldBackgroundColor,
+                                    ),
+                                  ),
+                                  _isCompact
+                                      ? const ResponsiveCompactSubforum()
+                                      : const ResponsiveExpandedSubforum(),
+                                  SizedBox(
+                                    height: 10,
+                                    child: Container(
+                                      color: themeData.scaffoldBackgroundColor,
+                                    ),
+                                  ),
+                                  _isCompact
+                                      ? const ResponsiveCompactSubforum()
+                                      : const ResponsiveExpandedSubforum(),
+                                ],
+                              )),
+                        ),
+                        const SizedBox(
+                          height: 40,
+                        ),
+                      ],
+                    );
+                  })),
+          Spacer(
+            flex: pageBoundsFlex,
           ),
-            ],
-          )
-        ]));
+        ],
+      )
+    ]));
   }
 }

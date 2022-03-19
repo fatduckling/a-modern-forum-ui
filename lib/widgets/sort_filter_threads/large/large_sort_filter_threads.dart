@@ -10,19 +10,22 @@ class LargeSortFilterThreads extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenSize size = ResponsiveDisplay.getScreenSizeFromContext(context);
+    final pageBoundsFlex = ResponsiveDisplay.getPageBoundsFlex(size);
+    final mainContainerFlex = ResponsiveDisplay.getMainContainerFlex(size);
     return Column(
       children: [
         Row(
-          children: const [
+          children: [
             Spacer(
-              flex: ResponsiveDisplay.pageBoundsFlex,
+              flex: pageBoundsFlex,
             ),
             Expanded(
-              flex: 100 - (2 * ResponsiveDisplay.pageBoundsFlex),
-              child: H1("Top Threads"),
+              flex: 100 - (2 * pageBoundsFlex),
+              child: const H1("Top Threads"),
             ),
             Spacer(
-              flex: ResponsiveDisplay.pageBoundsFlex,
+              flex: pageBoundsFlex,
             ),
           ],
         ),
@@ -31,13 +34,12 @@ class LargeSortFilterThreads extends StatelessWidget {
         ),
         Row(
           children: [
-            const Spacer(
-              flex: ResponsiveDisplay.pageBoundsFlex,
+            Spacer(
+              flex: pageBoundsFlex,
             ),
             Expanded(
-              flex: 55,
+              flex: mainContainerFlex,
               child: Container(
-                  margin: const EdgeInsets.only(right: 40),
                   padding: const EdgeInsets.only(left: 30),
                   height: 100,
                   decoration: const BoxDecoration(
@@ -63,9 +65,14 @@ class LargeSortFilterThreads extends StatelessWidget {
                     ],
                   )),
             ),
-            const Expanded(flex: 8, child: MediumRoundedButton("Start thread")),
-            const Spacer(
-              flex: ResponsiveDisplay.pageBoundsFlex,
+            Expanded(
+              flex: 100 - ((2 * pageBoundsFlex) + mainContainerFlex),
+              child: const Padding(
+                  padding: EdgeInsets.only(left: 20),
+                  child: MediumRoundedButton("Start thread")),
+            ),
+            Spacer(
+              flex: pageBoundsFlex,
             )
           ],
         )

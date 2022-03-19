@@ -29,10 +29,14 @@ class LargeAppBar extends StatelessWidget {
               'assets/images/logo.png',
               fit: BoxFit.contain,
             ),
-            Container(
-                padding: const EdgeInsets.all(8),
+            const SizedBox(
+              width: 10,
+            ),
+            Flexible(
                 child: Text(
-                    'Forum Name: $width ${ResponsiveDisplay.getScreenSizeFromBuildContext(context).name}')),
+              'name: $width ${ResponsiveDisplay.getScreenSizeFromContext(context).name}',
+              overflow: TextOverflow.ellipsis,
+            ))
           ],
         ),
       ),

@@ -14,14 +14,14 @@ class LargeFeaturedPosts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const int freeSpace = (100 * multiplier) -
-        (multiplier * ResponsiveDisplay.pageBoundsFlex * 2);
-    final int featuredPostWidth =
-        ((freeSpace / numberOfFeaturedPosts) * 0.99).round();
-    final int featuredPostSpacerWidth =
-        ((freeSpace - (featuredPostWidth * numberOfFeaturedPosts)) /
-                (numberOfFeaturedPosts - 1))
-            .round();
+    // @formatter:off
+    ScreenSize size = ResponsiveDisplay.getScreenSizeFromContext(context);
+    final pageBoundsFlex = ResponsiveDisplay.getPageBoundsFlex(size);
+    final int freeSpace = (100 * multiplier) - (multiplier * pageBoundsFlex * 2);
+    final int featuredPostWidth = ((freeSpace / numberOfFeaturedPosts) * 0.99).round();
+    final int featuredPostSpacerWidth = ((freeSpace - (featuredPostWidth * numberOfFeaturedPosts)) /
+                (numberOfFeaturedPosts - 1)).round();
+    // @formatter:on
     return Container(
         padding: const EdgeInsets.only(top: 20),
         child: Column(
@@ -30,16 +30,16 @@ class LargeFeaturedPosts extends StatelessWidget {
               height: 50,
             ),
             Row(
-              children: const [
+              children: [
                 Spacer(
-                  flex: ResponsiveDisplay.pageBoundsFlex * multiplier,
+                  flex: pageBoundsFlex * multiplier,
                 ),
                 Expanded(
                   flex: freeSpace,
-                  child: H1("Featured topics"),
+                  child: const H1("Featured topics"),
                 ),
                 Spacer(
-                  flex: ResponsiveDisplay.pageBoundsFlex * multiplier,
+                  flex: pageBoundsFlex * multiplier,
                 ),
               ],
             ),
@@ -48,9 +48,9 @@ class LargeFeaturedPosts extends StatelessWidget {
             ),
             Row(
               children: [
-                const Expanded(
-                    flex: ResponsiveDisplay.pageBoundsFlex * multiplier,
-                    child: Align(
+                Expanded(
+                    flex: pageBoundsFlex * multiplier,
+                    child: const Align(
                       alignment: Alignment.centerRight,
                       child: Icon(
                         Icons.chevron_left_sharp,
@@ -84,9 +84,9 @@ class LargeFeaturedPosts extends StatelessWidget {
                   child: const FeaturedPost(),
                   flex: featuredPostWidth,
                 ),
-                const Expanded(
-                    flex: ResponsiveDisplay.pageBoundsFlex * multiplier,
-                    child: Align(
+                Expanded(
+                    flex: pageBoundsFlex * multiplier,
+                    child: const Align(
                       alignment: Alignment.centerLeft,
                       child: Icon(
                         Icons.chevron_right_sharp,

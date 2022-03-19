@@ -11,6 +11,8 @@ class ViewPost extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ScreenSize size = ResponsiveDisplay.getScreenSizeFromContext(context);
+    final pageBoundsFlex = ResponsiveDisplay.getPageBoundsFlex(size);
     return MainScaffold(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
       const SizedBox(
@@ -18,38 +20,36 @@ class ViewPost extends StatelessWidget {
       ),
       // first row: breadcrumbs
       Row(
-        children: const [
+        children: [
           Spacer(
-            flex: ResponsiveDisplay.pageBoundsFlex,
+            flex: pageBoundsFlex,
           ),
           Flexible(
-              flex: 100 - (2 * ResponsiveDisplay.pageBoundsFlex),
-              child: Breadcrumbs([
+              flex: 100 - (2 * pageBoundsFlex),
+              child: const Breadcrumbs([
                 "Astronomy Now",
                 "General Astronomy",
                 "Other",
                 "How to navigate this forum"
               ])),
+              Spacer(
+                flex: pageBoundsFlex,
+          ),
+            ],
+          ),
+          const SizedBox(height: 30),
+          // second row: post details
+          Row(
+            children: [
           Spacer(
-            flex: ResponsiveDisplay.pageBoundsFlex,
+            flex: pageBoundsFlex,
+          ),
+          Expanded(flex: 100 - (2 * pageBoundsFlex), child: thread),
+          Spacer(
+            flex: pageBoundsFlex,
           ),
         ],
-      ),
-      const SizedBox(height: 30),
-      // second row: post details
-      Row(
-        children: [
-          const Spacer(
-            flex: ResponsiveDisplay.pageBoundsFlex,
-          ),
-          Expanded(
-              flex: 100 - (2 * ResponsiveDisplay.pageBoundsFlex),
-              child: thread),
-          const Spacer(
-            flex: ResponsiveDisplay.pageBoundsFlex,
-          ),
-        ],
-      )
-    ]));
+          )
+        ]));
   }
 }

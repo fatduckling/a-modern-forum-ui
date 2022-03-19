@@ -38,14 +38,17 @@ class _LargeThreadView extends State<LargeThreadView> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenSize size = ResponsiveDisplay.getScreenSizeFromContext(context);
+    final pageBoundsFlex = ResponsiveDisplay.getPageBoundsFlex(size);
+    final mainContainerFlex = ResponsiveDisplay.getMainContainerFlex(size);
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Spacer(
-          flex: ResponsiveDisplay.pageBoundsFlex,
+        Spacer(
+          flex: pageBoundsFlex,
         ),
         Expanded(
-            flex: 49,
+            flex: mainContainerFlex,
             child: ListView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
@@ -83,7 +86,7 @@ class _LargeThreadView extends State<LargeThreadView> {
           width: 10,
         ),
         Expanded(
-            flex: 14,
+            flex: 100 - ((2 * pageBoundsFlex) + mainContainerFlex),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -95,11 +98,11 @@ class _LargeThreadView extends State<LargeThreadView> {
                         child: Container(
                       padding: const EdgeInsets.all(20),
                       decoration: const BoxDecoration(
-                        color: Colors.greenAccent,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      child: const Text("Hello world"),
-                    ))
+                            color: Colors.greenAccent,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                          child: const Text("Hello world"),
+                        ))
                   ],
                 ),
                 SizedBox(
@@ -121,8 +124,8 @@ class _LargeThreadView extends State<LargeThreadView> {
                 ),
               ],
             )),
-        const Spacer(
-          flex: ResponsiveDisplay.pageBoundsFlex,
+        Spacer(
+          flex: pageBoundsFlex,
         ),
       ],
     );
@@ -152,7 +155,7 @@ class _LargeThreadView extends State<LargeThreadView> {
         if (mounted) {
           setState(() {
             _fixedYPositionOffset = max(
-                0, scrollObserver.scrollPosition - _originalKeyYPosition + 5);
+                0, scrollObserver.scrollPosition - _originalKeyYPosition - 20);
           });
         }
       });

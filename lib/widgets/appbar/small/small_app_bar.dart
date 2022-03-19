@@ -13,7 +13,7 @@ class SmallAppBar extends StatelessWidget {
     return AppBar(
       toolbarHeight: appBarHeight,
       title: Text(
-          'Forum Name: $width ${ResponsiveDisplay.getScreenSizeFromBuildContext(context).name}'),
+          'Forum Name: $width ${ResponsiveDisplay.getScreenSizeFromContext(context).name}'),
     );
   }
 }

@@ -7,8 +7,7 @@ class ResponsiveThreadView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenSize screenSize =
-        ResponsiveDisplay.getScreenSizeFromBuildContext(context);
+    ScreenSize screenSize = ResponsiveDisplay.getScreenSizeFromContext(context);
     switch (screenSize) {
       case ScreenSize.small:
       case ScreenSize.medium:
@@ -16,6 +15,7 @@ class ResponsiveThreadView extends StatelessWidget {
           child: Text("Not yet implemented"),
         );
       case ScreenSize.large:
+      case ScreenSize.extraLarge:
         return const LargeThreadView();
     }
   }

@@ -28,6 +28,7 @@ class _ResponsiveAppBarState extends State<ResponsiveAppBar> {
       case ScreenSize.medium:
         return const SmallAppBar();
       case ScreenSize.large:
+      case ScreenSize.extraLarge:
         return const LargeAppBar();
     }
   }
