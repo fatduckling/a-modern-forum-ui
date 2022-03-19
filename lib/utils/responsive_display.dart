@@ -8,8 +8,8 @@ class ResponsiveDisplay {
   /// The amount of flex to put in the left and right margins of the page
   static const pageBoundsFlex = 18;
 
-  /// Small devices (landscape phones, 980 and up)
-  static const _breakpointSmallDevice = 980;
+  /// Small devices (landscape phones, 744 and up)
+  static const _breakpointSmallDevice = 744;
 
   /// Large devices (desktops, 1280 and up)
   static const _breakpointLargeDevice = 1280;
