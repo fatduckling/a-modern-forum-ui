@@ -11,8 +11,8 @@ class ResponsiveDisplay {
   /// Small devices (landscape phones, 980 and up)
   static const _breakpointSmallDevice = 980;
 
-  /// Large devices (desktops, 1780 and up)
-  static const _breakpointLargeDevice = 1780;
+  /// Large devices (desktops, 1280 and up)
+  static const _breakpointLargeDevice = 1280;
 
   /// Check if the device is considered small based on the page [width]
   static bool isSmallDevice(final double width) {
