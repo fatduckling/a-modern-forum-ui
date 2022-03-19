@@ -52,7 +52,16 @@ class ResponsiveDisplay {
   /// Within the page flex bounds, get the flex amount of the main container.
   /// This reserves some space for a right section
   static int getMainContainerFlex(final ScreenSize screenSize) {
-    return 50;
+    switch (screenSize) {
+      case ScreenSize.small:
+        return 50; // TODO Test me
+      case ScreenSize.medium:
+        return 50; // TODO Test me
+      case ScreenSize.large:
+        return 57;
+      case ScreenSize.extraLarge:
+        return 50;
+    }
   }
 
   /// Return the screen size based on its box [constraints]
