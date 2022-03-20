@@ -14,6 +14,9 @@ class ResponsiveDisplay {
   /// Extra large devices (desktop 1780 and up)
   static const _breakpointExtraLargeDevice = 1780;
 
+  /// Flex width of the main container
+  static const mainContainerFlex = 32;
+
   /// Check if the device is considered small based on the page [width]
   static bool isSmallDevice(final double width) {
     return width <= _breakpointSmallDevice;
