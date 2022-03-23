@@ -32,7 +32,7 @@ class LargeAppBar extends StatelessWidget {
             ),
             Flexible(
                 child: Text(
-                  'name: $width ${observer.screenSize.name}',
+              'name: $width ${observer.screenSize.name}',
               overflow: TextOverflow.ellipsis,
             ))
           ],
@@ -42,29 +42,35 @@ class LargeAppBar extends StatelessWidget {
         children: <Widget>[
           Expanded(
             flex: 2,
-            child: TextButton(
-              style: style,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomeRoute()),
-                );
-              },
-              child: const Text('Home'),
+            child: SizedBox(
+              height: kToolbarHeight,
+              child: TextButton(
+                style: style,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomeRoute()),
+                  );
+                },
+                child: const Text('Home'),
+              ),
             ),
           ),
           Expanded(
             flex: 2,
-            child: TextButton(
-              style: style,
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const ExploreRoute()),
-                );
-              },
-              child: const Text('Explore'),
-            ),
+            child: SizedBox(
+                height: kToolbarHeight,
+                child: TextButton(
+                  style: style,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ExploreRoute()),
+                    );
+                  },
+                  child: const Text('Explore'),
+                )),
           ),
           const Expanded(
             flex: 5,
@@ -72,11 +78,13 @@ class LargeAppBar extends StatelessWidget {
           ),
           Expanded(
               flex: 1,
-              child: TextButton(
-                style: style,
-                onPressed: () {},
-                child: const Text('Login'),
-              )),
+              child: SizedBox(
+                  height: kToolbarHeight,
+                  child: TextButton(
+                    style: style,
+                    onPressed: () {},
+                    child: const Text('Login'),
+                  ))),
         ],
       ),
     );
