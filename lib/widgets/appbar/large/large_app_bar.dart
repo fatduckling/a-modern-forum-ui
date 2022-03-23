@@ -1,13 +1,11 @@
+import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/routes/explore.dart';
 import 'package:a_modern_forum_project/routes/home.dart';
-import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/search_bar/search_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class LargeAppBar extends StatelessWidget {
-  /// height of the app bar for large devices (tablets/desktops)
-  static const double appBarHeight = 80;
-
   const LargeAppBar({Key? key}) : super(key: key);
 
   @override
@@ -15,9 +13,9 @@ class LargeAppBar extends StatelessWidget {
     final ButtonStyle style = TextButton.styleFrom(
         primary: Theme.of(context).colorScheme.onPrimary,
         splashFactory: NoSplash.splashFactory);
-    final double width = MediaQuery.of(context).size.width;
+    ScreenResizeObserver observer = context.watch<ScreenResizeObserver>();
+    final double width = observer.windowWidth;
     return AppBar(
-      toolbarHeight: appBarHeight,
       automaticallyImplyLeading: true,
       leadingWidth: 300,
       leading: Container(
@@ -34,7 +32,7 @@ class LargeAppBar extends StatelessWidget {
             ),
             Flexible(
                 child: Text(
-              'name: $width ${ResponsiveDisplay.getScreenSizeFromContext(context).name}',
+                  'name: $width ${observer.screenSize.name}',
               overflow: TextOverflow.ellipsis,
             ))
           ],
@@ -44,35 +42,28 @@ class LargeAppBar extends StatelessWidget {
         children: <Widget>[
           Expanded(
             flex: 2,
-            child: SizedBox(
-              height: appBarHeight,
-              child: TextButton(
-                style: style,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const HomeRoute()),
-                  );
-                },
-                child: const Text('Home'),
-              ),
+            child: TextButton(
+              style: style,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeRoute()),
+                );
+              },
+              child: const Text('Home'),
             ),
           ),
           Expanded(
             flex: 2,
-            child: SizedBox(
-              height: appBarHeight,
-              child: TextButton(
-                style: style,
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ExploreRoute()),
-                  );
-                },
-                child: const Text('Explore'),
-              ),
+            child: TextButton(
+              style: style,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const ExploreRoute()),
+                );
+              },
+              child: const Text('Explore'),
             ),
           ),
           const Expanded(
@@ -80,16 +71,12 @@ class LargeAppBar extends StatelessWidget {
             child: SearchBar(),
           ),
           Expanded(
-            flex: 1,
-            child: SizedBox(
-              height: appBarHeight,
+              flex: 1,
               child: TextButton(
                 style: style,
                 onPressed: () {},
                 child: const Text('Login'),
-              ),
-            ),
-          ),
+              )),
         ],
       ),
     );

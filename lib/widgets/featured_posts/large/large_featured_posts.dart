@@ -10,13 +10,15 @@ class LargeFeaturedPosts extends StatelessWidget {
   /// Add multiplier to flex to increase precision for flex widgets
   static const int multiplier = 100;
 
-  const LargeFeaturedPosts({Key? key}) : super(key: key);
+  /// Device screen size
+  final ScreenSize screenSize;
+
+  const LargeFeaturedPosts(this.screenSize, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     // @formatter:off
-    ScreenSize size = ResponsiveDisplay.getScreenSizeFromContext(context);
-    final pageBoundsFlex = ResponsiveDisplay.getPageBoundsFlex(size);
+    final pageBoundsFlex = ResponsiveDisplay.getPageBoundsFlex(screenSize);
     final int freeSpace = (100 * multiplier) - (multiplier * pageBoundsFlex * 2);
     final int featuredPostWidth = ((freeSpace / numberOfFeaturedPosts) * 0.99).round();
     final int featuredPostSpacerWidth = ((freeSpace - (featuredPostWidth * numberOfFeaturedPosts)) /

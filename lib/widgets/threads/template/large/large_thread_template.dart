@@ -25,7 +25,7 @@ class LargeThreadTemplate extends StatelessWidget {
                     context,
                     MaterialPageRoute(builder: (context) {
                       threadModel.isCompact = false;
-                      return ViewPost(
+                      return ViewPostRoute(
                           ResponsiveThreadTemplate(threadModel: threadModel));
                     }),
                   );

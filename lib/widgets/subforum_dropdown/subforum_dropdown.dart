@@ -1,5 +1,4 @@
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
-import 'package:a_modern_forum_project/widgets/appbar/large/large_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:provider/provider.dart';
@@ -40,7 +39,7 @@ class _SubforumDropdown extends State<SubforumDropdown> {
       if (renderObject != null) {
         RenderBox box = renderObject as RenderBox;
         Offset position = box.localToGlobal(Offset.zero);
-        if (position.dy < LargeAppBar.appBarHeight) {
+        if (position.dy < kToolbarHeight) {
           setState(() {
             _focusNode.unfocus();
           });

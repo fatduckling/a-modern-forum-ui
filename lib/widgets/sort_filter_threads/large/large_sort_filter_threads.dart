@@ -6,13 +6,16 @@ import 'package:a_modern_forum_project/widgets/text/h1.dart';
 import 'package:flutter/material.dart';
 
 class LargeSortFilterThreads extends StatelessWidget {
-  const LargeSortFilterThreads({Key? key}) : super(key: key);
+  /// Device screen size
+  final ScreenSize screenSize;
+
+  const LargeSortFilterThreads(this.screenSize, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    ScreenSize size = ResponsiveDisplay.getScreenSizeFromContext(context);
-    final pageBoundsFlex = ResponsiveDisplay.getPageBoundsFlex(size);
-    final mainContainerFlex = ResponsiveDisplay.getMainContainerFlex(size);
+    final pageBoundsFlex = ResponsiveDisplay.getPageBoundsFlex(screenSize);
+    final mainContainerFlex =
+        ResponsiveDisplay.getMainContainerFlex(screenSize);
     return Column(
       children: [
         Row(

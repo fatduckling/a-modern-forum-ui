@@ -2,6 +2,7 @@ import 'package:a_modern_forum_project/models/thread/thread_model.dart';
 import 'package:a_modern_forum_project/models/thread/types/images_model.dart';
 import 'package:a_modern_forum_project/models/thread/types/poll_model.dart';
 import 'package:a_modern_forum_project/models/thread/types/text_model.dart';
+import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/text/error.dart';
 import 'package:a_modern_forum_project/widgets/threads/template/large/large_thread_template.dart';
@@ -9,6 +10,7 @@ import 'package:a_modern_forum_project/widgets/threads/types/images_thread.dart'
 import 'package:a_modern_forum_project/widgets/threads/types/poll_thread.dart';
 import 'package:a_modern_forum_project/widgets/threads/types/text_thread.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 /// Widget that holds the thread's header and footer
 class ResponsiveThreadTemplate extends StatelessWidget {
@@ -20,7 +22,8 @@ class ResponsiveThreadTemplate extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenSize screenSize = ResponsiveDisplay.getScreenSizeFromContext(context);
+    final ScreenSize screenSize =
+        context.watch<ScreenResizeObserver>().screenSize;
     switch (screenSize) {
       case ScreenSize.small:
       case ScreenSize.medium:

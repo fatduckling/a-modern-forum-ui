@@ -1,6 +1,8 @@
+import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/expanded_subforum/large/large_expanded_subforum.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 /// Responsive expanded sub-forum widget
 class ResponsiveExpandedSubforum extends StatelessWidget {
@@ -8,7 +10,8 @@ class ResponsiveExpandedSubforum extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ScreenSize screenSize = ResponsiveDisplay.getScreenSizeFromContext(context);
+    final ScreenSize screenSize =
+        context.watch<ScreenResizeObserver>().screenSize;
     switch (screenSize) {
       case ScreenSize.small:
       case ScreenSize.medium:

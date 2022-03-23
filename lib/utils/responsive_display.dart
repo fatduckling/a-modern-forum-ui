@@ -1,4 +1,6 @@
+import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 /// ScreenSize can be small (mobile phones), medium (tablets), large (desktop web)
 enum ScreenSize { small, medium, large, extraLarge }
@@ -75,9 +77,9 @@ class ResponsiveDisplay {
   }
 
   /// Return the screen size based on the [buildContext]
-  static ScreenSize getScreenSizeFromContext(final BuildContext buildContext) {
-    final double width = MediaQuery.of(buildContext).size.width;
-    return getScreenSize(width);
+  static ScreenSize getScreenSizeFromContexta(final BuildContext buildContext) {
+    ScreenResizeObserver observer = buildContext.read<ScreenResizeObserver>();
+    return observer.screenSize;
   }
 
   /// Return the screen size based on the device's [width]
