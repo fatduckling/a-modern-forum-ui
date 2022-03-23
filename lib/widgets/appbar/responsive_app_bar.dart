@@ -22,7 +22,6 @@ class _ResponsiveAppBarState extends State<ResponsiveAppBar> {
   @override
   Widget build(BuildContext context) {
     switch (widget._screenSize) {
-      // TODO check rebuild
       case ScreenSize.small:
       case ScreenSize.medium:
         return const SmallAppBar();

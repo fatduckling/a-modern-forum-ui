@@ -37,14 +37,14 @@ class ViewPostRoute extends StatelessWidget {
                 "How to navigate this forum"
               ])),
           Spacer(
-                flex: pageBoundsFlex,
-              ),
-            ],
+            flex: pageBoundsFlex,
           ),
-          const SizedBox(height: 10),
-          // second row: post details
-          Row(
-            children: [
+        ],
+      ),
+      const SizedBox(height: 10),
+      // second row: post details
+      Row(
+        children: [
           Spacer(
             flex: pageBoundsFlex,
           ),
@@ -53,19 +53,36 @@ class ViewPostRoute extends StatelessWidget {
             flex: pageBoundsFlex,
           ),
         ],
+      ),
+      const SizedBox(height: 20),
+      Row(
+        children: [
+          Spacer(
+            flex: pageBoundsFlex,
           ),
-          const SizedBox(height: 10),
-          Row(
-            children: [
-              Spacer(
-                flex: pageBoundsFlex,
-              ),
-              Expanded(flex: 100 - (2 * pageBoundsFlex), child: CommentBox()),
-              Spacer(
-                flex: pageBoundsFlex,
-              ),
-            ],
-          )
-        ]));
+          Expanded(
+              flex: 100 - (2 * pageBoundsFlex),
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                padding: const EdgeInsets.only(top: 40),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CommentBox(),
+                    const SizedBox(
+                      height: 100, // TODO REMOVE
+                    )
+                  ],
+                ),
+              )),
+          Spacer(
+            flex: pageBoundsFlex,
+          ),
+        ],
+      ),
+    ]));
   }
 }
