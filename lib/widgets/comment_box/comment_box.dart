@@ -35,107 +35,127 @@ class _CommentBox extends State<CommentBox> {
             itemCount: commentCount,
             itemBuilder: (BuildContext buildContext, int index) {
               CommentModel comment = widget.model.getComment(index);
-              return Column(
+              return IntrinsicHeight(
+                  child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Row(
-                    children: [
-                      const Expanded(
-                        flex: iconSizeFlex,
-                        child: Icon(
-                          Icons.circle,
-                          size: 48,
-                        ),
-                      ),
-                      Expanded(
-                          flex: 1000 - iconSizeFlex,
-                          child: Row(
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  comment.user,
-                                  style: const TextStyle(
-                                      fontWeight: FontWeight.bold),
+                  Expanded(
+                      flex: iconSizeFlex,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.circle,
+                            size: 48,
+                          ),
+                          Expanded(
+                              child: ClipRRect(
+                            borderRadius: BorderRadius.circular(10),
+                            child: Material(
+                              type: MaterialType.transparency,
+                              child: InkWell(
+                                hoverColor: Colors.black12,
+                                child: Ink(
+                                  width: 20,
+                                  color: Colors.transparent,
+                                  child: Center(
+                                      child: Container(
+                                    width: 2,
+                                    color: Colors.black26,
+                                  )),
                                 ),
+                                onTap: () {},
                               ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              Text(
-                                TimeUtil.whenTimestampAgo(comment.timestamp),
-                                style: const TextStyle(color: Colors.black54),
-                              ),
-                              const SizedBox(
-                                width: 5,
-                              ),
-                              const Icon(
-                                Icons.more_horiz,
-                                size: 25,
-                              ),
-                            ],
-                          ))
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const Spacer(
-                        flex: iconSizeFlex,
-                      ),
-                      Flexible(
-                          flex: 1000 - iconSizeFlex,
-                          child: Text(comment.response))
-                    ],
-                  ),
-                  IntrinsicHeight(
-                      child: Row(
-                    children: [
-                      const Spacer(
-                        flex: iconSizeFlex,
-                      ),
-                      Expanded(
-                        flex: 1000 - iconSizeFlex,
-                        child: Row(
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                            ),
+                          )),
+                        ],
+                      )),
+                  Expanded(
+                      flex: 1000 - iconSizeFlex,
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            UpDownVotes(),
-                            SizedBox(
-                              width: 5,
+                            Row(
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    comment.user,
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  TimeUtil.whenTimestampAgo(comment.timestamp),
+                                  style: const TextStyle(color: Colors.black54),
+                                ),
+                                const SizedBox(
+                                  width: 5,
+                                ),
+                                const Icon(
+                                  Icons.more_horiz,
+                                  size: 25,
+                                ),
+                              ],
                             ),
-                            VerticalDivider(
-                              color: Colors.black45,
+                            Row(
+                              children: [
+                                Flexible(
+                                    flex: 1000 - iconSizeFlex,
+                                    child: Text(comment.response))
+                              ],
                             ),
-                            SizedBox(
-                              width: 5,
+                            IntrinsicHeight(
+                                child: Row(
+                              children: [
+                                Expanded(
+                                  flex: 1000 - iconSizeFlex,
+                                  child: Row(
+                                    children: [
+                                      const UpDownVotes(),
+                                      const SizedBox(
+                                        width: 5,
+                                      ),
+                                      const VerticalDivider(
+                                        color: Colors.black45,
+                                      ),
+                                      const SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                        comment.totalReplies <= 0
+                                            ? "No replies"
+                                            : "+ ${comment.totalReplies} " +
+                                                (comment.totalReplies == 1
+                                                    ? "reply"
+                                                    : "replies"),
+                                        style: const TextStyle(
+                                            fontSize: 16,
+                                            color: Colors.black45),
+                                      ),
+                                      const SizedBox(
+                                        width: 10,
+                                      ),
+                                      const SmallOutlineButton(
+                                        text: "Reply",
+                                        colour: Colors.black,
+                                        icon: Icons.messenger_outline,
+                                      )
+                                    ],
+                                  ),
+                                )
+                              ],
+                            )),
+                            const SizedBox(
+                              height: 20,
                             ),
-                            Text(
-                              comment.totalReplies <= 0
-                                  ? "No replies"
-                                  : "+ ${comment.totalReplies} " +
-                                      (comment.totalReplies == 1
-                                          ? "reply"
-                                          : "replies"),
-                              style: TextStyle(
-                                  fontSize: 16, color: Colors.black45),
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            SmallOutlineButton(
-                              text: "Reply",
-                              colour: Colors.black,
-                              icon: Icons.messenger_outline,
-                            )
-                          ],
-                        ),
-                      )
-                    ],
-                  )),
-                  SizedBox(
-                    height: 5,
-                  ),
-                  const Divider()
+                          ]))
                 ],
-              );
+              ));
             })
       ],
     );
