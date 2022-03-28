@@ -15,12 +15,14 @@ class _UpDownVotes extends State<UpDownVotes> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: const [
+        SmallIconButton(),
         SizedBox(
           width: 10,
         ),
-        SmallIconButton(),
-        Padding(
-            padding: EdgeInsets.only(left: 10, right: 10), child: Lead("35")),
+        Lead("35"),
+        SizedBox(
+          width: 10,
+        ),
         SmallIconButton(),
       ],
     );

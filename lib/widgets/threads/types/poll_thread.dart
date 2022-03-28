@@ -96,8 +96,8 @@ class _PollThread extends State<PollThread> {
           height: 10,
         ),
         SmallRoundedButton(
-          "Vote",
-          onPressed: () {
+          text: "Vote",
+          onTap: () {
             setState(() {
               _isShowingGraph = true;
             });

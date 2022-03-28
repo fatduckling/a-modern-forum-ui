@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 class SmallRoundedButton extends StatelessWidget {
-  final String _text;
+  /// Button text
+  final String text;
 
-  final VoidCallback? _onPressed;
+  /// Button callback
+  final VoidCallback? onTap;
 
-  const SmallRoundedButton(this._text, {Key? key, VoidCallback? onPressed})
-      : _onPressed = onPressed,
-        super(key: key);
+  const SmallRoundedButton({required this.text, Key? key, this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +22,8 @@ class SmallRoundedButton extends StatelessWidget {
               ),
             ),
           ),
-          child: Text(_text),
-          onPressed: _onPressed ?? () {},
+          child: Text(text),
+          onPressed: onTap ?? () {},
         ));
   }
 }

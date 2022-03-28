@@ -54,11 +54,15 @@ class LargeSortFilterThreads extends StatelessWidget {
                     children: [
                       Row(
                         children: const [
-                          SmallRoundedButton("Popular"),
+                          SmallRoundedButton(
+                            text: "Popular",
+                          ),
                           SizedBox(
                             width: 40,
                           ),
-                          SmallRoundedButton("New"),
+                          SmallRoundedButton(
+                            text: "New",
+                          ),
                         ],
                       ),
                       const Padding(

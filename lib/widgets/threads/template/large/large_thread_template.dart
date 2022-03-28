@@ -94,7 +94,9 @@ class LargeThreadTemplate extends StatelessWidget {
                         style: const TextStyle(
                             fontWeight: FontWeight.w500, fontSize: 24)),
                   ),
-                  const SmallRoundedButton("Info")
+                  const SmallRoundedButton(
+                    text: "info",
+                  )
                 ],
               ),
               const SizedBox(

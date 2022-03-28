@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class MediumRoundedButton extends StatelessWidget {
-  final String _text;
+  final String text;
 
-  const MediumRoundedButton(this._text, {Key? key}) : super(key: key);
+  const MediumRoundedButton(this.text, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class MediumRoundedButton extends StatelessWidget {
               ),
             ),
           ),
-          child: Text(_text),
+          child: Text(text),
           onPressed: () {},
         ));
   }
