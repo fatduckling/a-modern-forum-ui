@@ -21,31 +21,31 @@ class ViewPostRoute extends StatelessWidget {
     final pageBoundsFlex = ResponsiveDisplay.getPageBoundsFlex(size);
     return MainScaffold(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-          const SizedBox(
-            height: 50,
+      const SizedBox(
+        height: 50,
+      ),
+      // first row: breadcrumbs
+      Row(
+        children: [
+          Spacer(
+            flex: pageBoundsFlex,
           ),
-          // first row: breadcrumbs
-          Row(
-            children: [
-              Spacer(
-                flex: pageBoundsFlex,
-              ),
-              Flexible(
-                  flex: 100 - (2 * pageBoundsFlex),
-                  child: const Breadcrumbs([
-                    "Astronomy Now",
-                    "General Astronomy",
-                    "Other",
-                    "How to navigate this forum"
-                  ])),
-              Spacer(
-                flex: pageBoundsFlex,
-              ),
-            ],
+          Flexible(
+              flex: 100 - (2 * pageBoundsFlex),
+              child: const Breadcrumbs([
+                "Astronomy Now",
+                "General Astronomy",
+                "Other",
+                "How to navigate this forum"
+              ])),
+          Spacer(
+            flex: pageBoundsFlex,
           ),
-          const SizedBox(height: 10),
-          // second row: post details
-          Row(
+        ],
+      ),
+      const SizedBox(height: 10),
+      // second row: post details
+      Row(
         children: [
           Spacer(
             flex: pageBoundsFlex,
@@ -80,15 +80,18 @@ class ViewPostRoute extends StatelessWidget {
                     ),
                     CommentBox(
                       model: CommentsModel.buildSampleModel(),
-                    ),
+                    )
                   ],
-                    ),
-                  )),
-              Spacer(
-                flex: pageBoundsFlex,
-              ),
-            ],
+                ),
+              )),
+          Spacer(
+            flex: pageBoundsFlex,
           ),
-        ]));
+        ],
+      ),
+      const SizedBox(
+        height: 40,
+      ),
+    ]));
   }
 }

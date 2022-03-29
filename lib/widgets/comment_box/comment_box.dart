@@ -2,6 +2,7 @@ import 'package:a_modern_forum_project/models/comments/comment_model.dart';
 import 'package:a_modern_forum_project/models/comments/comments_model.dart';
 import 'package:a_modern_forum_project/utils/time_util.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded_outline/small/small_outline_button.dart';
+import 'package:a_modern_forum_project/widgets/buttons/rounded_text_button/rounded_text_button.dart';
 import 'package:a_modern_forum_project/widgets/load_more_comments/load_more_comments.dart';
 import 'package:a_modern_forum_project/widgets/text/h1.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
@@ -124,22 +125,19 @@ class _CommentBox extends State<CommentBox> {
                                       const VerticalDivider(
                                         color: Colors.black45,
                                       ),
-                                      const SizedBox(
-                                        width: 5,
-                                      ),
-                                      Text(
-                                        comment.totalReplies <= 0
+                                      RoundedTextButton(
+                                        callback: comment.totalReplies <= 0
+                                            ? null
+                                            : () {},
+                                        text: comment.totalReplies <= 0
                                             ? "No replies"
                                             : "+ ${comment.totalReplies} " +
                                                 (comment.totalReplies == 1
                                                     ? "reply"
                                                     : "replies"),
-                                        style: const TextStyle(
-                                            fontSize: 16,
-                                            color: Colors.black45),
                                       ),
                                       const SizedBox(
-                                        width: 10,
+                                        width: 5,
                                       ),
                                       const SmallOutlineButton(
                                         text: "Reply",

@@ -41,8 +41,8 @@ class _LoadMoreComments extends State<LoadMoreCommentsButton> {
                           width: 10,
                         ),
                         SizedBox(
-                          height: 20,
-                          width: 20,
+                          height: 12,
+                          width: 12,
                           child: Center(
                             child: CircularProgressIndicator(
                               color: Colors.black45,

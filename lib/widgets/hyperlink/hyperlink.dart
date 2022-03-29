@@ -3,23 +3,21 @@ import 'package:flutter/material.dart';
 /// Clickable text
 class Hyperlink extends StatelessWidget {
   /// Hyperlink text
-  final String _text;
+  final String text;
 
   /// On-click function of the hyperlink
-  final VoidCallback _callback;
+  final VoidCallback onTap;
 
-  const Hyperlink({required String text, required VoidCallback onTap, Key? key})
-      : _text = text,
-        _callback = onTap,
-        super(key: key);
+  const Hyperlink({required this.text, required this.onTap, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
         child: Text(
-          _text,
+          text,
           style: TextStyle(color: Theme.of(context).primaryColor),
         ),
-        onTap: _callback);
+        onTap: onTap);
   }
 }
