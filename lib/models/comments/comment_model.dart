@@ -30,6 +30,15 @@ class CommentModel {
   /// Total number of replies
   int totalReplies = 0;
 
+  /// If true, a comment text editor box will be visible under the comment
+  bool showReplyTextEditor = false;
+
+  /// If true, the comment's responses will be shown
+  bool showResponses = false;
+
+  /// No replies (empty list)
+  static const List<CommentModel> _noReplies = [];
+
   /// Named constructor
   CommentModel(
       {this.commentId = 0,
@@ -40,5 +49,8 @@ class CommentModel {
       this.rating = 0,
       this.hasUpVoted = false,
       this.hasDownVoted = false,
-      this.totalReplies = 0});
+      this.replies = _noReplies,
+      this.totalReplies = 0,
+      this.showReplyTextEditor = false,
+      this.showResponses = false});
 }

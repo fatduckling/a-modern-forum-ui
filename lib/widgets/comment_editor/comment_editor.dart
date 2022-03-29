@@ -6,7 +6,17 @@ import 'package:flutter_quill/flutter_quill.dart' as quill;
 class CommentEditor extends StatelessWidget {
   final quill.QuillController controller = quill.QuillController.basic();
 
-  CommentEditor({Key? key}) : super(key: key);
+  /// Icon size
+  final double iconSize;
+
+  /// Default placeholder text
+  final String placeholder;
+
+  CommentEditor(
+      {this.iconSize = 64,
+      this.placeholder = "Write something great here",
+      Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +24,9 @@ class CommentEditor extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Icon(
+        Icon(
           Icons.circle,
-          size: 64,
+          size: iconSize,
         ),
         const SizedBox(width: 10),
         Flexible(
@@ -55,7 +65,7 @@ class CommentEditor extends StatelessWidget {
                               expands: true,
                               scrollController: ScrollController(),
                               scrollable: true,
-                              placeholder: "Type something great here",
+                              placeholder: placeholder,
                               focusNode: FocusNode(),
                               padding: const EdgeInsets.only(
                                   left: 10, right: 10, top: 5, bottom: 5),
