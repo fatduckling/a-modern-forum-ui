@@ -29,6 +29,7 @@ class _SearchBarState extends State<SearchBar> {
     super.initState();
     _focusNode.addListener(() {
       setState(() {
+        updateOverlayWidth();
         _isMenuOpen = _focusNode.hasFocus;
       });
     });
@@ -42,16 +43,7 @@ class _SearchBarState extends State<SearchBar> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<ScreenResizeObserver>().addListener(() {
-      RenderObject? renderObject =
-          _searchKey.currentContext?.findRenderObject();
-      if (renderObject != null) {
-        RenderBox box = renderObject as RenderBox;
-        setState(() {
-          _overlayWidth = box.size.width;
-        });
-      }
-    });
+    context.watch<ScreenResizeObserver>().addListener(updateOverlayWidth);
     return PortalEntry(
         visible: _isMenuOpen,
         portalAnchor: Alignment.topCenter,
@@ -64,7 +56,7 @@ class _SearchBarState extends State<SearchBar> {
               height: 400,
               child: const Center(
                 child: Text(
-                  "Hello",
+                  "App bar text",
                 ),
               ),
             )),
@@ -78,5 +70,13 @@ class _SearchBarState extends State<SearchBar> {
             onTypingFinished: (s) {
               debugPrint("Typing finished: " + s);
             }));
+  }
+
+  void updateOverlayWidth() {
+    RenderObject? renderObject = _searchKey.currentContext?.findRenderObject();
+    if (renderObject != null) {
+      RenderBox box = renderObject as RenderBox;
+      _overlayWidth = box.size.width;
+    }
   }
 }

@@ -47,7 +47,6 @@ class _ExploreRoute extends State<ExploreRoute> {
                         },
                         borderRadius: BorderRadius.circular(20),
                         child: Ink(
-                          // color: Colors.red,
                           padding: const EdgeInsets.only(top: 5, bottom: 5),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,

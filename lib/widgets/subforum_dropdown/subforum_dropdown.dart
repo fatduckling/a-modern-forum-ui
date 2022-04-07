@@ -20,6 +20,9 @@ class _SubforumDropdown extends State<SubforumDropdown> {
   /// Used to provide the coordinates of the overlay
   final GlobalKey _buttonKey = GlobalKey();
 
+  /// The width of the overlay
+  double _overlayWidth = 300;
+
   @override
   void initState() {
     super.initState();
@@ -41,6 +44,7 @@ class _SubforumDropdown extends State<SubforumDropdown> {
         Offset position = box.localToGlobal(Offset.zero);
         if (position.dy < kToolbarHeight) {
           setState(() {
+            _overlayWidth = box.size.width;
             _focusNode.unfocus();
           });
         }
@@ -56,7 +60,7 @@ class _SubforumDropdown extends State<SubforumDropdown> {
             color: Colors.red,
             borderRadius: BorderRadius.all(Radius.circular(5)),
           ),
-          width: 300,
+          width: _overlayWidth,
           height: 400,
           child: const Center(
             child: Text("Hello"),
