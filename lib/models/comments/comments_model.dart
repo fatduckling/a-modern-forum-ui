@@ -16,56 +16,60 @@ class CommentsModel {
     return comments[index];
   }
 
+  static CommentModel buildCommentModel(
+      String name, List<CommentModel> replies) {
+    return CommentModel(
+        commentId: 0,
+        user: name,
+        response: "This is a great comment by $name\n" * 3,
+        timestamp: 1648183873000,
+        rating: 343,
+        showResponses: true,
+        replies: replies,
+        totalReplies: name.length % 2 == 0 ? replies.length : 20);
+  }
+
   /// Build a sample comments model used for testing TODO delete method
   static CommentsModel buildSampleModel() {
-    List<CommentModel> comments = [];
-    for (int i = 0; i < 5; i++) {
-      CommentModel comment = CommentModel(
-          commentId: i,
-          user: "Clancy Footerman $i",
-          response: "This is a great comment\n" * (i + 1),
-          timestamp: 1648183873000,
-          rating: 343,
-          replies: i == 1
-              ? [
-                  CommentModel(
-                      commentId: i + 20,
-                      user: "Clancy Footerman nested 1 ${i + 20}",
-                      response: "This is a great comment\n" * (i + 21),
-                      timestamp: 1648183873000,
-                      rating: 343,
-                      totalReplies: 0)
-                ]
-              : (i == 2
-                  ? [
-                      CommentModel(
-                          commentId: i + 20,
-                          user: "Clancy Footerman nested 1 ${i + 20}",
-                          response: "This is a great comment\n" * (i + 21),
-                          timestamp: 1648183873000,
-                          replies: [
-                            CommentModel(
-                                commentId: i + 20,
-                                user: "Clancy Footerman nested 2-1 ${i + 20}",
-                                response: "This is a great comment\n" * (i + 4),
-                                timestamp: 1648183873000,
-                                rating: 343,
-                                totalReplies: i),
-                            CommentModel(
-                                commentId: i + 20,
-                                user: "Clancy Footerman nested 2-2 ${i + 20}",
-                                response: "This is a great comment\n" * (i + 4),
-                                timestamp: 1648183873000,
-                                rating: 343,
-                                totalReplies: i)
-                          ],
-                          rating: 343,
-                          totalReplies: 2)
-                    ]
-                  : []),
-          totalReplies: i);
-      comments.add(comment);
-    }
+    List<CommentModel> comments = [
+      buildCommentModel("Comment0 User", []),
+      buildCommentModel("Comment1 User", [
+        buildCommentModel("Comment10 User", []),
+        buildCommentModel("Comment11 User", [
+          buildCommentModel("Comment110 User", []),
+          buildCommentModel("Comment111 User", [
+            buildCommentModel("Comment1110 User", []),
+            buildCommentModel("Comment1111 User", [
+              buildCommentModel("Comment11110 User", []),
+              buildCommentModel("Comment11111 User", [
+                buildCommentModel("Comment111110 User", []),
+                buildCommentModel("Comment111111 User", [
+                  buildCommentModel("Comment1111110 User", []),
+                  buildCommentModel("Comment1111111 User", [
+                    buildCommentModel("Comment11111110 User", []),
+                    buildCommentModel("Comment11111111 User", [
+                      buildCommentModel("Comment111111110 User", []),
+                      buildCommentModel("Comment111111111 User", []),
+                    ]),
+                  ]),
+                ]),
+              ])
+            ])
+          ])
+        ])
+      ]),
+      buildCommentModel("Comment2 User", []),
+      buildCommentModel("Comment3 User", [
+        buildCommentModel("Comment30 User", []),
+        buildCommentModel("Comment31 User", [
+          buildCommentModel("Comment310 User", []),
+          buildCommentModel("Comment311 User", [
+            buildCommentModel("Comment3110 User", []),
+            buildCommentModel("Comment3111 User", []),
+          ]),
+        ]),
+      ]),
+    ];
     return CommentsModel(comments, totalComments: comments.length);
   }
 }

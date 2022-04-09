@@ -22,10 +22,8 @@ class CommentBox extends StatefulWidget {
 class _CommentBox extends State<CommentBox> {
   /// return a widget to render the [comment] and its responses
   Widget buildCommentAndItsResponses(CommentModel comment) {
-    const iconSizeFlex = 50.0;
     return Table(columnWidths: const {
-      0: FlexColumnWidth(iconSizeFlex),
-      1: FlexColumnWidth(1000 - iconSizeFlex)
+      0: FixedColumnWidth(50)
     }, children: [
       TableRow(children: [
         TableCell(
@@ -65,7 +63,7 @@ class _CommentBox extends State<CommentBox> {
                           },
                         ),
                       ),
-                    )),
+                    ))
               ],
             )),
         Column(
@@ -97,17 +95,12 @@ class _CommentBox extends State<CommentBox> {
               ],
             ),
             Row(
-              children: [
-                Flexible(
-                    flex: 1000 - iconSizeFlex as int,
-                    child: Text(comment.response))
-              ],
+              children: [Flexible(child: Text(comment.response))],
             ),
             IntrinsicHeight(
                 child: Row(
               children: [
                 Expanded(
-                  flex: 1000.0 - iconSizeFlex as int,
                   child: Row(
                     children: [
                       const UpDownVotes(),
@@ -170,8 +163,7 @@ class _CommentBox extends State<CommentBox> {
                   comment.showResponses && comment.replies.isNotEmpty ? 10 : 0,
             ),
             comment.showResponses
-                ? Flexible(
-                    fit: FlexFit.loose, child: buildComments(comment.replies))
+                ? Flexible(fit: FlexFit.loose, child: buildComments(comment))
                 : const SizedBox.shrink(),
             const SizedBox(
               height: 10,
@@ -182,8 +174,9 @@ class _CommentBox extends State<CommentBox> {
     ]);
   }
 
-  /// Build the [comments] which will be rendered in a Column
-  Widget buildComments(final List<CommentModel> comments) {
+  /// Build the replies of the [parent] comment
+  Widget buildComments(final CommentModel parent) {
+    final List<CommentModel> comments = parent.replies;
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -197,7 +190,9 @@ class _CommentBox extends State<CommentBox> {
               CommentModel comment = comments[index];
               return buildCommentAndItsResponses(comment);
             }),
-        const LoadMoreCommentsButton(),
+        comments.length < parent.totalReplies
+            ? const LoadMoreCommentsButton()
+            : const SizedBox.shrink(),
       ],
     );
   }
@@ -214,7 +209,10 @@ class _CommentBox extends State<CommentBox> {
           height: 15,
         ),
         Flexible(
-            fit: FlexFit.loose, child: buildComments(widget.model.comments)),
+            fit: FlexFit.loose,
+            child: buildComments(CommentModel(
+                replies: widget.model.comments,
+                totalReplies: widget.model.totalComments))),
       ],
     );
   }
