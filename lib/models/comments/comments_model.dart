@@ -24,9 +24,9 @@ class CommentsModel {
         response: "This is a great comment by $name\n" * 3,
         timestamp: 1648183873000,
         rating: 343,
-        showResponses: true,
+        showResponses: false,
         replies: replies,
-        totalReplies: name.length % 2 == 0 ? replies.length : 20);
+        totalReplies: replies.length);
   }
 
   /// Build a sample comments model used for testing TODO delete method
