@@ -56,7 +56,7 @@ class _SubforumDropdown extends State<SubforumDropdown> {
         childAnchor: Alignment.bottomCenter,
         portal: Container(
           margin: const EdgeInsets.only(top: 5),
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Colors.red,
             borderRadius: BorderRadius.all(Radius.circular(5)),
           ),
@@ -66,9 +66,18 @@ class _SubforumDropdown extends State<SubforumDropdown> {
             child: Text("Hello"),
           ),
         ),
-        child: SizedBox(
+        child: Container(
           height: 40,
           width: 300,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20.0),
+            boxShadow: const [
+              BoxShadow(
+                color: Colors.black38,
+                blurRadius: 6,
+              ),
+            ],
+          ),
           child: ElevatedButton(
             key: _buttonKey,
             focusNode: _focusNode,

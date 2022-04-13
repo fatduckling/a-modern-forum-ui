@@ -1,3 +1,4 @@
+import 'package:a_modern_forum_project/routes/create_post.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded/medium/medium_rounded_button.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded/small/small_rounded_button.dart';
@@ -15,7 +16,7 @@ class LargeSortFilterThreads extends StatelessWidget {
   Widget build(BuildContext context) {
     final pageBoundsFlex = ResponsiveDisplay.getPageBoundsFlex(screenSize);
     final mainContainerFlex =
-        ResponsiveDisplay.getMainContainerFlex(screenSize);
+    ResponsiveDisplay.getMainContainerFlex(screenSize);
     return Column(
       children: [
         Row(
@@ -74,9 +75,16 @@ class LargeSortFilterThreads extends StatelessWidget {
             ),
             Expanded(
               flex: 100 - ((2 * pageBoundsFlex) + mainContainerFlex),
-              child: const Padding(
-                  padding: EdgeInsets.only(left: 20),
-                  child: MediumRoundedButton("Start thread")),
+              child: Padding(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: MediumRoundedButton(
+                    "Start thread",
+                    onTap: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const CreatePostRoute()),
+                    ),
+                  )),
             ),
             Spacer(
               flex: pageBoundsFlex,
