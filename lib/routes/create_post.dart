@@ -1,5 +1,6 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
+import 'package:a_modern_forum_project/widgets/buttons/rounded/medium/medium_rounded_button.dart';
 import 'package:a_modern_forum_project/widgets/file_upload/file_upload.dart';
 import 'package:a_modern_forum_project/widgets/poll_editor/poll_editor.dart';
 import 'package:a_modern_forum_project/widgets/rich_text_field/rich_text_field.dart';
@@ -188,6 +189,13 @@ class _CreatePostRoute extends State<CreatePostRoute>
                         height: 20,
                       ),
                       RichTextField(),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const MediumRoundedButton(
+                        text: "Create Post",
+                        borderRadius: 15,
+                      )
                     ],
                   ),
                 ),

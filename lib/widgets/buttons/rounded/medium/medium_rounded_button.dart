@@ -7,7 +7,11 @@ class MediumRoundedButton extends StatelessWidget {
   /// Button callback
   final VoidCallback? onTap;
 
-  const MediumRoundedButton({required this.text, Key? key, this.onTap})
+  /// Adjust the border radius
+  final double borderRadius;
+
+  const MediumRoundedButton(
+      {required this.text, this.borderRadius = 25, Key? key, this.onTap})
       : super(key: key);
 
   @override
@@ -18,7 +22,7 @@ class MediumRoundedButton extends StatelessWidget {
           style: ButtonStyle(
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(25.0),
+                borderRadius: BorderRadius.circular(borderRadius),
               ),
             ),
           ),
