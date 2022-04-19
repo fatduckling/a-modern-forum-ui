@@ -7,7 +7,7 @@ class MediumRoundedButton extends StatelessWidget {
   /// Button callback
   final VoidCallback? onTap;
 
-  const MediumRoundedButton(this.text, {Key? key, this.onTap})
+  const MediumRoundedButton({required this.text, Key? key, this.onTap})
       : super(key: key);
 
   @override

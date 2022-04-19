@@ -29,8 +29,8 @@ class SmallOutlineButton extends StatelessWidget {
                 : MaterialStateProperty.all<Color>(colour!),
             shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
+                  borderRadius: BorderRadius.circular(10.0),
+                  side: const BorderSide(width: 12, color: Colors.red)),
             ),
           ),
           child: Row(
@@ -48,7 +48,7 @@ class SmallOutlineButton extends StatelessWidget {
               Text(text)
             ],
           ),
-          onPressed: onTap ?? () {},
+          onPressed: onTap,
         ));
   }
 }

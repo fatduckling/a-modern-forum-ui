@@ -1,5 +1,8 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
+import 'package:a_modern_forum_project/widgets/file_upload/file_upload.dart';
+import 'package:a_modern_forum_project/widgets/poll_editor/poll_editor.dart';
+import 'package:a_modern_forum_project/widgets/rich_text_field/rich_text_field.dart';
 import 'package:a_modern_forum_project/widgets/scaffold/main_scaffold.dart';
 import 'package:a_modern_forum_project/widgets/subforum_dropdown/subforum_dropdown.dart';
 import 'package:a_modern_forum_project/widgets/text/h1.dart';
@@ -22,6 +25,12 @@ class _CreatePostRoute extends State<CreatePostRoute>
   /// Tab controller
   late TabController tabController;
 
+  /// Title controller
+  final TextEditingController titleController = TextEditingController();
+
+  /// Post title
+  String title = "";
+
   @override
   void initState() {
     tabController = TabController(vsync: this, length: 4);
@@ -32,13 +41,37 @@ class _CreatePostRoute extends State<CreatePostRoute>
         });
       }
     });
+    titleController.addListener(() {
+      setState(() {
+        title = titleController.text;
+      });
+    });
     super.initState();
   }
 
   @override
   void dispose() {
     tabController.dispose();
+    titleController.dispose();
     super.dispose();
+  }
+
+  Widget tabWidget() {
+    switch (selectedIndex) {
+      case 1:
+        return const FileUpload();
+      case 2:
+        return const TextField(
+          keyboardType: TextInputType.multiline,
+          minLines: 2,
+          maxLines: null,
+          decoration:
+              InputDecoration(border: OutlineInputBorder(), hintText: 'Url'),
+        );
+      case 3:
+        return const PollEditor();
+    }
+    return const SizedBox.shrink();
   }
 
   @override
@@ -72,7 +105,6 @@ class _CreatePostRoute extends State<CreatePostRoute>
                         height: 30,
                       ),
                       Container(
-                        width: double.infinity,
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -124,13 +156,49 @@ class _CreatePostRoute extends State<CreatePostRoute>
             flex: pageBoundsFlex,
           ),
           Expanded(
-            flex: 100 - (pageBoundsFlex * 2),
-            child: Text("Selected: $selectedIndex"),
-          ),
+              flex: 100 - (pageBoundsFlex * 2),
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black38,
+                      blurRadius: 6,
+                    ),
+                  ],
+                ),
+                child: Container(
+                  padding: const EdgeInsets.all(20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      TextField(
+                        controller: titleController,
+                        decoration: InputDecoration(
+                            border: const OutlineInputBorder(),
+                            hintText: 'Title',
+                            suffixText: "${title.length}/300"),
+                      ),
+                      SizedBox(
+                        height: selectedIndex > 0 ? 20 : 0,
+                      ),
+                      tabWidget(),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      RichTextField(),
+                    ],
+                  ),
+                ),
+              )),
           Spacer(
             flex: pageBoundsFlex,
           )
         ],
+      ),
+      const SizedBox(
+        height: 40,
       ),
     ]));
   }

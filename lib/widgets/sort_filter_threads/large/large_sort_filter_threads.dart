@@ -78,7 +78,7 @@ class LargeSortFilterThreads extends StatelessWidget {
               child: Padding(
                   padding: const EdgeInsets.only(left: 20),
                   child: MediumRoundedButton(
-                    "Start thread",
+                    text: "Start thread",
                     onTap: () => Navigator.push(
                       context,
                       MaterialPageRoute(
