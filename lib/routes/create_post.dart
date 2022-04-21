@@ -6,6 +6,7 @@ import 'package:a_modern_forum_project/widgets/poll_editor/poll_editor.dart';
 import 'package:a_modern_forum_project/widgets/rich_text_field/rich_text_field.dart';
 import 'package:a_modern_forum_project/widgets/scaffold/main_scaffold.dart';
 import 'package:a_modern_forum_project/widgets/subforum_dropdown/subforum_dropdown.dart';
+import 'package:a_modern_forum_project/widgets/tag_selector/tag_selector.dart';
 import 'package:a_modern_forum_project/widgets/text/h1.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -189,6 +190,10 @@ class _CreatePostRoute extends State<CreatePostRoute>
                         height: 20,
                       ),
                       RichTextField(),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      const TagSelector(),
                       const SizedBox(
                         height: 10,
                       ),

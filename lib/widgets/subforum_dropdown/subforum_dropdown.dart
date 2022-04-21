@@ -61,6 +61,7 @@ class _SubforumDropdown extends State<SubforumDropdown> {
             borderRadius: BorderRadius.all(Radius.circular(5)),
           ),
           width: _overlayWidth,
+          // TODO make 100% width on mobiles
           height: 400,
           child: const Center(
             child: Text("Hello"),
