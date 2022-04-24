@@ -28,10 +28,11 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Portal(
+    return Portal(
         child: MaterialApp(
+      theme: ThemeData(fontFamily: 'lato'),
       title: 'Welcome to flutter',
-      home: Home(),
+      home: const Home(),
     ));
   }
 }
