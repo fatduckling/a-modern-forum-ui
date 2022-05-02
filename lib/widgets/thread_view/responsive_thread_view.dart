@@ -1,6 +1,7 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/thread_view/large/large_thread_view.dart';
+import 'package:a_modern_forum_project/widgets/unhandled_widget/unhandled_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,9 +15,7 @@ class ResponsiveThreadView extends StatelessWidget {
     switch (screenSize) {
       case ScreenSize.small:
       case ScreenSize.medium:
-        return const Center(
-          child: Text("Not yet implemented"),
-        );
+      return const UnhandledWidget("ResponsiveThreadView");
       case ScreenSize.large:
       case ScreenSize.extraLarge:
         return LargeThreadView(screenSize);

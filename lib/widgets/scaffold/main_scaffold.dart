@@ -2,6 +2,7 @@ import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/appbar/responsive_app_bar.dart';
+import 'package:a_modern_forum_project/widgets/text/body2.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -37,17 +38,17 @@ class MainScaffold extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: Colors.blue,
                       ),
-                      child: Text('Drawer Header'),
+                      child: TextBody2('Drawer Header'),
                     ),
                     ListTile(
-                      title: const Text('Item 1'),
+                      title: const TextBody2('Item 1'),
                       onTap: () {
                         // Update the state of the app.
                         // ...
                       },
                     ),
                     ListTile(
-                      title: const Text('Item 2'),
+                      title: const TextBody2('Item 2'),
                       onTap: () {
                         // Update the state of the app.
                         // ...

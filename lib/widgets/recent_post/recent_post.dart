@@ -1,3 +1,5 @@
+import 'package:a_modern_forum_project/widgets/text/body2.dart';
+import 'package:a_modern_forum_project/widgets/text/h4.dart';
 import 'package:flutter/material.dart';
 
 class RecentPost extends StatelessWidget {
@@ -20,17 +22,16 @@ class RecentPost extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: const [
-              Text(
+              H4(
                 "Recent post title",
                 softWrap: false,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
               SizedBox(
                 height: 10,
               ),
-              Text(
+              TextBody2(
                 "Today at 1pm by User 123",
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,

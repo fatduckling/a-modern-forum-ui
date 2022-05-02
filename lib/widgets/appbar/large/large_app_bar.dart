@@ -2,6 +2,8 @@ import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/routes/explore.dart';
 import 'package:a_modern_forum_project/routes/home.dart';
 import 'package:a_modern_forum_project/widgets/search_bar/search_bar.dart';
+import 'package:a_modern_forum_project/widgets/text/body1.dart';
+import 'package:a_modern_forum_project/widgets/text/h4.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -31,9 +33,8 @@ class LargeAppBar extends StatelessWidget {
               width: 10,
             ),
             Flexible(
-                child: Text(
-              'name: $width ${observer.screenSize.name}',
-              overflow: TextOverflow.ellipsis,
+                child: H4(
+              'zname: $width ${observer.screenSize.name}',
             ))
           ],
         ),
@@ -52,7 +53,7 @@ class LargeAppBar extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => const HomeRoute()),
                   );
                 },
-                child: const Text('Home'),
+                child: const TextBody('Home'),
               ),
             ),
           ),
@@ -69,7 +70,7 @@ class LargeAppBar extends StatelessWidget {
                           builder: (context) => const ExploreRoute()),
                     );
                   },
-                  child: const Text('Explore'),
+                  child: const TextBody('Explore'),
                 )),
           ),
           const Expanded(
@@ -83,7 +84,7 @@ class LargeAppBar extends StatelessWidget {
                   child: TextButton(
                     style: style,
                     onPressed: () {},
-                    child: const Text('Login'),
+                    child: const TextBody('Login'),
                   ))),
         ],
       ),

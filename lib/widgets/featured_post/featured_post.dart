@@ -1,4 +1,5 @@
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
+import 'package:a_modern_forum_project/widgets/text/body1.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
 import 'package:flutter/material.dart';
 
@@ -26,15 +27,13 @@ class FeaturedPost extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(
+                      padding: const EdgeInsets.only(
                           left: 10, right: 10, bottom: 10),
-                      child: Text(
+                      child: TextBody(
                         "Post content" * 25,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 4,
                         softWrap: false,
-                        style: const TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.w500),
                       )),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,

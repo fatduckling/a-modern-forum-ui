@@ -1,4 +1,5 @@
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
+import 'package:a_modern_forum_project/widgets/text/body1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:provider/provider.dart';
@@ -56,7 +57,7 @@ class _SubforumDropdown extends State<SubforumDropdown> {
         childAnchor: Alignment.bottomCenter,
         portal: Container(
           margin: const EdgeInsets.only(top: 5),
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.red,
             borderRadius: BorderRadius.all(Radius.circular(5)),
           ),
@@ -64,7 +65,7 @@ class _SubforumDropdown extends State<SubforumDropdown> {
           // TODO make 100% width on mobiles
           height: 400,
           child: const Center(
-            child: Text("Hello"),
+            child: TextBody("Hello"),
           ),
         ),
         child: Container(
@@ -96,8 +97,9 @@ class _SubforumDropdown extends State<SubforumDropdown> {
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                const Text("All Subforums"),
+                const TextBody("All Subforums"),
                 Icon(_isMenuOpen
                     ? Icons.keyboard_arrow_up
                     : Icons.keyboard_arrow_down),

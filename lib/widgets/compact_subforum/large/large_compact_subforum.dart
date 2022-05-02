@@ -1,5 +1,6 @@
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
 import 'package:a_modern_forum_project/widgets/recent_post/recent_post.dart';
+import 'package:a_modern_forum_project/widgets/text/h4.dart';
 import 'package:flutter/material.dart';
 
 class LargeCompactSubforum extends StatelessWidget {
@@ -33,11 +34,8 @@ class LargeCompactSubforum extends StatelessWidget {
                                     width: 10,
                                   ),
                                   Flexible(
-                                      child: Text(
+                                      child: H4(
                                     "Beginners Forum",
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w500),
                                     maxLines: 2,
                                     softWrap: false,
                                     overflow: TextOverflow.ellipsis,

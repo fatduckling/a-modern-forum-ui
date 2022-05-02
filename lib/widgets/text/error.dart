@@ -1,3 +1,4 @@
+import 'package:a_modern_forum_project/widgets/text/body2_bold.dart';
 import 'package:flutter/material.dart';
 
 /// Used to display an error text in the middle
@@ -9,10 +10,10 @@ class ErrorText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return TextBody2Bold(
       text,
       textAlign: TextAlign.center,
-      style: const TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+      color: Colors.red,
     );
   }
 }

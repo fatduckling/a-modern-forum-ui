@@ -1,4 +1,6 @@
 import 'package:a_modern_forum_project/widgets/recent_post/recent_post.dart';
+import 'package:a_modern_forum_project/widgets/text/body3.dart';
+import 'package:a_modern_forum_project/widgets/text/h4.dart';
 import 'package:flutter/material.dart';
 
 class LargeExpandedSubforum extends StatelessWidget {
@@ -32,10 +34,8 @@ class LargeExpandedSubforum extends StatelessWidget {
                               width: 10,
                             ),
                             Flexible(
-                                child: Text(
+                                child: H4(
                               "Beginners Forum",
-                              style: TextStyle(
-                                  fontSize: 18, fontWeight: FontWeight.w500),
                               maxLines: 2,
                               softWrap: false,
                               overflow: TextOverflow.ellipsis,
@@ -44,7 +44,7 @@ class LargeExpandedSubforum extends StatelessWidget {
                           const SizedBox(
                             height: 10,
                           ),
-                          Text("Text " * 100),
+                          TextBody3("Text " * 100),
                           const SizedBox(
                             height: 25,
                           ),
@@ -66,7 +66,7 @@ class LargeExpandedSubforum extends StatelessWidget {
                                 size: 36,
                                 color: Colors.blue,
                               ),
-                              Text("123456"),
+                              TextBody3("123456"),
                               SizedBox(
                                 height: 30,
                               ),
@@ -75,7 +75,7 @@ class LargeExpandedSubforum extends StatelessWidget {
                                 size: 36,
                                 color: Colors.blue,
                               ),
-                              Text("123456"),
+                              TextBody3("123456"),
                             ],
                           )
                         ],

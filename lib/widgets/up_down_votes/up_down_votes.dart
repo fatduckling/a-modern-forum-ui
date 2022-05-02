@@ -1,3 +1,4 @@
+import 'package:a_modern_forum_project/widgets/text/body1.dart';
 import 'package:flutter/material.dart';
 
 class UpDownVotes extends StatefulWidget {
@@ -42,16 +43,9 @@ class _UpDownVotes extends State<UpDownVotes> {
         const SizedBox(
           width: 5,
         ),
-        Text(
-          "35",
-          style: TextStyle(
-              fontSize: 16,
-              fontWeight: isUpVoted || isDownVoted
-                  ? FontWeight.w600
-                  : FontWeight.normal,
-              color:
-                  isUpVoted ? Colors.green : (isDownVoted ? Colors.red : null)),
-        ),
+        TextBody("50",
+            color:
+                isUpVoted ? Colors.green : (isDownVoted ? Colors.red : null)),
         const SizedBox(
           width: 5,
         ),

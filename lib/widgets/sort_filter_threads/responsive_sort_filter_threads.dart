@@ -1,6 +1,7 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/sort_filter_threads/large/large_sort_filter_threads.dart';
+import 'package:a_modern_forum_project/widgets/unhandled_widget/unhandled_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,7 @@ class _ResponsiveSortFilterThreads extends State<ResponsiveSortFilterThreads> {
     switch (screenSize) {
       case ScreenSize.small:
       case ScreenSize.medium:
-        return const Center(child: Text("Unhandled small/medium screen sizes"));
+      return const UnhandledWidget("ResponsiveSortFilterThreads");
       case ScreenSize.large:
       case ScreenSize.extraLarge:
         return LargeSortFilterThreads(screenSize);

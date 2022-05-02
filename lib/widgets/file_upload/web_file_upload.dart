@@ -1,4 +1,5 @@
 import 'package:a_modern_forum_project/widgets/buttons/rounded/small/small_rounded_button.dart';
+import 'package:a_modern_forum_project/widgets/text/body2.dart';
 import 'package:a_modern_forum_project/widgets/text/error.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
@@ -66,12 +67,8 @@ class _WebFileUpload extends State<WebFileUpload> {
                         size: 128,
                         color: isHovering ? Colors.black45 : Colors.black26,
                       ),
-                      Text(
+                      const TextBody2(
                         "Drag your photos or videos here to start uploading.",
-                        style: TextStyle(
-                            fontWeight: isHovering
-                                ? FontWeight.w500
-                                : FontWeight.normal),
                       ),
                       const SizedBox(
                         height: 10,

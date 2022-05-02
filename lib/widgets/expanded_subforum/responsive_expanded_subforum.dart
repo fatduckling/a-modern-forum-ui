@@ -1,6 +1,7 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/expanded_subforum/large/large_expanded_subforum.dart';
+import 'package:a_modern_forum_project/widgets/unhandled_widget/unhandled_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,7 @@ class ResponsiveExpandedSubforum extends StatelessWidget {
     switch (screenSize) {
       case ScreenSize.small:
       case ScreenSize.medium:
-        return const Center(child: Text("Unhandled small/medium screen sizes"));
+      return const UnhandledWidget("ResponsiveExpandedSubforum");
       case ScreenSize.large:
       case ScreenSize.extraLarge:
         return const LargeExpandedSubforum();

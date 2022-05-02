@@ -1,4 +1,5 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
+import 'package:a_modern_forum_project/widgets/text/body1.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:outline_search_bar/outline_search_bar.dart';
@@ -55,7 +56,7 @@ class _SearchBarState extends State<SearchBar> {
               width: _overlayWidth,
               height: 400,
               child: const Center(
-                child: Text(
+                child: TextBody(
                   "App bar text",
                 ),
               ),

@@ -1,3 +1,4 @@
+import 'package:a_modern_forum_project/widgets/text/body2.dart';
 import 'package:flutter/material.dart';
 
 class LoadMoreCommentsButton extends StatefulWidget {
@@ -29,11 +30,14 @@ class _LoadMoreComments extends State<LoadMoreCommentsButton> {
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Text(
-                "Load more comments",
-                style: TextStyle(color: Colors.black),
-              ),
+              Container(
+                  transform: Matrix4.translationValues(0, -4, 0.0),
+                  child: const TextBody2(
+                    "Load more comments",
+                    color: Colors.black,
+                  )),
               isLoading
                   ? Row(
                       children: const [

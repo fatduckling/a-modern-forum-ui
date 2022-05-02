@@ -1,5 +1,6 @@
 import 'package:a_modern_forum_project/widgets/breadcrumbs/breadcrumb_divider.dart';
 import 'package:a_modern_forum_project/widgets/hyperlink/hyperlink.dart';
+import 'package:a_modern_forum_project/widgets/text/body2.dart';
 import 'package:flutter/material.dart';
 
 /// Displays a breadcrumbs widget
@@ -15,7 +16,7 @@ class Breadcrumbs extends StatelessWidget {
     for (String path in paths) {
       bool isLast = (++index) == paths.length;
       if (isLast) {
-        breadcrumbs.add(Text(path));
+        breadcrumbs.add(TextBody2(path));
       } else {
         breadcrumbs.addAll([
           Hyperlink(

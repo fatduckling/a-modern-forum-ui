@@ -1,4 +1,7 @@
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
+import 'package:a_modern_forum_project/widgets/tag_selector/tag_selector_controller.dart';
+import 'package:a_modern_forum_project/widgets/text/body1.dart';
+import 'package:a_modern_forum_project/widgets/text/body2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:outline_search_bar/outline_search_bar.dart';
@@ -6,7 +9,10 @@ import 'package:provider/provider.dart';
 
 /// Allows users to select tags when creating a post
 class TagSelector extends StatefulWidget {
-  const TagSelector({Key? key}) : super(key: key);
+  /// Tag selector controller
+  final TagSelectorController controller;
+
+  const TagSelector({required this.controller, Key? key}) : super(key: key);
 
   @override
   _TagSelector createState() => _TagSelector();
@@ -88,6 +94,7 @@ class _TagSelector extends State<TagSelector> {
         visible: _isMenuOpen,
         portalAnchor: Alignment.topCenter,
         childAnchor: Alignment.bottomCenter,
+        closeDuration: Duration.zero,
         portal: Container(
           margin: const EdgeInsets.only(top: 5),
           decoration: BoxDecoration(
@@ -107,10 +114,8 @@ class _TagSelector extends State<TagSelector> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Flexible(
-                        child: Text(
+                        child: TextBody(
                       "Select a tag",
-                      style:
-                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     )),
                     InkWell(
                       onTap: () {
@@ -157,7 +162,7 @@ class _TagSelector extends State<TagSelector> {
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(10)),
                                     ),
-                                    child: Text("Tag $index"),
+                                    child: TextBody("Tag $index"),
                                   ),
                                   value: tagName,
                                   groupValue: _selectedTag,
@@ -187,6 +192,7 @@ class _TagSelector extends State<TagSelector> {
             onFocusChange: (hasFocus) {
               setState(() {
                 _isMenuOpen = hasFocus || _searchFocus.hasFocus;
+                widget.controller.stateChanged(_isMenuOpen);
                 _tagFilter = "";
                 _searchController.text = "";
               });
@@ -212,7 +218,8 @@ class _TagSelector extends State<TagSelector> {
                     const SizedBox(
                       width: 5,
                     ),
-                    Text(_selectedTag == null ? "Select a tag" : _selectedTag!),
+                    TextBody2(
+                        _selectedTag == null ? "Select a tag" : _selectedTag!),
                   ],
                 ),
                 Icon(_isMenuOpen

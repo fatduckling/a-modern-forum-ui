@@ -1,3 +1,4 @@
+import 'package:a_modern_forum_project/widgets/text/body2.dart';
 import 'package:flutter/material.dart';
 
 /// Rounded text button
@@ -20,9 +21,9 @@ class RoundedTextButton extends StatelessWidget {
           onTap: callback,
           child: Padding(
             padding: const EdgeInsets.all(10),
-            child: Text(
+            child: TextBody2(
               text,
-              style: const TextStyle(fontSize: 16, color: Colors.black45),
+              color: Colors.black45,
             ),
           )),
     );

@@ -1,3 +1,4 @@
+import 'package:a_modern_forum_project/widgets/text/body2_bold.dart';
 import 'package:flutter/material.dart';
 
 class MediumRoundedButton extends StatelessWidget {
@@ -26,7 +27,7 @@ class MediumRoundedButton extends StatelessWidget {
               ),
             ),
           ),
-          child: Text(text),
+          child: TextBody2Bold(text),
           onPressed: onTap ?? () {},
         ));
   }

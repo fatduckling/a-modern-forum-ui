@@ -5,6 +5,9 @@ import 'package:a_modern_forum_project/widgets/buttons/rounded_outline/small/sma
 import 'package:a_modern_forum_project/widgets/buttons/rounded_text_button/rounded_text_button.dart';
 import 'package:a_modern_forum_project/widgets/comment_editor/comment_editor.dart';
 import 'package:a_modern_forum_project/widgets/load_more_comments/load_more_comments.dart';
+import 'package:a_modern_forum_project/widgets/text/body2_bold.dart';
+import 'package:a_modern_forum_project/widgets/text/body2_light.dart';
+import 'package:a_modern_forum_project/widgets/text/body3.dart';
 import 'package:a_modern_forum_project/widgets/text/h1.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
 import 'package:flutter/material.dart';
@@ -73,17 +76,16 @@ class _CommentBox extends State<CommentBox> {
             Row(
               children: [
                 Flexible(
-                  child: Text(
+                  child: TextBody2Bold(
                     comment.user,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                 ),
                 const SizedBox(
                   width: 5,
                 ),
-                Text(
+                TextBody2Light(
                   TimeUtil.whenTimestampAgo(comment.timestamp),
-                  style: const TextStyle(color: Colors.black54),
+                  color: Colors.black54,
                 ),
                 const SizedBox(
                   width: 5,
@@ -95,7 +97,7 @@ class _CommentBox extends State<CommentBox> {
               ],
             ),
             Row(
-              children: [Flexible(child: Text(comment.response))],
+              children: [Flexible(child: TextBody3(comment.response))],
             ),
             IntrinsicHeight(
                 child: Row(

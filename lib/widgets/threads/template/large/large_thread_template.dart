@@ -2,6 +2,8 @@ import 'package:a_modern_forum_project/models/thread/thread_model.dart';
 import 'package:a_modern_forum_project/routes/view_post.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded/small/small_rounded_button.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
+import 'package:a_modern_forum_project/widgets/text/body1.dart';
+import 'package:a_modern_forum_project/widgets/text/body3.dart';
 import 'package:a_modern_forum_project/widgets/threads/template/responsive_thread_template.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
 import 'package:flutter/material.dart';
@@ -52,23 +54,21 @@ class LargeThreadTemplate extends StatelessWidget {
                         SizedBox(
                           width: 10,
                         ),
-                        Text("Posted in "),
-                        Text(
+                        TextBody3("Posted in "),
+                        TextBody3(
                           "Other",
-                          style:
-                              TextStyle(decoration: TextDecoration.underline),
+                          decoration: TextDecoration.underline,
                         ),
-                        Text(" by "),
-                        Text(
+                        TextBody3(" by "),
+                        TextBody3(
                           "User123",
-                          style:
-                              TextStyle(decoration: TextDecoration.underline),
+                          decoration: TextDecoration.underline,
                         ),
                       ]),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: const [
-                      Text("6 hours ago"),
+                      TextBody3("6 hours ago"),
                       SizedBox(
                         width: 10,
                       ),
@@ -90,9 +90,7 @@ class LargeThreadTemplate extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Expanded(
-                    child: Text("How to navigate this forum " * 5,
-                        style: const TextStyle(
-                            fontWeight: FontWeight.w500, fontSize: 24)),
+                    child: TextBody("zHow to navigate this forum " * 5),
                   ),
                   const SmallRoundedButton(
                     text: "info",

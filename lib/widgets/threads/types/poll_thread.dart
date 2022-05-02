@@ -1,6 +1,8 @@
 import 'package:a_modern_forum_project/models/thread/types/poll_model.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded/small/small_rounded_button.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
+import 'package:a_modern_forum_project/widgets/text/body2.dart';
+import 'package:a_modern_forum_project/widgets/text/body3.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 
@@ -50,7 +52,7 @@ class _PollThread extends State<PollThread> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
                 IconWithText(icon: Icons.poll_outlined, text: "750 votes"),
-                Text("234 days remaining")
+                TextBody3("234 days remaining")
               ],
             ),
             const Divider(),
@@ -74,7 +76,7 @@ class _PollThread extends State<PollThread> {
               return CheckboxListTile(
                 contentPadding: EdgeInsets.zero,
                 controlAffinity: ListTileControlAffinity.leading,
-                title: Text(_options[index]),
+                title: TextBody2(_options[index]),
                 value: _checkboxValues[index],
                 onChanged: (newValue) {
                   bool disabled = newValue == null;

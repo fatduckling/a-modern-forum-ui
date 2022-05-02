@@ -4,6 +4,8 @@ import 'package:a_modern_forum_project/widgets/compact_subforum/responsive_compa
 import 'package:a_modern_forum_project/widgets/expanded_subforum/responsive_expanded_subforum.dart';
 import 'package:a_modern_forum_project/widgets/scaffold/main_scaffold.dart';
 import 'package:a_modern_forum_project/widgets/text/h1.dart';
+import 'package:a_modern_forum_project/widgets/text/h2_bold.dart';
+import 'package:a_modern_forum_project/widgets/text/h4.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -52,22 +54,22 @@ class _ExploreRoute extends State<ExploreRoute> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Text(_isCompact ? "Compact" : "Expanded"),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                              Icon(
-                                  _isCompact
-                                      ? Icons.view_comfortable_outlined
-                                      : Icons.view_compact_outlined,
-                                  size: 40),
-                              const SizedBox(
-                                width: 10,
-                              ),
-                            ],
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          H4(_isCompact ? "Compact" : "Expanded"),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          Icon(
+                              _isCompact
+                                  ? Icons.view_comfortable_outlined
+                                  : Icons.view_compact_outlined,
+                              size: 40),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                        ],
                           ),
                         ),
                       ),
@@ -116,25 +118,22 @@ class _ExploreRoute extends State<ExploreRoute> {
                                       themeData.scaffoldBackgroundColor),
                                   child: ExpansionTile(
                                     collapsedBackgroundColor: Colors.white,
-                                    initiallyExpanded: true,
-                                    title: Text(
-                                      'General Astronomy $index',
-                                      style: const TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 24,
-                                          color: Colors.black),
+                                initiallyExpanded: true,
+                                title: H2Bold(
+                                  'General Astronomy $index',
+                                  color: Colors.black,
+                                ),
+                                children: <Widget>[
+                                  SizedBox(
+                                    height: 10,
+                                    child: Container(
+                                      color: themeData.scaffoldBackgroundColor,
                                     ),
-                                    children: <Widget>[
-                                      SizedBox(
-                                        height: 10,
-                                        child: Container(
-                                          color: themeData.scaffoldBackgroundColor,
-                                        ),
-                                      ),
-                                      _isCompact
-                                          ? const ResponsiveCompactSubforum()
-                                          : const ResponsiveExpandedSubforum(),
-                                      SizedBox(
+                                  ),
+                                  _isCompact
+                                      ? const ResponsiveCompactSubforum()
+                                      : const ResponsiveExpandedSubforum(),
+                                  SizedBox(
                                         height: 10,
                                         child: Container(
                                           color: themeData.scaffoldBackgroundColor,

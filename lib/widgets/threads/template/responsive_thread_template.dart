@@ -9,6 +9,7 @@ import 'package:a_modern_forum_project/widgets/threads/template/large/large_thre
 import 'package:a_modern_forum_project/widgets/threads/types/images_thread.dart';
 import 'package:a_modern_forum_project/widgets/threads/types/poll_thread.dart';
 import 'package:a_modern_forum_project/widgets/threads/types/text_thread.dart';
+import 'package:a_modern_forum_project/widgets/unhandled_widget/unhandled_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -27,7 +28,7 @@ class ResponsiveThreadTemplate extends StatelessWidget {
     switch (screenSize) {
       case ScreenSize.small:
       case ScreenSize.medium:
-        return const Center(child: Text("Unhandled small/medium screen sizes"));
+      return const UnhandledWidget("ResponsiveThreadTemplate");
       case ScreenSize.large:
       case ScreenSize.extraLarge:
         return LargeThreadTemplate(threadModel);

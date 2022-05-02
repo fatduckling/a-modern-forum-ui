@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
+import 'package:a_modern_forum_project/widgets/text/body2.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -40,12 +41,12 @@ class _StickySidebar extends State<StickySidebar> {
           children: [
             Expanded(
                 child: Container(
-              padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
               decoration: const BoxDecoration(
                 color: Colors.greenAccent,
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
-              child: const Text("Hello world"),
+              child: const TextBody2("Hello world"),
             ))
           ],
         ),
@@ -56,13 +57,13 @@ class _StickySidebar extends State<StickySidebar> {
           children: [
             Expanded(
                 child: Container(
-              key: _floatingWidgetKey,
+                  key: _floatingWidgetKey,
               padding: const EdgeInsets.all(20),
               decoration: const BoxDecoration(
                 color: Colors.red,
                 borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
-              child: const Text("Hello world floater"),
+              child: const TextBody2("Hello world floater"),
             ))
           ],
         ),

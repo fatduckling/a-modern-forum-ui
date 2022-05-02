@@ -1,3 +1,4 @@
+import 'package:a_modern_forum_project/widgets/text/body2.dart';
 import 'package:flutter/material.dart';
 
 /// Small rounded outline button
@@ -34,6 +35,7 @@ class SmallOutlineButton extends StatelessWidget {
             ),
           ),
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               icon == null
                   ? const SizedBox.shrink()
@@ -45,7 +47,9 @@ class SmallOutlineButton extends StatelessWidget {
               SizedBox(
                 width: icon == null ? 0 : 5,
               ),
-              Text(text)
+              Container(
+                  transform: Matrix4.translationValues(0.0, -4.0, 0.0),
+                  child: TextBody2(text))
             ],
           ),
           onPressed: onTap,
