@@ -85,7 +85,7 @@ class LargeThreadTemplate extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: const [
                   Expanded(
-                    child: TextBody2Bold("zPost title goes here"),
+                    child: TextBody2Bold("Post title goes here - 16px bold"),
                   ),
                   SmallRoundedButton(
                     text: "info",
