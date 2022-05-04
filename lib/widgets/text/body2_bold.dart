@@ -20,7 +20,7 @@ class TextBody2Bold extends StatelessWidget {
       text,
       textAlign: textAlign,
       style: TextStyle(
-          fontSize: 16, height: 1, fontWeight: FontWeight.bold, color: color),
+          fontSize: 18, height: 1, fontWeight: FontWeight.bold, color: color),
     );
   }
 }

@@ -2,7 +2,7 @@ import 'package:a_modern_forum_project/models/thread/thread_model.dart';
 import 'package:a_modern_forum_project/routes/view_post.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded/small/small_rounded_button.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
-import 'package:a_modern_forum_project/widgets/text/body1.dart';
+import 'package:a_modern_forum_project/widgets/text/body2_bold.dart';
 import 'package:a_modern_forum_project/widgets/text/body3.dart';
 import 'package:a_modern_forum_project/widgets/threads/template/responsive_thread_template.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
@@ -85,7 +85,7 @@ class LargeThreadTemplate extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: const [
                   Expanded(
-                    child: TextBody("Post title goes here"),
+                    child: TextBody2Bold("Post title goes here"),
                   ),
                   SmallRoundedButton(
                     text: "info",
