@@ -2,7 +2,7 @@ import 'package:a_modern_forum_project/models/thread/thread_model.dart';
 import 'package:a_modern_forum_project/routes/view_post.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded/small/small_rounded_button.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
-import 'package:a_modern_forum_project/widgets/text/body1.dart';
+import 'package:a_modern_forum_project/widgets/text/body2_bold.dart';
 import 'package:a_modern_forum_project/widgets/text/body3.dart';
 import 'package:a_modern_forum_project/widgets/threads/template/responsive_thread_template.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
@@ -44,27 +44,22 @@ class LargeThreadTemplate extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: const [
-                        Icon(
-                          Icons.circle,
-                          size: 36,
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        TextBody3("Posted in "),
-                        TextBody3(
-                          "Other",
-                          decoration: TextDecoration.underline,
-                        ),
-                        TextBody3(" by "),
-                        TextBody3(
-                          "User123",
-                          decoration: TextDecoration.underline,
-                        ),
-                      ]),
+                  Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
+                    Image.asset("assets/images/avatar.png"),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    const TextBody3("Posted in "),
+                    const TextBody3(
+                      "Other",
+                      decoration: TextDecoration.underline,
+                    ),
+                    const TextBody3(" by "),
+                    const TextBody3(
+                      "User123",
+                      decoration: TextDecoration.underline,
+                    ),
+                  ]),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: const [
@@ -88,11 +83,11 @@ class LargeThreadTemplate extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
-                children: [
+                children: const [
                   Expanded(
-                    child: TextBody("zHow to navigate this forum " * 5),
+                    child: TextBody2Bold("Post title goes here"),
                   ),
-                  const SmallRoundedButton(
+                  SmallRoundedButton(
                     text: "info",
                   )
                 ],

@@ -16,7 +16,17 @@ class LargeSortFilterThreads extends StatelessWidget {
   Widget build(BuildContext context) {
     final pageBoundsFlex = ResponsiveDisplay.getPageBoundsFlex(screenSize);
     final mainContainerFlex =
-    ResponsiveDisplay.getMainContainerFlex(screenSize);
+        ResponsiveDisplay.getMainContainerFlex(screenSize);
+    List<Widget> titles = [];
+    for (double i = 8; i < 35; i++) {
+      titles.add(Text(
+        "This is font ${i}px",
+        style: TextStyle(fontSize: i),
+      ));
+      titles.add(SizedBox(
+        height: 10,
+      ));
+    }
     return Column(
       children: [
         Row(
@@ -32,6 +42,9 @@ class LargeSortFilterThreads extends StatelessWidget {
               flex: pageBoundsFlex,
             ),
           ],
+        ),
+        Column(
+          children: titles,
         ),
         const SizedBox(
           height: 20,

@@ -30,7 +30,14 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return Portal(
         child: MaterialApp(
-      theme: ThemeData(fontFamily: 'lato'),
+      theme: ThemeData(
+        scaffoldBackgroundColor: const Color(0xfff0f4f5),
+        primaryColor: const Color(0xff087CBF),
+        colorScheme: Theme.of(context).colorScheme.copyWith(
+              primary: const Color(0xff087CBF),
+            ),
+        fontFamily: 'lato',
+      ),
       title: 'Welcome to flutter',
       home: const Home(),
     ));
