@@ -32,11 +32,9 @@ class _LoadMoreComments extends State<LoadMoreCommentsButton> {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                  transform: Matrix4.translationValues(0, -4, 0.0),
-                  child: Text("Load more comments",
-                      style: AppTextTheme.body2(context)
-                          ?.apply(color: Colors.black))),
+              Text("Load more comments",
+                  style: AppTextTheme.body2(context)
+                      ?.merge(const TextStyle(color: Colors.black, height: 1))),
               isLoading
                   ? Row(
                       children: const [

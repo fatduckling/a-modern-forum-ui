@@ -8,11 +8,10 @@ class BreadcrumbDivider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Transform.rotate(
       angle: 65.0 / 180.0,
-      child: Container(
-        height: 17,
+      child: const SizedBox(
+        height: 15,
         width: 20,
-        transform: Matrix4.translationValues(3.0, 8.0, 0.0),
-        child: const Center(
+        child: Center(
           child: VerticalDivider(
             color: Colors.black26,
           ),

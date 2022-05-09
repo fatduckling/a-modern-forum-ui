@@ -17,8 +17,8 @@ class Hyperlink extends StatelessWidget {
     return InkWell(
         child: Text(
           text,
-          style: AppTextTheme.body2(context)
-              ?.apply(color: Theme.of(context).primaryColor),
+          style: AppTextTheme.body2(context)?.merge(
+              TextStyle(color: Theme.of(context).primaryColor, height: 1)),
         ),
         onTap: onTap);
   }

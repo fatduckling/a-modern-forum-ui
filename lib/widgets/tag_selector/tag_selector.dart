@@ -218,7 +218,8 @@ class _TagSelector extends State<TagSelector> {
                     ),
                     Text(
                       _selectedTag == null ? "Select a tag" : _selectedTag!,
-                      style: AppTextTheme.body2(context),
+                      style: AppTextTheme.body2(context)?.merge(
+                          const TextStyle(color: Colors.white, height: 1)),
                     ),
                   ],
                 ),

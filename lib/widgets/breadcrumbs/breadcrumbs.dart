@@ -19,7 +19,8 @@ class Breadcrumbs extends StatelessWidget {
         breadcrumbs.add(
           Text(
             path,
-            style: AppTextTheme.body2(buildContext),
+            style: AppTextTheme.body2(buildContext)
+                ?.merge(const TextStyle(height: 1)),
           ),
         );
       } else {
@@ -42,7 +43,11 @@ class Breadcrumbs extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(5)),
           color: Colors.white),
       padding: const EdgeInsets.all(20),
-      child: Row(children: [Wrap(children: buildBreadcrumbs(context))]),
+      child: Row(children: [
+        Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            children: buildBreadcrumbs(context))
+      ]),
     );
   }
 }

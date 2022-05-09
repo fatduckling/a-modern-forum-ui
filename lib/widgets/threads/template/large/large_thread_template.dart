@@ -48,7 +48,7 @@ class LargeThreadTemplate extends StatelessWidget {
                     const SizedBox(
                       width: 10,
                     ),
-                    Text("Posted in", style: AppTextTheme.body3(context)),
+                    Text("Posted in ", style: AppTextTheme.body3(context)),
                     Text("Other",
                         style: AppTextTheme.body3(context)
                             ?.apply(decoration: TextDecoration.underline)),

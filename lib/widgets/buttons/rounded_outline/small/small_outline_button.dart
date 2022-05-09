@@ -47,12 +47,10 @@ class SmallOutlineButton extends StatelessWidget {
               SizedBox(
                 width: icon == null ? 0 : 5,
               ),
-              Container(
-                transform: Matrix4.translationValues(0.0, -4.0, 0.0),
-                child: Text(
-                  text,
-                  style: AppTextTheme.body2(context),
-                ),
+              Text(
+                text,
+                style: AppTextTheme.body2(context)
+                    ?.merge(const TextStyle(height: 1)),
               )
             ],
           ),
