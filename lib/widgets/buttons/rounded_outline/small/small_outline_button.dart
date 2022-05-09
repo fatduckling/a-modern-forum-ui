@@ -1,4 +1,4 @@
-import 'package:a_modern_forum_project/widgets/text/body2.dart';
+import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:flutter/material.dart';
 
 /// Small rounded outline button
@@ -48,8 +48,12 @@ class SmallOutlineButton extends StatelessWidget {
                 width: icon == null ? 0 : 5,
               ),
               Container(
-                  transform: Matrix4.translationValues(0.0, -4.0, 0.0),
-                  child: TextBody2(text))
+                transform: Matrix4.translationValues(0.0, -4.0, 0.0),
+                child: Text(
+                  text,
+                  style: AppTextTheme.body2(context),
+                ),
+              )
             ],
           ),
           onPressed: onTap,

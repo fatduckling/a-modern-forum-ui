@@ -1,4 +1,4 @@
-import 'package:a_modern_forum_project/widgets/text/body2.dart';
+import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:flutter/material.dart';
 
 /// Clickable text
@@ -15,9 +15,10 @@ class Hyperlink extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        child: TextBody2(
+        child: Text(
           text,
-          color: Theme.of(context).primaryColor,
+          style: AppTextTheme.body2(context)
+              ?.apply(color: Theme.of(context).primaryColor),
         ),
         onTap: onTap);
   }

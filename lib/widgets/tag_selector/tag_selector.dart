@@ -1,7 +1,6 @@
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
+import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/tag_selector/tag_selector_controller.dart';
-import 'package:a_modern_forum_project/widgets/text/body1.dart';
-import 'package:a_modern_forum_project/widgets/text/body2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:outline_search_bar/outline_search_bar.dart';
@@ -113,9 +112,10 @@ class _TagSelector extends State<TagSelector> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Flexible(
-                        child: TextBody(
+                    Flexible(
+                        child: Text(
                       "Select a tag",
+                      style: AppTextTheme.body1(context),
                     )),
                     InkWell(
                       onTap: () {
@@ -162,7 +162,10 @@ class _TagSelector extends State<TagSelector> {
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(10)),
                                     ),
-                                    child: TextBody("Tag $index"),
+                                    child: Text(
+                                      "Tag $index",
+                                      style: AppTextTheme.body1(context),
+                                    ),
                                   ),
                                   value: tagName,
                                   groupValue: _selectedTag,
@@ -197,16 +200,11 @@ class _TagSelector extends State<TagSelector> {
                 _searchController.text = "";
               });
             },
-            style: ButtonStyle(
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
+            style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
+                  backgroundColor: _selectedTag == null
+                      ? null
+                      : MaterialStateProperty.all<Color>(Colors.green),
                 ),
-              ),
-              backgroundColor: _selectedTag == null
-                  ? null
-                  : MaterialStateProperty.all<Color>(Colors.green),
-            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -218,8 +216,10 @@ class _TagSelector extends State<TagSelector> {
                     const SizedBox(
                       width: 5,
                     ),
-                    TextBody2(
-                        _selectedTag == null ? "Select a tag" : _selectedTag!),
+                    Text(
+                      _selectedTag == null ? "Select a tag" : _selectedTag!,
+                      style: AppTextTheme.body2(context),
+                    ),
                   ],
                 ),
                 Icon(_isMenuOpen

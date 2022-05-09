@@ -1,9 +1,9 @@
 import 'package:a_modern_forum_project/routes/create_post.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
+import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded/medium/medium_rounded_button.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded/small/small_rounded_button.dart';
 import 'package:a_modern_forum_project/widgets/subforum_dropdown/subforum_dropdown.dart';
-import 'package:a_modern_forum_project/widgets/text/h1.dart';
 import 'package:flutter/material.dart';
 
 class LargeSortFilterThreads extends StatelessWidget {
@@ -26,7 +26,10 @@ class LargeSortFilterThreads extends StatelessWidget {
             ),
             Expanded(
               flex: 100 - (2 * pageBoundsFlex),
-              child: const H1("Top Threads"),
+              child: Text(
+                "Top threads",
+                style: AppTextTheme.h1(context),
+              ),
             ),
             Spacer(
               flex: pageBoundsFlex,

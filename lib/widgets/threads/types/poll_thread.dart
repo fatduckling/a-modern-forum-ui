@@ -1,8 +1,7 @@
 import 'package:a_modern_forum_project/models/thread/types/poll_model.dart';
+import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded/small/small_rounded_button.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
-import 'package:a_modern_forum_project/widgets/text/body2.dart';
-import 'package:a_modern_forum_project/widgets/text/body3.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
 
@@ -50,9 +49,13 @@ class _PollThread extends State<PollThread> {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: const [
-                IconWithText(icon: Icons.poll_outlined, text: "750 votes"),
-                TextBody3("234 days remaining")
+              children: [
+                const IconWithText(
+                    icon: Icons.poll_outlined, text: "750 votes"),
+                Text(
+                  "234 days remaining",
+                  style: AppTextTheme.body3(context),
+                ),
               ],
             ),
             const Divider(),
@@ -76,7 +79,10 @@ class _PollThread extends State<PollThread> {
               return CheckboxListTile(
                 contentPadding: EdgeInsets.zero,
                 controlAffinity: ListTileControlAffinity.leading,
-                title: TextBody2(_options[index]),
+                title: Text(
+                  _options[index],
+                  style: AppTextTheme.body2(context),
+                ),
                 value: _checkboxValues[index],
                 onChanged: (newValue) {
                   bool disabled = newValue == null;
@@ -130,7 +136,7 @@ class _PollThread extends State<PollThread> {
         vertical: false,
         barRendererDecorator: charts.BarLabelDecorator<String>(),
         primaryMeasureAxis:
-        const charts.NumericAxisSpec(renderSpec: charts.NoneRenderSpec()),
+            const charts.NumericAxisSpec(renderSpec: charts.NoneRenderSpec()),
       ),
     );
   }

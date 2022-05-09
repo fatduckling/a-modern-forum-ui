@@ -1,4 +1,4 @@
-import 'package:a_modern_forum_project/widgets/text/body1.dart';
+import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:flutter/material.dart';
 
 /// Shows an icon with text
@@ -28,7 +28,10 @@ class IconWithText extends StatelessWidget {
         const SizedBox(
           width: 5,
         ),
-        TextBody(_text),
+        Text(
+          _text,
+          style: AppTextTheme.body1(context),
+        ),
       ],
     );
   }

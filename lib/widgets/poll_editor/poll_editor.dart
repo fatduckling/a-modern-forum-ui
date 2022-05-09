@@ -1,9 +1,7 @@
+import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded_outline/small/small_outline_button.dart';
 import 'package:a_modern_forum_project/widgets/poll_editor/poll_controller.dart';
 import 'package:a_modern_forum_project/widgets/poll_editor/poll_options.dart';
-import 'package:a_modern_forum_project/widgets/text/body2.dart';
-import 'package:a_modern_forum_project/widgets/text/body2_bold.dart';
-import 'package:a_modern_forum_project/widgets/text/body3.dart';
 import 'package:flutter/material.dart';
 
 /// Widget used to allow users to create polls
@@ -53,14 +51,21 @@ class _PollEditor extends State<PollEditor> {
                         ),
                         Flexible(
                             child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.start,
                           crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            TextBody2Bold("Best practices:"),
-                            TextBody2("1. Keep questions neutral"),
-                            TextBody2("2. Keep a balanced set of answers"),
-                            TextBody2("3. Don't ask multiple things at once"),
-                            TextBody2("4. Avoid misleading questions"),
+                          children: [
+                            Text(
+                              "Best practices:",
+                              style: AppTextTheme.body2bold(context),
+                            ),
+                            Text("1. Keep questions neutral",
+                                style: AppTextTheme.body2(context)),
+                            Text("2. Keep a balanced set of answers",
+                                style: AppTextTheme.body2(context)),
+                            Text("3. Don't ask multiple things at once",
+                                style: AppTextTheme.body2(context)),
+                            Text("4. Avoid misleading questions",
+                                style: AppTextTheme.body2(context))
                           ],
                         ))
                       ],
@@ -80,10 +85,10 @@ class _PollEditor extends State<PollEditor> {
                         SmallOutlineButton(
                           onTap: pollController.size() < 10
                               ? () {
-                                  setState(() {
-                                    pollController.addPollOption();
-                                  });
-                                }
+                            setState(() {
+                              pollController.addPollOption();
+                            });
+                          }
                               : null,
                           text: "Add Option",
                           icon: Icons.add_circle_outline_outlined,
@@ -91,7 +96,10 @@ class _PollEditor extends State<PollEditor> {
                         ),
                         Row(
                           children: [
-                            const TextBody3("Voting length:"),
+                            Text(
+                              "Voting length:",
+                              style: AppTextTheme.body3(context),
+                            ),
                             const SizedBox(
                               width: 5,
                             ),
@@ -104,8 +112,10 @@ class _PollEditor extends State<PollEditor> {
                                   for (var day in [1, 2, 3, 5, 7, 9])
                                     DropdownMenuItem<String>(
                                       value: day.toString(),
-                                      child: TextBody2(
-                                          "$day day${day == 1 ? '' : "s"}"),
+                                      child: Text(
+                                        "$day day${day == 1 ? '' : "s"}",
+                                        style: AppTextTheme.body2(context),
+                                      ),
                                     )
                                 ])
                           ],

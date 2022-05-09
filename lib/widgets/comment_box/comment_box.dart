@@ -1,14 +1,11 @@
 import 'package:a_modern_forum_project/models/comments/comment_model.dart';
 import 'package:a_modern_forum_project/models/comments/comments_model.dart';
+import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/utils/time_util.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded_outline/small/small_outline_button.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded_text_button/rounded_text_button.dart';
 import 'package:a_modern_forum_project/widgets/comment_editor/comment_editor.dart';
 import 'package:a_modern_forum_project/widgets/load_more_comments/load_more_comments.dart';
-import 'package:a_modern_forum_project/widgets/text/body2_bold.dart';
-import 'package:a_modern_forum_project/widgets/text/body2_light.dart';
-import 'package:a_modern_forum_project/widgets/text/body3.dart';
-import 'package:a_modern_forum_project/widgets/text/h1.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
 import 'package:flutter/material.dart';
 
@@ -76,17 +73,17 @@ class _CommentBox extends State<CommentBox> {
             Row(
               children: [
                 Flexible(
-                  child: TextBody2Bold(
+                  child: Text(
                     comment.user,
+                    style: AppTextTheme.body2bold(context),
                   ),
                 ),
                 const SizedBox(
                   width: 5,
                 ),
-                TextBody2Light(
-                  TimeUtil.whenTimestampAgo(comment.timestamp),
-                  color: Colors.black54,
-                ),
+                Text(TimeUtil.whenTimestampAgo(comment.timestamp),
+                    style: AppTextTheme.body2light(context)
+                        ?.apply(color: Colors.black54)),
                 const SizedBox(
                   width: 5,
                 ),
@@ -97,7 +94,14 @@ class _CommentBox extends State<CommentBox> {
               ],
             ),
             Row(
-              children: [Flexible(child: TextBody3(comment.response))],
+              children: [
+                Flexible(
+                  child: Text(
+                    comment.response,
+                    style: AppTextTheme.body3(context),
+                  ),
+                )
+              ],
             ),
             IntrinsicHeight(
                 child: Row(
@@ -206,7 +210,10 @@ class _CommentBox extends State<CommentBox> {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        H1("$commentCount comment${(commentCount == 1 ? '' : 's')}"),
+        Text(
+          "$commentCount comment${(commentCount == 1 ? '' : 's')}",
+          style: AppTextTheme.h1(context),
+        ),
         const SizedBox(
           height: 15,
         ),

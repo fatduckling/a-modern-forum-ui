@@ -1,5 +1,5 @@
 import 'package:a_modern_forum_project/models/thread/types/text_model.dart';
-import 'package:a_modern_forum_project/widgets/text/body3.dart';
+import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:flutter/material.dart';
 
 /// Thread body for text threads
@@ -15,11 +15,11 @@ class TextThread extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-            child: TextBody3(
-          model.text,
-          overflow: isCompact ? TextOverflow.fade : null,
-          maxLines: isCompact ? 6 : null,
-        )),
+          child: Text("model.text",
+              overflow: isCompact ? TextOverflow.fade : null,
+              maxLines: isCompact ? 6 : null,
+              style: AppTextTheme.body3(context)),
+        ),
       ],
     );
   }

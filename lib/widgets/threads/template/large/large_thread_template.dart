@@ -1,9 +1,8 @@
 import 'package:a_modern_forum_project/models/thread/thread_model.dart';
 import 'package:a_modern_forum_project/routes/view_post.dart';
+import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded/small/small_rounded_button.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
-import 'package:a_modern_forum_project/widgets/text/body2_bold.dart';
-import 'package:a_modern_forum_project/widgets/text/body3.dart';
 import 'package:a_modern_forum_project/widgets/threads/template/responsive_thread_template.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
 import 'package:flutter/material.dart';
@@ -49,25 +48,23 @@ class LargeThreadTemplate extends StatelessWidget {
                     const SizedBox(
                       width: 10,
                     ),
-                    const TextBody3("Posted in "),
-                    const TextBody3(
-                      "Other",
-                      decoration: TextDecoration.underline,
-                    ),
-                    const TextBody3(" by "),
-                    const TextBody3(
-                      "User123",
-                      decoration: TextDecoration.underline,
-                    ),
+                    Text("Posted in", style: AppTextTheme.body3(context)),
+                    Text("Other",
+                        style: AppTextTheme.body3(context)
+                            ?.apply(decoration: TextDecoration.underline)),
+                    Text(" by ", style: AppTextTheme.body3(context)),
+                    Text("User123",
+                        style: AppTextTheme.body3(context)
+                            ?.apply(decoration: TextDecoration.underline)),
                   ]),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      TextBody3("6 hours ago"),
-                      SizedBox(
+                    children: [
+                      Text("6 hours ago", style: AppTextTheme.body3(context)),
+                      const SizedBox(
                         width: 10,
                       ),
-                      Icon(
+                      const Icon(
                         Icons.bookmark_border_outlined,
                         size: 36,
                       ),
@@ -83,11 +80,14 @@ class LargeThreadTemplate extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
-                children: const [
+                children: [
                   Expanded(
-                    child: TextBody2Bold("Post title goes here - 16px bold"),
-                  ),
-                  SmallRoundedButton(
+                      child: Text(
+                    "Post title goes here",
+                    style: AppTextTheme.body1(context)
+                        ?.merge(const TextStyle(fontWeight: FontWeight.bold)),
+                  )),
+                  const SmallRoundedButton(
                     text: "info",
                   )
                 ],

@@ -1,4 +1,3 @@
-import 'package:a_modern_forum_project/widgets/text/body2_bold.dart';
 import 'package:flutter/material.dart';
 
 class SmallRoundedButton extends StatelessWidget {
@@ -16,14 +15,7 @@ class SmallRoundedButton extends StatelessWidget {
     return SizedBox(
         height: 40,
         child: ElevatedButton(
-          style: ButtonStyle(
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20.0),
-              ),
-            ),
-          ),
-          child: TextBody2Bold(text),
+          child: Text(text),
           onPressed: onTap ?? () {},
         ));
   }

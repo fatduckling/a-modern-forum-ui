@@ -1,5 +1,5 @@
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
-import 'package:a_modern_forum_project/widgets/text/body1.dart';
+import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:provider/provider.dart';
@@ -64,8 +64,8 @@ class _SubforumDropdown extends State<SubforumDropdown> {
           width: _overlayWidth,
           // TODO make 100% width on mobiles
           height: 400,
-          child: const Center(
-            child: TextBody("Hello"),
+          child: Center(
+            child: Text("Hello", style: AppTextTheme.body1(context)),
           ),
         ),
         child: Container(
@@ -88,18 +88,14 @@ class _SubforumDropdown extends State<SubforumDropdown> {
                 _isMenuOpen = hasFocus;
               });
             },
-            style: ButtonStyle(
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20.0),
-                ),
-              ),
-            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                const TextBody("All Subforums"),
+                Text("All Subforums",
+                    style: AppTextTheme.body2(context)
+                        ?.apply(color: Colors.white)
+                        .merge(const TextStyle(height: 1))),
                 Icon(_isMenuOpen
                     ? Icons.keyboard_arrow_up
                     : Icons.keyboard_arrow_down),

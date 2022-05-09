@@ -1,5 +1,6 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
+import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/buttons/rounded/medium/medium_rounded_button.dart';
 import 'package:a_modern_forum_project/widgets/file_upload/file_upload.dart';
 import 'package:a_modern_forum_project/widgets/poll_editor/poll_editor.dart';
@@ -8,7 +9,6 @@ import 'package:a_modern_forum_project/widgets/scaffold/main_scaffold.dart';
 import 'package:a_modern_forum_project/widgets/subforum_dropdown/subforum_dropdown.dart';
 import 'package:a_modern_forum_project/widgets/tag_selector/tag_selector.dart';
 import 'package:a_modern_forum_project/widgets/tag_selector/tag_selector_controller.dart';
-import 'package:a_modern_forum_project/widgets/text/h1.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -111,7 +111,10 @@ class _CreatePostRoute extends State<CreatePostRoute>
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const H1("Create a post"),
+                      Text(
+                        "Create a post",
+                        style: AppTextTheme.h1(context),
+                      ),
                       const SizedBox(
                         height: 30,
                       ),

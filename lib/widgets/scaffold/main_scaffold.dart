@@ -1,8 +1,8 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
+import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/appbar/responsive_app_bar.dart';
-import 'package:a_modern_forum_project/widgets/text/body2.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -34,21 +34,22 @@ class MainScaffold extends StatelessWidget {
                   // Important: Remove any padding from the ListView.
                   padding: EdgeInsets.zero,
                   children: [
-                    const DrawerHeader(
-                      decoration: BoxDecoration(
+                    DrawerHeader(
+                      decoration: const BoxDecoration(
                         color: Colors.blue,
                       ),
-                      child: TextBody2('Drawer Header'),
+                      child: Text("Drawer Header",
+                          style: AppTextTheme.body2(context)),
                     ),
                     ListTile(
-                      title: const TextBody2('Item 1'),
+                      title: Text("Item1", style: AppTextTheme.body2(context)),
                       onTap: () {
                         // Update the state of the app.
                         // ...
                       },
                     ),
                     ListTile(
-                      title: const TextBody2('Item 2'),
+                      title: Text("Item2", style: AppTextTheme.body2(context)),
                       onTap: () {
                         // Update the state of the app.
                         // ...

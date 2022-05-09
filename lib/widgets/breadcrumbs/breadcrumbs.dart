@@ -1,6 +1,6 @@
+import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/breadcrumbs/breadcrumb_divider.dart';
 import 'package:a_modern_forum_project/widgets/hyperlink/hyperlink.dart';
-import 'package:a_modern_forum_project/widgets/text/body2.dart';
 import 'package:flutter/material.dart';
 
 /// Displays a breadcrumbs widget
@@ -10,13 +10,18 @@ class Breadcrumbs extends StatelessWidget {
 
   const Breadcrumbs(this.paths, {Key? key}) : super(key: key);
 
-  List<Widget> buildBreadcrumbs() {
+  List<Widget> buildBreadcrumbs(BuildContext buildContext) {
     List<Widget> breadcrumbs = [];
     int index = 0;
     for (String path in paths) {
       bool isLast = (++index) == paths.length;
       if (isLast) {
-        breadcrumbs.add(TextBody2(path));
+        breadcrumbs.add(
+          Text(
+            path,
+            style: AppTextTheme.body2(buildContext),
+          ),
+        );
       } else {
         breadcrumbs.addAll([
           Hyperlink(
@@ -37,7 +42,7 @@ class Breadcrumbs extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(5)),
           color: Colors.white),
       padding: const EdgeInsets.all(20),
-      child: Row(children: [Wrap(children: buildBreadcrumbs())]),
+      child: Row(children: [Wrap(children: buildBreadcrumbs(context))]),
     );
   }
 }

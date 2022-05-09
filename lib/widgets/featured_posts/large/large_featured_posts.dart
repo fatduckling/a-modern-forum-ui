@@ -1,17 +1,6 @@
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
+import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/featured_post/featured_post.dart';
-import 'package:a_modern_forum_project/widgets/text/body1.dart';
-import 'package:a_modern_forum_project/widgets/text/body2.dart';
-import 'package:a_modern_forum_project/widgets/text/body2_bold.dart';
-import 'package:a_modern_forum_project/widgets/text/body2_light.dart';
-import 'package:a_modern_forum_project/widgets/text/body3.dart';
-import 'package:a_modern_forum_project/widgets/text/h1.dart';
-import 'package:a_modern_forum_project/widgets/text/h2.dart';
-import 'package:a_modern_forum_project/widgets/text/h2_bold.dart';
-import 'package:a_modern_forum_project/widgets/text/h3.dart';
-import 'package:a_modern_forum_project/widgets/text/h3_bold.dart';
-import 'package:a_modern_forum_project/widgets/text/h4.dart';
-import 'package:a_modern_forum_project/widgets/text/h4_bold.dart';
 import 'package:flutter/material.dart';
 
 class LargeFeaturedPosts extends StatelessWidget {
@@ -34,34 +23,8 @@ class LargeFeaturedPosts extends StatelessWidget {
     final int featuredPostWidth = ((freeSpace / numberOfFeaturedPosts) * 0.99).round();
     final int featuredPostSpacerWidth = ((freeSpace - (featuredPostWidth * numberOfFeaturedPosts)) /
                 (numberOfFeaturedPosts - 1)).round();
+    // @formatter:on
 
-    List<Widget> titles = [];
-    for (double i = 8; i < 35; i++) {
-      titles.add(Text(
-        "This is font ${i}px",
-        style: TextStyle(fontSize: i),
-      ));
-      titles.add(const SizedBox(
-        height: 10,
-      ));
-    }
-
-    titles.add(H1("H1")); titles.add(const SizedBox(height: 10,));
-    titles.add(H2("H2")); titles.add(const SizedBox(height: 10,));
-    titles.add(H2Bold("H2 Bold")); titles.add(const SizedBox(height: 10,));
-    titles.add(H3("H3")); titles.add(const SizedBox(height: 10,));
-    titles.add(H3Bold("H3 bold")); titles.add(const SizedBox(height: 10,));
-    titles.add(H4("H4")); titles.add(const SizedBox(height: 10,));
-    titles.add(H4Bold("H4 bold")); titles.add(const SizedBox(height: 40,));
-
-    titles.add(TextBody("Body1")); titles.add(const SizedBox(height: 10,));
-    titles.add(TextBody2("Body2")); titles.add(const SizedBox(height: 10,));
-    titles.add(TextBody2Bold("Body2 bold")); titles.add(const SizedBox(height: 10,));
-    titles.add(TextBody2Light("Body2 light")); titles.add(const SizedBox(height: 10,));
-    titles.add(TextBody3("Body3")); titles.add(const SizedBox(height: 10,));
-
-
-   // @formatter:on
     return Container(
         padding: const EdgeInsets.only(top: 20),
         child: Column(
@@ -76,7 +39,10 @@ class LargeFeaturedPosts extends StatelessWidget {
                 ),
                 Expanded(
                   flex: freeSpace,
-                  child: const H1("Featured topics"),
+                  child: Text(
+                    "Featured topics",
+                    style: AppTextTheme.h3(context),
+                  ),
                 ),
                 Spacer(
                   flex: pageBoundsFlex * multiplier,
@@ -85,9 +51,6 @@ class LargeFeaturedPosts extends StatelessWidget {
             ),
             const SizedBox(
               height: 20,
-            ),
-            Column(
-              children: titles,
             ),
             Row(
               children: [
