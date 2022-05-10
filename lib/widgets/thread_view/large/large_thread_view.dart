@@ -28,6 +28,7 @@ class LargeThreadView extends StatelessWidget {
             flex: mainContainerFlex,
             child: ListView.builder(
                 scrollDirection: Axis.vertical,
+                padding: EdgeInsets.zero,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemCount: 10,
@@ -59,9 +60,6 @@ class LargeThreadView extends StatelessWidget {
                     );
                   }
                 })),
-        const SizedBox(
-          width: 10,
-        ),
         Expanded(
             flex: 100 - ((2 * pageBoundsFlex) + mainContainerFlex),
             child: const StickySidebar()),

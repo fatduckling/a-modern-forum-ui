@@ -1,6 +1,7 @@
 import 'package:a_modern_forum_project/models/thread/types/poll_model.dart';
+import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/utils/text_theme.dart';
-import 'package:a_modern_forum_project/widgets/buttons/rounded/small/small_rounded_button.dart';
+import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/material.dart';
@@ -103,7 +104,8 @@ class _PollThread extends State<PollThread> {
         const SizedBox(
           height: 10,
         ),
-        SmallRoundedButton(
+        NormalButton(
+          size: ScreenSize.small,
           text: "Vote",
           onTap: () {
             setState(() {

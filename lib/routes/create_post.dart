@@ -1,7 +1,7 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/utils/text_theme.dart';
-import 'package:a_modern_forum_project/widgets/buttons/rounded/medium/medium_rounded_button.dart';
+import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
 import 'package:a_modern_forum_project/widgets/file_upload/file_upload.dart';
 import 'package:a_modern_forum_project/widgets/poll_editor/poll_editor.dart';
 import 'package:a_modern_forum_project/widgets/rich_text_field/rich_text_field.dart';
@@ -96,7 +96,7 @@ class _CreatePostRoute extends State<CreatePostRoute>
     return MainScaffold(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
       const SizedBox(
-        height: 50,
+        height: 20,
       ),
       Row(
           mainAxisSize: MainAxisSize.max,
@@ -213,7 +213,7 @@ class _CreatePostRoute extends State<CreatePostRoute>
                       const SizedBox(
                         height: 10,
                       ),
-                      const MediumRoundedButton(
+                      const NormalButton(
                         text: "Create Post",
                         borderRadius: 15,
                       )

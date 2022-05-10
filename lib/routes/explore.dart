@@ -26,7 +26,7 @@ class _ExploreRoute extends State<ExploreRoute> {
     return MainScaffold(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
       const SizedBox(
-        height: 50,
+        height: 20,
       ),
       Row(
         children: [

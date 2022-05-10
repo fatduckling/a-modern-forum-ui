@@ -2,8 +2,8 @@ import 'package:a_modern_forum_project/models/comments/comment_model.dart';
 import 'package:a_modern_forum_project/models/comments/comments_model.dart';
 import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/utils/time_util.dart';
-import 'package:a_modern_forum_project/widgets/buttons/rounded_outline/small/small_outline_button.dart';
-import 'package:a_modern_forum_project/widgets/buttons/rounded_text_button/rounded_text_button.dart';
+import 'package:a_modern_forum_project/widgets/buttons/bordered_button.dart';
+import 'package:a_modern_forum_project/widgets/buttons/plain_button.dart';
 import 'package:a_modern_forum_project/widgets/comment_editor/comment_editor.dart';
 import 'package:a_modern_forum_project/widgets/load_more_comments/load_more_comments.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
@@ -116,8 +116,8 @@ class _CommentBox extends State<CommentBox> {
                       const VerticalDivider(
                         color: Colors.black45,
                       ),
-                      RoundedTextButton(
-                        callback: comment.totalReplies <= 0
+                      PlainButton(
+                        onTap: comment.totalReplies <= 0
                             ? null
                             : () {
                                 setState(() {
@@ -135,7 +135,7 @@ class _CommentBox extends State<CommentBox> {
                       const SizedBox(
                         width: 5,
                       ),
-                      SmallOutlineButton(
+                      BorderedButton(
                         text: comment.showReplyTextEditor
                             ? "Hide reply editor"
                             : "Reply",

@@ -1,15 +1,15 @@
 import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:flutter/material.dart';
 
-/// Rounded text button
-class RoundedTextButton extends StatelessWidget {
-  /// Hyperlink text
+/// Plain button: no border and background
+class PlainButton extends StatelessWidget {
+  /// button text
   final String text;
 
   /// On-click function of the hyperlink
-  final VoidCallback? callback;
+  final VoidCallback? onTap;
 
-  const RoundedTextButton({required this.text, this.callback, Key? key})
+  const PlainButton({required this.text, this.onTap, Key? key})
       : super(key: key);
 
   @override
@@ -18,7 +18,7 @@ class RoundedTextButton extends StatelessWidget {
       color: Colors.transparent,
       child: InkWell(
           borderRadius: BorderRadius.circular(20.0),
-          onTap: callback,
+          onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.all(10),
             child: Text(

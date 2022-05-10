@@ -1,5 +1,5 @@
 import 'package:a_modern_forum_project/utils/text_theme.dart';
-import 'package:a_modern_forum_project/widgets/buttons/rounded_outline/small/small_outline_button.dart';
+import 'package:a_modern_forum_project/widgets/buttons/bordered_button.dart';
 import 'package:a_modern_forum_project/widgets/poll_editor/poll_controller.dart';
 import 'package:a_modern_forum_project/widgets/poll_editor/poll_options.dart';
 import 'package:flutter/material.dart';
@@ -82,13 +82,13 @@ class _PollEditor extends State<PollEditor> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        SmallOutlineButton(
+                        BorderedButton(
                           onTap: pollController.size() < 10
                               ? () {
-                            setState(() {
-                              pollController.addPollOption();
-                            });
-                          }
+                                  setState(() {
+                                    pollController.addPollOption();
+                                  });
+                                }
                               : null,
                           text: "Add Option",
                           icon: Icons.add_circle_outline_outlined,

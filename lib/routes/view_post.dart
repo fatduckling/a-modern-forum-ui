@@ -22,7 +22,7 @@ class ViewPostRoute extends StatelessWidget {
     return MainScaffold(
         child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
       const SizedBox(
-        height: 50,
+        height: 20,
       ),
       // first row: breadcrumbs
       Row(

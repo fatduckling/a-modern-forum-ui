@@ -24,13 +24,12 @@ class LargeFeaturedPosts extends StatelessWidget {
     final int featuredPostSpacerWidth = ((freeSpace - (featuredPostWidth * numberOfFeaturedPosts)) /
                 (numberOfFeaturedPosts - 1)).round();
     // @formatter:on
-
     return Container(
         padding: const EdgeInsets.only(top: 20),
         child: Column(
           children: [
             const SizedBox(
-              height: 50,
+              height: 20,
             ),
             Row(
               children: [

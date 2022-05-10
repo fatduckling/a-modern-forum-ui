@@ -15,11 +15,11 @@ class HomeRoute extends StatelessWidget {
       children: const [
         ResponsiveFeaturedPosts(),
         SizedBox(
-          height: 50,
+          height: 20,
         ),
         ResponsiveSortFilterThreads(),
         SizedBox(
-          height: 50,
+          height: 10,
         ),
         ResponsiveThreadView()
       ],

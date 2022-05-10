@@ -1,18 +1,16 @@
-import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/routes/explore.dart';
 import 'package:a_modern_forum_project/routes/home.dart';
 import 'package:a_modern_forum_project/utils/text_theme.dart';
+import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
 import 'package:a_modern_forum_project/widgets/search_bar/search_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class LargeAppBar extends StatelessWidget {
   const LargeAppBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    ScreenResizeObserver observer = context.watch<ScreenResizeObserver>();
-    final double width = observer.windowWidth;
+    const activeTextStyle = TextStyle(fontWeight: FontWeight.bold);
     return AppBar(
       automaticallyImplyLeading: true,
       leadingWidth: 300,
@@ -30,8 +28,8 @@ class LargeAppBar extends StatelessWidget {
             ),
             Flexible(
                 child: Text(
-              'Name: $width ${observer.screenSize.name}',
-              style: AppTextTheme.h4(context)?.apply(color: Colors.white),
+              'Forum Name',
+              style: AppTextTheme.h4(context),
             ))
           ],
         ),
@@ -39,7 +37,7 @@ class LargeAppBar extends StatelessWidget {
       title: Row(
         children: <Widget>[
           Expanded(
-            flex: 2,
+            flex: 1,
             child: SizedBox(
               height: kToolbarHeight,
               child: TextButton(
@@ -51,14 +49,13 @@ class LargeAppBar extends StatelessWidget {
                 },
                 child: Text(
                   "Home",
-                  style:
-                      AppTextTheme.body1(context)?.apply(color: Colors.white),
+                  style: AppTextTheme.body1(context)?.merge(activeTextStyle),
                 ),
               ),
             ),
           ),
           Expanded(
-            flex: 2,
+            flex: 1,
             child: SizedBox(
                 height: kToolbarHeight,
                 child: TextButton(
@@ -71,27 +68,31 @@ class LargeAppBar extends StatelessWidget {
                   },
                   child: Text(
                     "Explore",
-                    style:
-                        AppTextTheme.body1(context)?.apply(color: Colors.white),
+                    style: AppTextTheme.body1(context),
                   ),
                 )),
+          ),
+          const SizedBox(
+            width: 5,
           ),
           const Expanded(
             flex: 5,
             child: SearchBar(),
           ),
-          Expanded(
+          const SizedBox(
+            width: 5,
+          ),
+          const Spacer(
+            flex: 1,
+          ),
+          const Expanded(
               flex: 1,
-              child: SizedBox(
-                  height: kToolbarHeight,
-                  child: TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      "Login",
-                      style: AppTextTheme.body1(context)
-                          ?.apply(color: Colors.white),
-                    ),
-                  ))),
+              child: NormalButton(
+                text: "Login",
+              )),
+          const Spacer(
+            flex: 1,
+          ),
         ],
       ),
     );

@@ -94,4 +94,18 @@ class ResponsiveDisplay {
       return ScreenSize.small;
     }
   }
+
+  /// Get the height of a button based on its size
+  static double getButtonHeight(final ScreenSize screenSize) {
+    switch (screenSize) {
+      case ScreenSize.small:
+        return 40;
+      case ScreenSize.medium:
+        return 50;
+      case ScreenSize.large:
+        return 60;
+      case ScreenSize.extraLarge:
+        return 70;
+    }
+  }
 }

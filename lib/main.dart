@@ -34,6 +34,13 @@ class App extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xfff0f4f5),
         primaryColor: const Color(0xff087CBF),
+        appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
+        outlinedButtonTheme: OutlinedButtonThemeData(
+            style: ButtonStyle(
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          ),
+        )),
         elevatedButtonTheme: ElevatedButtonThemeData(
             style: TextButton.styleFrom(
                 textStyle: AppTextTheme.body2bold(context)

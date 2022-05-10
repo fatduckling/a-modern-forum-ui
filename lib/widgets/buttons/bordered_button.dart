@@ -1,8 +1,12 @@
+import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:flutter/material.dart';
 
-/// Small rounded outline button
-class SmallOutlineButton extends StatelessWidget {
+/// Bordered button: border without background color
+class BorderedButton extends StatelessWidget {
+  /// Size of the button
+  final ScreenSize size;
+
   /// Button text
   final String text;
 
@@ -15,25 +19,25 @@ class SmallOutlineButton extends StatelessWidget {
   /// Icon
   final IconData? icon;
 
-  const SmallOutlineButton(
-      {required this.text, Key? key, this.onTap, this.colour, this.icon})
+  const BorderedButton(
+      {required this.text,
+      this.size = ScreenSize.medium,
+      Key? key,
+      this.onTap,
+      this.colour,
+      this.icon})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: icon == null ? 30 : 30,
+        height: ResponsiveDisplay.getButtonHeight(size),
         child: OutlinedButton(
-          style: ButtonStyle(
-            foregroundColor: colour == null
-                ? null
-                : MaterialStateProperty.all<Color>(colour!),
-            shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-              RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  side: const BorderSide(width: 12, color: Colors.red)),
-            ),
-          ),
+          style: Theme.of(context).outlinedButtonTheme.style?.merge(ButtonStyle(
+                foregroundColor: colour == null
+                    ? null
+                    : MaterialStateProperty.all<Color>(colour!),
+              )),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [

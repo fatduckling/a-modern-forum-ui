@@ -32,43 +32,46 @@ class _StickySidebar extends State<StickySidebar> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          children: [
-            Expanded(
-                child: Container(
-                  padding: const EdgeInsets.all(20),
-              decoration: const BoxDecoration(
-                color: Colors.greenAccent,
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
-              child: Text("Hello world", style: AppTextTheme.body2(context)),
-            ))
-          ],
-        ),
-        SizedBox(
-          height: _fixedYPositionOffset,
-        ),
-        Row(
-          children: [
-            Expanded(
-                child: Container(
-                  key: _floatingWidgetKey,
-              padding: const EdgeInsets.all(20),
-              decoration: const BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-              ),
-              child: Text("Hello world floater",
-                  style: AppTextTheme.body2(context)),
-            ))
-          ],
-        ),
-      ],
+    return Container(
+      padding: EdgeInsets.only(left: 5, right: 5),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            children: [
+              Expanded(
+                  child: Container(
+                padding: const EdgeInsets.all(20),
+                decoration: const BoxDecoration(
+                  color: Colors.greenAccent,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                child: Text("Hello world", style: AppTextTheme.body2(context)),
+              ))
+            ],
+          ),
+          SizedBox(
+            height: _fixedYPositionOffset,
+          ),
+          Row(
+            children: [
+              Expanded(
+                  child: Container(
+                key: _floatingWidgetKey,
+                padding: const EdgeInsets.all(20),
+                decoration: const BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.all(Radius.circular(10)),
+                ),
+                child: Text("Hello world floater",
+                    style: AppTextTheme.body2(context)),
+              ))
+            ],
+          ),
+        ],
+      ),
     );
   }
 

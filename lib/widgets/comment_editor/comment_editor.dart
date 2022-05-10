@@ -1,4 +1,5 @@
-import 'package:a_modern_forum_project/widgets/buttons/rounded/small/small_rounded_button.dart';
+import 'package:a_modern_forum_project/utils/responsive_display.dart';
+import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
 import 'package:a_modern_forum_project/widgets/rich_text_field/rich_text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +37,8 @@ class CommentEditor extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const SmallRoundedButton(
+          const NormalButton(
+            size: ScreenSize.small,
             text: "Post comment",
           ),
         ]))

@@ -73,12 +73,6 @@ class _SubforumDropdown extends State<SubforumDropdown> {
           width: 300,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20.0),
-            boxShadow: const [
-              BoxShadow(
-                color: Colors.black38,
-                blurRadius: 6,
-              ),
-            ],
           ),
           child: ElevatedButton(
             key: _buttonKey,

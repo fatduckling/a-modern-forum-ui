@@ -1,6 +1,5 @@
 import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/breadcrumbs/breadcrumb_divider.dart';
-import 'package:a_modern_forum_project/widgets/hyperlink/hyperlink.dart';
 import 'package:flutter/material.dart';
 
 /// Displays a breadcrumbs widget
@@ -25,10 +24,13 @@ class Breadcrumbs extends StatelessWidget {
         );
       } else {
         breadcrumbs.addAll([
-          Hyperlink(
-            text: path,
-            onTap: () {},
-          ),
+          InkWell(
+              child: Text(
+                path,
+                style: AppTextTheme.body2(buildContext)?.merge(TextStyle(
+                    color: Theme.of(buildContext).primaryColor, height: 1)),
+              ),
+              onTap: () {}),
           const BreadcrumbDivider()
         ]);
       }

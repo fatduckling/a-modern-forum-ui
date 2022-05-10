@@ -1,6 +1,11 @@
+import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:flutter/material.dart';
 
-class MediumRoundedButton extends StatelessWidget {
+/// Normal button: border with background colour
+class NormalButton extends StatelessWidget {
+  /// Size of the button
+  final ScreenSize size;
+
   /// Button text
   final String text;
 
@@ -10,14 +15,18 @@ class MediumRoundedButton extends StatelessWidget {
   /// Adjust the border radius
   final double borderRadius;
 
-  const MediumRoundedButton(
-      {required this.text, this.borderRadius = 25, Key? key, this.onTap})
+  const NormalButton(
+      {required this.text,
+      this.borderRadius = 25,
+      this.size = ScreenSize.medium,
+      Key? key,
+      this.onTap})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-        height: 50,
+        height: ResponsiveDisplay.getButtonHeight(size),
         child: ElevatedButton(
           child: Text(
             text,

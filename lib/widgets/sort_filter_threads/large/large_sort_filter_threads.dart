@@ -1,8 +1,8 @@
 import 'package:a_modern_forum_project/routes/create_post.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/utils/text_theme.dart';
-import 'package:a_modern_forum_project/widgets/buttons/rounded/medium/medium_rounded_button.dart';
-import 'package:a_modern_forum_project/widgets/buttons/rounded/small/small_rounded_button.dart';
+import 'package:a_modern_forum_project/widgets/buttons/bordered_button.dart';
+import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
 import 'package:a_modern_forum_project/widgets/subforum_dropdown/subforum_dropdown.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +17,7 @@ class LargeSortFilterThreads extends StatelessWidget {
     final pageBoundsFlex = ResponsiveDisplay.getPageBoundsFlex(screenSize);
     final mainContainerFlex =
         ResponsiveDisplay.getMainContainerFlex(screenSize);
+
     return Column(
       children: [
         Row(
@@ -47,24 +48,33 @@ class LargeSortFilterThreads extends StatelessWidget {
             Expanded(
               flex: mainContainerFlex,
               child: Container(
-                  padding: const EdgeInsets.only(left: 30),
-                  height: 100,
-                  decoration: const BoxDecoration(
+                  padding: const EdgeInsets.only(
+                      left: 30, right: 30, top: 15, bottom: 15),
+                  decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    border: Border.all(color: Colors.black26),
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
-                        children: const [
-                          SmallRoundedButton(
+                        children: [
+                          Text(
+                            "Filter:",
+                            style: AppTextTheme.body1(context),
+                          ),
+                          SizedBox(
+                            width: 40,
+                          ),
+                          BorderedButton(
                             text: "Popular",
                           ),
                           SizedBox(
                             width: 40,
                           ),
-                          SmallRoundedButton(
+                          NormalButton(
+                            size: ScreenSize.small,
                             text: "New",
                           ),
                         ],
@@ -80,7 +90,7 @@ class LargeSortFilterThreads extends StatelessWidget {
               flex: 100 - ((2 * pageBoundsFlex) + mainContainerFlex),
               child: Padding(
                   padding: const EdgeInsets.only(left: 20),
-                  child: MediumRoundedButton(
+                  child: NormalButton(
                     text: "Start thread",
                     onTap: () => Navigator.push(
                       context,
