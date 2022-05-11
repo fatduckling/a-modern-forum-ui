@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
-import 'package:a_modern_forum_project/utils/text_theme.dart';
+import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -33,7 +33,7 @@ class _StickySidebar extends State<StickySidebar> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(left: 5, right: 5),
+      padding: const EdgeInsets.only(left: 5, right: 5),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,

@@ -1,7 +1,7 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
+import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
-import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/appbar/responsive_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

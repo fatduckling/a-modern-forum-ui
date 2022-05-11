@@ -1,6 +1,6 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
+import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
-import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/compact_subforum/responsive_compact_subforum.dart';
 import 'package:a_modern_forum_project/widgets/expanded_subforum/responsive_expanded_subforum.dart';
 import 'package:a_modern_forum_project/widgets/scaffold/main_scaffold.dart';

@@ -1,5 +1,5 @@
+import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
-import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
 import 'package:a_modern_forum_project/widgets/text/error.dart';
 import 'package:flutter/material.dart';
@@ -58,30 +58,30 @@ class _WebFileUpload extends State<WebFileUpload> {
           Center(
             child: hasError
                 ? ErrorText(
-                    "Something went wrong when trying to load the file upload module. If this issue keeps occurring, please contact support. Error: $errorText")
+                "Something went wrong when trying to load the file upload module. If this issue keeps occurring, please contact support. Error: $errorText")
                 : Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.image_outlined,
-                        size: 128,
-                        color: isHovering ? Colors.black45 : Colors.black26,
-                      ),
-                      Text(
-                        "Drag your photos or videos here to start uploading.",
-                        style: AppTextTheme.body2(context),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      NormalButton(
-                        size: ScreenSize.small,
-                        text: "Browse files",
-                        onTap: () {},
-                      ),
-                    ],
-                  ),
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.image_outlined,
+                  size: 128,
+                  color: isHovering ? Colors.black45 : Colors.black26,
+                ),
+                Text(
+                  "Drag your photos or videos here to start uploading.",
+                  style: AppTextTheme.body2(context),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                NormalButton(
+                  size: ScreenSize.small,
+                  text: "Browse files",
+                  onTap: () {},
+                ),
+              ],
+            ),
           )
         ],
       ),

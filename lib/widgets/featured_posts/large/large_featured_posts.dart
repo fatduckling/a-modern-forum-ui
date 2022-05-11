@@ -1,5 +1,5 @@
+import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
-import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/featured_post/featured_post.dart';
 import 'package:flutter/material.dart';
 

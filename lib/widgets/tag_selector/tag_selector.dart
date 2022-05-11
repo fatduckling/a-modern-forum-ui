@@ -1,5 +1,6 @@
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
-import 'package:a_modern_forum_project/utils/text_theme.dart';
+import 'package:a_modern_forum_project/themes/button_theme.dart';
+import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/tag_selector/tag_selector_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
@@ -200,11 +201,12 @@ class _TagSelector extends State<TagSelector> {
                 _searchController.text = "";
               });
             },
-            style: Theme.of(context).elevatedButtonTheme.style?.copyWith(
-                  backgroundColor: _selectedTag == null
-                      ? null
-                      : MaterialStateProperty.all<Color>(Colors.green),
-                ),
+            style:
+                AppButtonTheme.borderedButtonTheme(context).merge(ButtonStyle(
+              backgroundColor: _selectedTag == null
+                  ? null
+                  : MaterialStateProperty.all<Color>(Colors.green),
+            )),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[

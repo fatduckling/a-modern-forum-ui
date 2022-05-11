@@ -1,5 +1,6 @@
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
-import 'package:a_modern_forum_project/utils/text_theme.dart';
+import 'package:a_modern_forum_project/themes/button_theme.dart';
+import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:provider/provider.dart';
@@ -75,6 +76,7 @@ class _SubforumDropdown extends State<SubforumDropdown> {
             borderRadius: BorderRadius.circular(20.0),
           ),
           child: ElevatedButton(
+            style: AppButtonTheme.borderedButtonTheme(context),
             key: _buttonKey,
             focusNode: _focusNode,
             onFocusChange: (hasFocus) {

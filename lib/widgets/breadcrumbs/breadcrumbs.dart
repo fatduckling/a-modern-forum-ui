@@ -1,4 +1,4 @@
-import 'package:a_modern_forum_project/utils/text_theme.dart';
+import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/breadcrumbs/breadcrumb_divider.dart';
 import 'package:flutter/material.dart';
 

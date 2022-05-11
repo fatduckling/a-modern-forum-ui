@@ -1,6 +1,7 @@
 import 'package:a_modern_forum_project/models/comments/comment_model.dart';
 import 'package:a_modern_forum_project/models/comments/comments_model.dart';
-import 'package:a_modern_forum_project/utils/text_theme.dart';
+import 'package:a_modern_forum_project/themes/text_theme.dart';
+import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/utils/time_util.dart';
 import 'package:a_modern_forum_project/widgets/buttons/bordered_button.dart';
 import 'package:a_modern_forum_project/widgets/buttons/plain_button.dart';
@@ -136,10 +137,11 @@ class _CommentBox extends State<CommentBox> {
                         width: 5,
                       ),
                       BorderedButton(
+                        size: ScreenSize.small,
                         text: comment.showReplyTextEditor
                             ? "Hide reply editor"
                             : "Reply",
-                        colour: Colors.black,
+                        colour: Colors.black45,
                         icon: comment.showReplyTextEditor
                             ? Icons.keyboard_hide
                             : Icons.messenger_outline,

@@ -1,6 +1,6 @@
 import 'package:a_modern_forum_project/models/thread/types/poll_model.dart';
+import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
-import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
 import 'package:charts_flutter/flutter.dart' as charts;

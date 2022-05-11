@@ -1,6 +1,6 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
+import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
-import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
 import 'package:a_modern_forum_project/widgets/file_upload/file_upload.dart';
 import 'package:a_modern_forum_project/widgets/poll_editor/poll_editor.dart';

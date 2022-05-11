@@ -1,6 +1,6 @@
 import 'package:a_modern_forum_project/routes/create_post.dart';
+import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
-import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/buttons/bordered_button.dart';
 import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
 import 'package:a_modern_forum_project/widgets/subforum_dropdown/subforum_dropdown.dart';
@@ -17,7 +17,6 @@ class LargeSortFilterThreads extends StatelessWidget {
     final pageBoundsFlex = ResponsiveDisplay.getPageBoundsFlex(screenSize);
     final mainContainerFlex =
         ResponsiveDisplay.getMainContainerFlex(screenSize);
-
     return Column(
       children: [
         Row(
@@ -49,7 +48,7 @@ class LargeSortFilterThreads extends StatelessWidget {
               flex: mainContainerFlex,
               child: Container(
                   padding: const EdgeInsets.only(
-                      left: 30, right: 30, top: 15, bottom: 15),
+                      left: 20, right: 20, top: 15, bottom: 15),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border: Border.all(color: Colors.black26),
@@ -64,25 +63,24 @@ class LargeSortFilterThreads extends StatelessWidget {
                             "Filter:",
                             style: AppTextTheme.body1(context),
                           ),
-                          SizedBox(
-                            width: 40,
+                          const SizedBox(
+                            width: 10,
                           ),
-                          BorderedButton(
+                          const BorderedButton(
+                            size: ScreenSize.small,
                             text: "Popular",
                           ),
-                          SizedBox(
-                            width: 40,
+                          const SizedBox(
+                            width: 10,
                           ),
                           NormalButton(
                             size: ScreenSize.small,
                             text: "New",
+                            onTap: () {},
                           ),
                         ],
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(right: 20),
-                        child: SubforumDropdown(),
-                      )
+                      const SubforumDropdown()
                     ],
                   )),
             ),

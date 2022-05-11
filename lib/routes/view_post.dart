@@ -56,7 +56,6 @@ class ViewPostRoute extends StatelessWidget {
           ),
         ],
       ),
-      const SizedBox(height: 30),
       Row(
         children: [
           Spacer(

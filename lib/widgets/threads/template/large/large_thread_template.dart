@@ -1,7 +1,7 @@
 import 'package:a_modern_forum_project/models/thread/thread_model.dart';
 import 'package:a_modern_forum_project/routes/view_post.dart';
+import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
-import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
 import 'package:a_modern_forum_project/widgets/threads/template/responsive_thread_template.dart';
@@ -104,9 +104,10 @@ class _LargeThreadTemplate extends State<LargeThreadTemplate> {
                     style: AppTextTheme.body1(context)
                         ?.merge(const TextStyle(fontWeight: FontWeight.bold)),
                   )),
-                  const NormalButton(
+                  NormalButton(
                     size: ScreenSize.small,
                     text: "info",
+                    onTap: () {},
                   )
                 ],
               ),

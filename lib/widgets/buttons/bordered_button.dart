@@ -1,5 +1,5 @@
+import 'package:a_modern_forum_project/themes/button_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
-import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:flutter/material.dart';
 
 /// Bordered button: border without background color
@@ -19,13 +19,12 @@ class BorderedButton extends StatelessWidget {
   /// Icon
   final IconData? icon;
 
-  const BorderedButton(
-      {required this.text,
-      this.size = ScreenSize.medium,
-      Key? key,
-      this.onTap,
-      this.colour,
-      this.icon})
+  const BorderedButton({required this.text,
+    this.size = ScreenSize.medium,
+    Key? key,
+    this.onTap,
+    this.colour,
+    this.icon})
       : super(key: key);
 
   @override
@@ -33,13 +32,18 @@ class BorderedButton extends StatelessWidget {
     return SizedBox(
         height: ResponsiveDisplay.getButtonHeight(size),
         child: OutlinedButton(
-          style: Theme.of(context).outlinedButtonTheme.style?.merge(ButtonStyle(
-                foregroundColor: colour == null
-                    ? null
-                    : MaterialStateProperty.all<Color>(colour!),
-              )),
+          style: AppButtonTheme.borderedButtonTheme(context).copyWith(
+            side: colour == null
+                ? null
+                : MaterialStateProperty.resolveWith<BorderSide?>(
+                    (states) => BorderSide(color: colour!)),
+            foregroundColor: colour == null
+                ? null
+                : MaterialStateProperty.all<Color>(colour!),
+          ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
             children: [
               icon == null
                   ? const SizedBox.shrink()
@@ -53,8 +57,6 @@ class BorderedButton extends StatelessWidget {
               ),
               Text(
                 text,
-                style: AppTextTheme.body2(context)
-                    ?.merge(const TextStyle(height: 1)),
               )
             ],
           ),

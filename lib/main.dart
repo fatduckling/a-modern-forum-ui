@@ -1,7 +1,6 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
 import 'package:a_modern_forum_project/routes/home.dart';
-import 'package:a_modern_forum_project/utils/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
@@ -35,24 +34,12 @@ class App extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xfff0f4f5),
         primaryColor: const Color(0xff087CBF),
         appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
-        outlinedButtonTheme: OutlinedButtonThemeData(
-            style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-          ),
-        )),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-            style: TextButton.styleFrom(
-                textStyle: AppTextTheme.body2bold(context)
-                    ?.merge(const TextStyle(color: Colors.white, height: 1)),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)))),
         colorScheme: Theme.of(context).colorScheme.copyWith(
               primary: const Color(0xff087CBF),
             ),
         fontFamily: 'lato',
       ),
-      title: 'Welcome to flutter',
+      title: 'The Modern Forum Project',
       home: const Home(),
     ));
   }

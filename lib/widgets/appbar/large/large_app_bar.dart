@@ -1,6 +1,6 @@
 import 'package:a_modern_forum_project/routes/explore.dart';
 import 'package:a_modern_forum_project/routes/home.dart';
-import 'package:a_modern_forum_project/utils/text_theme.dart';
+import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
 import 'package:a_modern_forum_project/widgets/search_bar/search_bar.dart';
 import 'package:flutter/material.dart';
