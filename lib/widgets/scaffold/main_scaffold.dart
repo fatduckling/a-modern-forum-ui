@@ -17,7 +17,7 @@ class MainScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
-      WidgetsBinding.instance?.addPostFrameCallback((timeStamp) {
+      WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
         double windowWidth = constraints.maxWidth;
         double windowHeight = constraints.maxHeight;
         ScreenResizeObserver screenResizeObserver =

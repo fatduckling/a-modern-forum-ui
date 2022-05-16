@@ -138,7 +138,6 @@ class _TagSelector extends State<TagSelector> {
                 Expanded(
                     child: Scrollbar(
                   controller: _scrollController,
-                  isAlwaysShown: true,
                   child: SingleChildScrollView(
                     controller: _scrollController,
                     child: ListView.builder(
