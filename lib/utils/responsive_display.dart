@@ -50,7 +50,7 @@ class ResponsiveDisplay {
       case ScreenSize.large:
         return 12;
       case ScreenSize.extraLarge:
-        return 18;
+        return 16;
     }
   }
 

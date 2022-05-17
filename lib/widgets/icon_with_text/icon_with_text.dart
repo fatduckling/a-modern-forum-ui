@@ -30,7 +30,7 @@ class IconWithText extends StatelessWidget {
         ),
         Text(
           _text,
-          style: AppTextTheme.body1(context),
+          style: AppTextTheme.body1(context)?.merge(const TextStyle(height: 1)),
         ),
       ],
     );

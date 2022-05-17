@@ -1,4 +1,5 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
@@ -124,7 +125,7 @@ class _CreatePostRoute extends State<CreatePostRoute>
                       ),
                       Container(
                         decoration: const BoxDecoration(
-                          color: Colors.white,
+                          color: AppColourTheme.light,
                           borderRadius: BorderRadius.all(Radius.circular(10)),
                           boxShadow: [
                             BoxShadow(
@@ -177,7 +178,7 @@ class _CreatePostRoute extends State<CreatePostRoute>
               flex: 100 - (pageBoundsFlex * 2),
               child: Container(
                 decoration: const BoxDecoration(
-                  color: Colors.white,
+                  color: AppColourTheme.light,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                   boxShadow: [
                     BoxShadow(

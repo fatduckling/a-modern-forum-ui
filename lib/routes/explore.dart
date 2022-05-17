@@ -1,4 +1,5 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/compact_subforum/responsive_compact_subforum.dart';
@@ -106,7 +107,7 @@ class _ExploreRoute extends State<ExploreRoute> {
                           height: 10,
                         ),
                         Card(
-                          color: Colors.white,
+                          color: AppColourTheme.light,
                           elevation: 0,
                           shape: RoundedRectangleBorder(
                               side: const BorderSide(
@@ -121,7 +122,7 @@ class _ExploreRoute extends State<ExploreRoute> {
                                   dividerColor:
                                       themeData.scaffoldBackgroundColor),
                               child: ExpansionTile(
-                                collapsedBackgroundColor: Colors.white,
+                                collapsedBackgroundColor: AppColourTheme.light,
                                 initiallyExpanded: true,
                                 title: Text(
                                   "General Astronomy $index",

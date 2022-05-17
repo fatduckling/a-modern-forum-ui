@@ -1,3 +1,4 @@
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +11,7 @@ class AppButtonTheme {
   static ButtonStyle normalButtonTheme(BuildContext context) {
     return TextButton.styleFrom(
         textStyle: AppTextTheme.body2bold(context)
-            ?.merge(const TextStyle(color: Colors.white, height: 1)),
+            ?.merge(const TextStyle(color: AppColourTheme.light, height: 1)),
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(borderRadius)));
   }

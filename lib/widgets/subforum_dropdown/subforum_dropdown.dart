@@ -1,5 +1,6 @@
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
 import 'package:a_modern_forum_project/themes/button_theme.dart';
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
@@ -90,7 +91,7 @@ class _SubforumDropdown extends State<SubforumDropdown> {
               children: <Widget>[
                 Text("All Subforums",
                     style: AppTextTheme.body2(context)
-                        ?.apply(color: Colors.white)
+                        ?.apply(color: AppColourTheme.light)
                         .merge(const TextStyle(height: 1))),
                 Icon(_isMenuOpen
                     ? Icons.keyboard_arrow_up

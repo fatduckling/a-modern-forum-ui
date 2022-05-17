@@ -1,3 +1,4 @@
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/buttons/bordered_button.dart';
 import 'package:a_modern_forum_project/widgets/poll_editor/poll_controller.dart';
@@ -26,7 +27,7 @@ class _PollEditor extends State<PollEditor> {
     return Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: AppColourTheme.light,
           border: Border.all(color: Colors.black26),
         ),
         child: Column(
@@ -52,22 +53,22 @@ class _PollEditor extends State<PollEditor> {
                         Flexible(
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Best practices:",
-                              style: AppTextTheme.body2bold(context),
-                            ),
-                            Text("1. Keep questions neutral",
-                                style: AppTextTheme.body2(context)),
-                            Text("2. Keep a balanced set of answers",
-                                style: AppTextTheme.body2(context)),
-                            Text("3. Don't ask multiple things at once",
-                                style: AppTextTheme.body2(context)),
-                            Text("4. Avoid misleading questions",
-                                style: AppTextTheme.body2(context))
-                          ],
-                        ))
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Best practices:",
+                                  style: AppTextTheme.body2bold(context),
+                                ),
+                                Text("1. Keep questions neutral",
+                                    style: AppTextTheme.body2(context)),
+                                Text("2. Keep a balanced set of answers",
+                                    style: AppTextTheme.body2(context)),
+                                Text("3. Don't ask multiple things at once",
+                                    style: AppTextTheme.body2(context)),
+                                Text("4. Avoid misleading questions",
+                                    style: AppTextTheme.body2(context))
+                              ],
+                            ))
                       ],
                     ))
               ],
@@ -85,10 +86,10 @@ class _PollEditor extends State<PollEditor> {
                         BorderedButton(
                           onTap: pollController.size() < 10
                               ? () {
-                                  setState(() {
-                                    pollController.addPollOption();
-                                  });
-                                }
+                            setState(() {
+                              pollController.addPollOption();
+                            });
+                          }
                               : null,
                           text: "Add Option",
                           icon: Icons.add_circle_outline_outlined,

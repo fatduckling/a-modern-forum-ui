@@ -1,3 +1,4 @@
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
@@ -28,7 +29,7 @@ class _WebFileUpload extends State<WebFileUpload> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColourTheme.light,
         border: Border.all(color: Colors.black26),
       ),
       height: 400,

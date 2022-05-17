@@ -1,4 +1,5 @@
 import 'package:a_modern_forum_project/routes/create_post.dart';
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/buttons/bordered_button.dart';
@@ -50,7 +51,7 @@ class LargeSortFilterThreads extends StatelessWidget {
                   padding: const EdgeInsets.only(
                       left: 20, right: 20, top: 15, bottom: 15),
                   decoration: BoxDecoration(
-                    color: Colors.white,
+                    color: AppColourTheme.light,
                     border: Border.all(color: Colors.black26),
                     borderRadius: const BorderRadius.all(Radius.circular(10)),
                   ),
@@ -87,15 +88,17 @@ class LargeSortFilterThreads extends StatelessWidget {
             Expanded(
               flex: 100 - ((2 * pageBoundsFlex) + mainContainerFlex),
               child: Padding(
-                  padding: const EdgeInsets.only(left: 20),
-                  child: NormalButton(
-                    text: "Start thread",
-                    onTap: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const CreatePostRoute()),
-                    ),
-                  )),
+                padding: const EdgeInsets.only(left: 20),
+                child: NormalButton(
+                  text: "Start thread",
+                  icon: Icons.add_box_outlined,
+                  onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const CreatePostRoute()),
+                  ),
+                ),
+              ),
             ),
             Spacer(
               flex: pageBoundsFlex,

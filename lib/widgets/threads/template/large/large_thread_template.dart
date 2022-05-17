@@ -1,5 +1,6 @@
 import 'package:a_modern_forum_project/models/thread/thread_model.dart';
 import 'package:a_modern_forum_project/routes/view_post.dart';
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
@@ -49,9 +50,9 @@ class _LargeThreadTemplate extends State<LargeThreadTemplate> {
               : null,
           child: Ink(
             decoration: BoxDecoration(
-              color: Colors.white,
-              border:
-                  Border.all(color: isHovered ? Colors.black26 : Colors.white),
+              color: AppColourTheme.light,
+              border: Border.all(
+                  color: isHovered ? Colors.black26 : AppColourTheme.light),
               borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
             padding: const EdgeInsets.all(20),

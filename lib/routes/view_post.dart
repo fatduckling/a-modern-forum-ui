@@ -1,5 +1,6 @@
 import 'package:a_modern_forum_project/models/comments/comments_model.dart';
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/breadcrumbs/breadcrumbs.dart';
 import 'package:a_modern_forum_project/widgets/comment_box/comment_box.dart';
@@ -65,7 +66,7 @@ class ViewPostRoute extends StatelessWidget {
               flex: 100 - (2 * pageBoundsFlex),
               child: Container(
                 decoration: const BoxDecoration(
-                  color: Colors.white,
+                  color: AppColourTheme.light,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
                 padding: const EdgeInsets.only(

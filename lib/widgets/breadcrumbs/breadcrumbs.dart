@@ -1,3 +1,4 @@
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/breadcrumbs/breadcrumb_divider.dart';
 import 'package:flutter/material.dart';
@@ -43,7 +44,7 @@ class Breadcrumbs extends StatelessWidget {
     return Container(
       decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(5)),
-          color: Colors.white),
+          color: AppColourTheme.light),
       padding: const EdgeInsets.all(20),
       child: Row(children: [
         Wrap(

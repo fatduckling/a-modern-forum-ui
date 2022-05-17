@@ -1,6 +1,7 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
 import 'package:a_modern_forum_project/routes/home.dart';
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
@@ -33,7 +34,7 @@ class App extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: const Color(0xfff0f4f5),
         primaryColor: const Color(0xff087CBF),
-        appBarTheme: const AppBarTheme(backgroundColor: Colors.white),
+        appBarTheme: const AppBarTheme(backgroundColor: AppColourTheme.light),
         colorScheme: Theme.of(context).colorScheme.copyWith(
               primary: const Color(0xff087CBF),
             ),

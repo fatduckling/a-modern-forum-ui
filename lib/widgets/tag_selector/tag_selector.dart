@@ -1,5 +1,6 @@
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
 import 'package:a_modern_forum_project/themes/button_theme.dart';
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/tag_selector/tag_selector_controller.dart';
 import 'package:flutter/material.dart';
@@ -98,7 +99,7 @@ class _TagSelector extends State<TagSelector> {
         portal: Container(
           margin: const EdgeInsets.only(top: 5),
           decoration: BoxDecoration(
-            color: Colors.white,
+            color: AppColourTheme.light,
             borderRadius: const BorderRadius.all(Radius.circular(5)),
             border: Border.all(color: Colors.black26),
           ),
@@ -219,8 +220,8 @@ class _TagSelector extends State<TagSelector> {
                     ),
                     Text(
                       _selectedTag == null ? "Select a tag" : _selectedTag!,
-                      style: AppTextTheme.body2(context)?.merge(
-                          const TextStyle(color: Colors.white, height: 1)),
+                      style: AppTextTheme.body2(context)?.merge(const TextStyle(
+                          color: AppColourTheme.light, height: 1)),
                     ),
                   ],
                 ),
