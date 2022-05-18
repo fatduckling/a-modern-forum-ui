@@ -9,7 +9,14 @@ class IconWithText extends StatelessWidget {
   /// Text to display
   final String _text;
 
-  const IconWithText({Key? key, required IconData icon, required String text})
+  /// Icon size
+  final double iconSize;
+
+  const IconWithText(
+      {Key? key,
+      required IconData icon,
+      required String text,
+      this.iconSize = 28})
       : _icon = icon,
         _text = text,
         super(key: key);
@@ -17,13 +24,14 @@ class IconWithText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisSize: MainAxisSize.min,
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Icon(
           _icon,
           color: Colors.blue,
-          size: 28,
+          size: iconSize,
         ),
         const SizedBox(
           width: 5,

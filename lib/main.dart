@@ -32,11 +32,11 @@ class App extends StatelessWidget {
     return Portal(
         child: MaterialApp(
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xfff0f4f5),
-        primaryColor: const Color(0xff087CBF),
+        scaffoldBackgroundColor: AppColourTheme.neutralLight.w300,
+        primaryColor: AppColourTheme.primary.normal,
         appBarTheme: const AppBarTheme(backgroundColor: AppColourTheme.light),
         colorScheme: Theme.of(context).colorScheme.copyWith(
-              primary: const Color(0xff087CBF),
+              primary: AppColourTheme.primary.normal,
             ),
         fontFamily: 'lato',
       ),

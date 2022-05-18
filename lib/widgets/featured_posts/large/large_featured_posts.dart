@@ -39,7 +39,7 @@ class LargeFeaturedPosts extends StatelessWidget {
                 Expanded(
                   flex: freeSpace,
                   child: Text(
-                    "Featured topics",
+                    "Featured topics - ${screenSize.name}",
                     style: AppTextTheme.h3(context),
                   ),
                 ),

@@ -35,7 +35,7 @@ class SidebarPanelTemplate extends StatelessWidget {
                 const TextStyle(height: 1, color: AppColourTheme.light)),
           ),
         ),
-        Flexible(child: child)
+        child
       ],
     );
   }
