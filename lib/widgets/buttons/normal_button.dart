@@ -19,17 +19,25 @@ class NormalButton extends StatelessWidget {
   /// Icon
   final IconData? icon;
 
-  /// Color
-  final Color? colour;
+  /// Background colour
+  final Color? backgroundColour;
+
+  /// Text colour
+  final Color? textColour;
+
+  /// Main axis size
+  final MainAxisSize mainAxisSize;
 
   const NormalButton(
       {required this.text,
       this.borderRadius = 25,
       this.size = ScreenSize.medium,
       this.icon,
-      this.colour,
-      Key? key,
-      this.onTap})
+      this.backgroundColour,
+      this.textColour,
+      this.mainAxisSize = MainAxisSize.min,
+      this.onTap,
+      Key? key})
       : super(key: key);
 
   @override
@@ -38,20 +46,26 @@ class NormalButton extends StatelessWidget {
         height: ResponsiveDisplay.getButtonHeight(size),
         child: ElevatedButton(
           style: AppButtonTheme.normalButtonTheme(context).copyWith(
-            foregroundColor: colour == null
+            backgroundColor: backgroundColour == null
                 ? null
-                : MaterialStateProperty.all<Color>(colour!),
+                : MaterialStateProperty.all<Color>(backgroundColour!),
+            foregroundColor: textColour == null
+                ? null
+                : MaterialStateProperty.all<Color>(textColour!),
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: mainAxisSize == MainAxisSize.min
+                ? MainAxisAlignment.start
+                : MainAxisAlignment.center,
+            mainAxisSize: mainAxisSize,
             children: [
               icon == null
                   ? const SizedBox.shrink()
                   : Icon(
                       icon,
                       size: 18,
-                      color: colour,
+                      color: textColour,
                     ),
               SizedBox(
                 width: icon == null ? 0 : 5,

@@ -1,10 +1,9 @@
 import 'dart:math';
 
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
-import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/sticky_sidebar/popular_forums.dart';
-import 'package:a_modern_forum_project/widgets/sticky_sidebar/recent_threads.dart';
-import 'package:a_modern_forum_project/widgets/sticky_sidebar/sidebar_panel_template.dart';
+import 'package:a_modern_forum_project/widgets/sticky_sidebar/sidebar_home.dart';
+import 'package:a_modern_forum_project/widgets/sticky_sidebar/useful_links.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -42,13 +41,10 @@ class _StickySidebar extends State<StickySidebar> {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          const SidebarHome(),
+          const SizedBox(height: 10),
           const PopularForums(),
-          const SizedBox(height: 20),
-          const RecentThreads(),
-          const SizedBox(height: 20),
-          const SidebarPanelTemplate(
-              title: "Popular Forums", child: Text("Hi")),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           SizedBox(
             height: _fixedYPositionOffset,
           ),
@@ -56,12 +52,7 @@ class _StickySidebar extends State<StickySidebar> {
             children: [
               Expanded(
                   child: Container(
-                      key: _floatingWidgetKey,
-                      child: SidebarPanelTemplate(
-                        title: "Useful Links",
-                        child: Text("Hello world floater",
-                            style: AppTextTheme.body2(context)),
-                      )))
+                      key: _floatingWidgetKey, child: const UsefulLinks()))
             ],
           ),
         ],
@@ -80,8 +71,7 @@ class _StickySidebar extends State<StickySidebar> {
       if (foundRenderObject) {
         RenderBox box = renderObject as RenderBox;
         Offset position = box.localToGlobal(Offset.zero);
-        double? appBarHeight = Scaffold.of(context).appBarMaxHeight;
-        _originalKeyYPosition = position.dy - (appBarHeight ?? 0);
+        _originalKeyYPosition = position.dy - kToolbarHeight;
       }
       return foundRenderObject;
     }
@@ -94,7 +84,7 @@ class _StickySidebar extends State<StickySidebar> {
         if (mounted) {
           setState(() {
             _fixedYPositionOffset = max(
-                0, scrollObserver.scrollPosition - _originalKeyYPosition + 5);
+                0, scrollObserver.scrollPosition - _originalKeyYPosition - 50);
           });
         }
       });

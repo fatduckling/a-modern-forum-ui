@@ -39,8 +39,9 @@ class LargeFeaturedPosts extends StatelessWidget {
                 Expanded(
                   flex: freeSpace,
                   child: Text(
-                    "Featured topics - ${screenSize.name}",
-                    style: AppTextTheme.h3(context),
+                    "Trending today",
+                    style: AppTextTheme.body1(context)
+                        ?.merge(const TextStyle(fontWeight: FontWeight.bold)),
                   ),
                 ),
                 Spacer(
@@ -53,17 +54,10 @@ class LargeFeaturedPosts extends StatelessWidget {
             ),
             Row(
               children: [
-                Expanded(
-                    flex: pageBoundsFlex * multiplier,
-                    child: const Align(
-                      alignment: Alignment.centerRight,
-                      child: Icon(
-                        Icons.chevron_left_sharp,
-                        size: 96,
-                      ),
-                    )),
+                Spacer(
+                  flex: (pageBoundsFlex * multiplier) + featuredPostSpacerWidth,
+                ),
                 // first featured post
-                Spacer(flex: featuredPostSpacerWidth),
                 Expanded(
                   child: const FeaturedPost(),
                   flex: featuredPostWidth,
@@ -89,15 +83,9 @@ class LargeFeaturedPosts extends StatelessWidget {
                   child: const FeaturedPost(),
                   flex: featuredPostWidth,
                 ),
-                Expanded(
-                    flex: pageBoundsFlex * multiplier,
-                    child: const Align(
-                      alignment: Alignment.centerLeft,
-                      child: Icon(
-                        Icons.chevron_right_sharp,
-                        size: 96,
-                      ),
-                    )),
+                Spacer(
+                  flex: pageBoundsFlex * multiplier,
+                ),
               ],
             )
           ],

@@ -1,4 +1,5 @@
 import 'package:a_modern_forum_project/themes/button_theme.dart';
+import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:flutter/material.dart';
 
@@ -50,9 +51,14 @@ class PlainButton extends StatelessWidget {
           SizedBox(
             width: icon == null ? 0 : 5,
           ),
-          Text(
+          Flexible(
+              child: Text(
             text,
-          )
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: AppTextTheme.body2bold(context)
+                ?.merge(const TextStyle(height: 1)),
+          ))
         ],
       ),
     );
