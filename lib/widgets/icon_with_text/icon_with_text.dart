@@ -1,25 +1,28 @@
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:flutter/material.dart';
 
 /// Shows an icon with text
 class IconWithText extends StatelessWidget {
   /// Icon to display
-  final IconData _icon;
+  final IconData icon;
 
   /// Text to display
-  final String _text;
+  final String text;
 
   /// Icon size
   final double iconSize;
 
-  const IconWithText(
-      {Key? key,
-      required IconData icon,
-      required String text,
-      this.iconSize = 28})
-      : _icon = icon,
-        _text = text,
-        super(key: key);
+  /// Icon and text colour
+  final Color? color;
+
+  const IconWithText({
+    Key? key,
+    required this.icon,
+    required this.text,
+    this.iconSize = 28,
+    this.color,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,16 +32,17 @@ class IconWithText extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Icon(
-          _icon,
-          color: Colors.blue,
+          icon,
+          color: color ?? AppColourTheme.primary.normal,
           size: iconSize,
         ),
         const SizedBox(
           width: 5,
         ),
         Text(
-          _text,
-          style: AppTextTheme.body1(context)?.merge(const TextStyle(height: 1)),
+          text,
+          style: AppTextTheme.body1(context)?.merge(TextStyle(
+              height: 1, color: color ?? AppColourTheme.primary.normal)),
         ),
       ],
     );

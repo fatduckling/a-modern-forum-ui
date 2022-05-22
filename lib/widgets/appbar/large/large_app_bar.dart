@@ -85,10 +85,11 @@ class LargeAppBar extends StatelessWidget {
           const Spacer(
             flex: 1,
           ),
-          const Expanded(
+           Expanded(
               flex: 1,
               child: NormalButton(
                 text: "Login",
+                onTap: () {},
               )),
           const Spacer(
             flex: 1,

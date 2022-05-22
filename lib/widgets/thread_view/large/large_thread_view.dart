@@ -3,8 +3,8 @@ import 'package:a_modern_forum_project/models/thread/types/poll_model.dart';
 import 'package:a_modern_forum_project/models/thread/types/text_model.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
+import 'package:a_modern_forum_project/widgets/sidebar/sidebar.dart';
 import 'package:a_modern_forum_project/widgets/sort_filter_threads/responsive_sort_filter_threads.dart';
-import 'package:a_modern_forum_project/widgets/sticky_sidebar/sticky_sidebar.dart';
 import 'package:a_modern_forum_project/widgets/threads/template/responsive_thread_template.dart';
 import 'package:flutter/material.dart';
 
@@ -95,7 +95,7 @@ class LargeThreadView extends StatelessWidget {
                 ])),
             Expanded(
                 flex: 100 - ((2 * pageBoundsFlex) + mainContainerFlex),
-                child: const StickySidebar()),
+                child: const Sidebar()),
             Spacer(
               flex: pageBoundsFlex,
             )

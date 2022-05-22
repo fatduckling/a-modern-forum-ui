@@ -1,7 +1,7 @@
 import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
-import 'package:a_modern_forum_project/widgets/sticky_sidebar/sidebar_panel_template.dart';
+import 'package:a_modern_forum_project/widgets/sidebar/sidebar_panel_template.dart';
 import 'package:flutter/material.dart';
 
 /// Popular forums panel

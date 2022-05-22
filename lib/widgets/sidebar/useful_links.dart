@@ -1,6 +1,6 @@
 import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/widgets/buttons/plain_button.dart';
-import 'package:a_modern_forum_project/widgets/sticky_sidebar/sidebar_panel_template.dart';
+import 'package:a_modern_forum_project/widgets/sidebar/sidebar_panel_template.dart';
 import 'package:flutter/material.dart';
 
 /// Useful links panel
