@@ -26,6 +26,7 @@ class ResponsiveThreadTemplate extends StatelessWidget {
     final ScreenSize screenSize =
         context.watch<ScreenResizeObserver>().screenSize;
     switch (screenSize) {
+      case ScreenSize.extraSmall: // TODO test me
       case ScreenSize.small:
       case ScreenSize.medium:
       return const UnhandledWidget("ResponsiveThreadTemplate");

@@ -30,7 +30,7 @@ class NormalButton extends StatelessWidget {
 
   const NormalButton(
       {required this.text,
-      this.borderRadius = 25,
+      this.borderRadius = 25, // TODO use me
       this.size = ScreenSize.medium,
       this.icon,
       this.backgroundColour,

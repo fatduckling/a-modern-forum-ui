@@ -12,6 +12,6 @@ class UnhandledWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: ErrorText("$identifier: Unhandled small/medium screen sizes"));
+        child: ErrorText("$identifier: Unhandled story/medium screen sizes"));
   }
 }

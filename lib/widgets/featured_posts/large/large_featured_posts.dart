@@ -1,6 +1,6 @@
-import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/featured_post/featured_post.dart';
+import 'package:a_modern_forum_project/widgets/text/page_title.dart';
 import 'package:flutter/material.dart';
 
 class LargeFeaturedPosts extends StatelessWidget {
@@ -24,71 +24,49 @@ class LargeFeaturedPosts extends StatelessWidget {
     final int featuredPostSpacerWidth = ((freeSpace - (featuredPostWidth * numberOfFeaturedPosts)) /
                 (numberOfFeaturedPosts - 1)).round();
     // @formatter:on
-    return Container(
-        padding: const EdgeInsets.only(top: 20),
-        child: Column(
+    return Column(
+      children: [
+        PageTitle(text: "Trending today", screenSize: screenSize),
+        const SizedBox(
+          height: 20,
+        ),
+        Row(
           children: [
-            const SizedBox(
-              height: 20,
+            Spacer(
+              flex: (pageBoundsFlex * multiplier) + featuredPostSpacerWidth,
             ),
-            Row(
-              children: [
-                Spacer(
-                  flex: pageBoundsFlex * multiplier,
-                ),
-                Expanded(
-                  flex: freeSpace,
-                  child: Text(
-                    "Trending today",
-                    style: AppTextTheme.body1(context)
-                        ?.merge(const TextStyle(fontWeight: FontWeight.bold)),
-                  ),
-                ),
-                Spacer(
-                  flex: pageBoundsFlex * multiplier,
-                ),
-              ],
+            // first featured post
+            Expanded(
+              child: const FeaturedPost(),
+              flex: featuredPostWidth,
             ),
-            const SizedBox(
-              height: 20,
+            Spacer(flex: featuredPostSpacerWidth),
+            // second featured post
+            Spacer(flex: featuredPostSpacerWidth),
+            Expanded(
+              child: const FeaturedPost(),
+              flex: featuredPostWidth,
             ),
-            Row(
-              children: [
-                Spacer(
-                  flex: (pageBoundsFlex * multiplier) + featuredPostSpacerWidth,
-                ),
-                // first featured post
-                Expanded(
-                  child: const FeaturedPost(),
-                  flex: featuredPostWidth,
-                ),
-                Spacer(flex: featuredPostSpacerWidth),
-                // second featured post
-                Spacer(flex: featuredPostSpacerWidth),
-                Expanded(
-                  child: const FeaturedPost(),
-                  flex: featuredPostWidth,
-                ),
-                Spacer(flex: featuredPostSpacerWidth),
-                // third featured post
-                Spacer(flex: featuredPostSpacerWidth),
-                Expanded(
-                  child: const FeaturedPost(),
-                  flex: featuredPostWidth,
-                ),
-                Spacer(flex: featuredPostSpacerWidth),
-                // fourth featured post
-                Spacer(flex: featuredPostSpacerWidth),
-                Expanded(
-                  child: const FeaturedPost(),
-                  flex: featuredPostWidth,
-                ),
-                Spacer(
-                  flex: pageBoundsFlex * multiplier,
-                ),
-              ],
-            )
+            Spacer(flex: featuredPostSpacerWidth),
+            // third featured post
+            Spacer(flex: featuredPostSpacerWidth),
+            Expanded(
+              child: const FeaturedPost(),
+              flex: featuredPostWidth,
+            ),
+            Spacer(flex: featuredPostSpacerWidth),
+            // fourth featured post
+            Spacer(flex: featuredPostSpacerWidth),
+            Expanded(
+              child: const FeaturedPost(),
+              flex: featuredPostWidth,
+            ),
+            Spacer(
+              flex: pageBoundsFlex * multiplier,
+            ),
           ],
-        ));
+        )
+      ],
+    );
   }
 }

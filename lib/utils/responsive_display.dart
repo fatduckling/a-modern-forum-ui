@@ -2,11 +2,14 @@ import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-/// ScreenSize can be small (mobile phones), medium (tablets), large (desktop web)
-enum ScreenSize { small, medium, large, extraLarge }
+/// ScreenSize can be story (mobile phones), medium (tablets), large (desktop web)
+enum ScreenSize { extraSmall, small, medium, large, extraLarge }
 
-/// Simple utility class used to determine whether the device is small, medium or large
+/// Simple utility class used to determine whether the device is story, medium or large
 class ResponsiveDisplay {
+  /// Extra-story devices (portrait phones, 576 and up)
+  static const _breakpointExtraSmallDevice = 576;
+
   /// Small devices (landscape phones, 744 and up)
   static const _breakpointSmallDevice = 744;
 
@@ -19,9 +22,15 @@ class ResponsiveDisplay {
   /// Flex width of the main container
   static const mainContainerFlex = 32;
 
-  /// Check if the device is considered small based on the page [width]
+  /// Check if the device is considered extra story based on the page [width]
+  static bool isExtraSmallDevice(final double width) {
+    return width <= _breakpointExtraSmallDevice;
+  }
+
+  /// Check if the device is considered story based on the page [width]
   static bool isSmallDevice(final double width) {
-    return width <= _breakpointSmallDevice;
+    return width > _breakpointExtraSmallDevice &&
+        width <= _breakpointSmallDevice;
   }
 
   /// Check if the device is considered medium based on the page [width]
@@ -43,10 +52,12 @@ class ResponsiveDisplay {
   /// Get the page bounds of the main container based on its screen size
   static int getPageBoundsFlex(final ScreenSize screenSize) {
     switch (screenSize) {
-      case ScreenSize.small: // TODO test me
-        return 12;
-      case ScreenSize.medium: // TODO test me
-        return 14;
+      case ScreenSize.extraSmall:
+        return 2;
+      case ScreenSize.small:
+        return 4;
+      case ScreenSize.medium:
+        return 8;
       case ScreenSize.large:
         return 12;
       case ScreenSize.extraLarge:
@@ -58,6 +69,7 @@ class ResponsiveDisplay {
   /// This reserves some space for a right section
   static int getMainContainerFlex(final ScreenSize screenSize) {
     switch (screenSize) {
+      case ScreenSize.extraSmall: // TODO test me
       case ScreenSize.small:
         return 50; // TODO Test me
       case ScreenSize.medium:
@@ -77,7 +89,7 @@ class ResponsiveDisplay {
   }
 
   /// Return the screen size based on the [buildContext]
-  static ScreenSize getScreenSizeFromContexta(final BuildContext buildContext) {
+  static ScreenSize getScreenSizeFromContext(final BuildContext buildContext) {
     ScreenResizeObserver observer = buildContext.read<ScreenResizeObserver>();
     return observer.screenSize;
   }
@@ -90,14 +102,17 @@ class ResponsiveDisplay {
       return ScreenSize.large;
     } else if (isMediumDevice(width)) {
       return ScreenSize.medium;
-    } else {
+    } else if (isSmallDevice(width)) {
       return ScreenSize.small;
+    } else {
+      return ScreenSize.extraSmall;
     }
   }
 
   /// Get the height of a button based on its size
   static double getButtonHeight(final ScreenSize screenSize) {
     switch (screenSize) {
+      case ScreenSize.extraSmall: // TODO test me
       case ScreenSize.small:
         return 40;
       case ScreenSize.medium:

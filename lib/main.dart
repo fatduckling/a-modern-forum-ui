@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/observers/scroll_observer.dart';
 import 'package:a_modern_forum_project/routes/home.dart';
@@ -31,6 +33,9 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return Portal(
         child: MaterialApp(
+      scrollBehavior: const MaterialScrollBehavior().copyWith(
+        dragDevices: {...PointerDeviceKind.values},
+      ),
       theme: ThemeData(
         scaffoldBackgroundColor: AppColourTheme.neutralLight.w300,
         primaryColor: AppColourTheme.primary.normal,

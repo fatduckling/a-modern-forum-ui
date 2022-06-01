@@ -59,9 +59,9 @@ class LargeThreadView extends StatelessWidget {
                     height: 10,
                   ),
                   ListView.builder(
-                      scrollDirection: Axis.vertical,
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
+                      scrollDirection: Axis.vertical,
                       physics: const NeverScrollableScrollPhysics(),
                       itemCount: 10,
                       itemBuilder: (buildContext, index) {

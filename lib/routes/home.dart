@@ -12,6 +12,9 @@ class HomeRoute extends StatelessWidget {
         child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: const [
+        SizedBox(
+          height: 20,
+        ),
         ResponsiveFeaturedPosts(),
         SizedBox(
           height: 20,
