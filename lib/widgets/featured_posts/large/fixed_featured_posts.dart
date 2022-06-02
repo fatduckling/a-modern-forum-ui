@@ -3,7 +3,9 @@ import 'package:a_modern_forum_project/widgets/featured_post/featured_post.dart'
 import 'package:a_modern_forum_project/widgets/text/page_title.dart';
 import 'package:flutter/material.dart';
 
-class LargeFeaturedPosts extends StatelessWidget {
+/// Fixed featured posts will display a fixed number of featured posts on the
+/// page without a scroller
+class FixedFeaturedPosts extends StatelessWidget {
   /// Number of featured posts to display
   static const int numberOfFeaturedPosts = 4;
 
@@ -13,7 +15,7 @@ class LargeFeaturedPosts extends StatelessWidget {
   /// Device screen size
   final ScreenSize screenSize;
 
-  const LargeFeaturedPosts(this.screenSize, {Key? key}) : super(key: key);
+  const FixedFeaturedPosts(this.screenSize, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

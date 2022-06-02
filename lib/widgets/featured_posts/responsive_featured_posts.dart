@@ -1,8 +1,7 @@
 import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
-import 'package:a_modern_forum_project/widgets/featured_posts/large/large_featured_posts.dart';
-import 'package:a_modern_forum_project/widgets/featured_posts/medium/medium_featured_posts.dart';
-import 'package:a_modern_forum_project/widgets/featured_posts/small/small_featured_posts.dart';
+import 'package:a_modern_forum_project/widgets/featured_posts/large/fixed_featured_posts.dart';
+import 'package:a_modern_forum_project/widgets/featured_posts/small_medium/sliding_featured_posts.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,12 +15,11 @@ class ResponsiveFeaturedPosts extends StatelessWidget {
     switch (screenSize) {
       case ScreenSize.extraSmall:
       case ScreenSize.small:
-        return SmallFeaturedPosts(screenSize);
       case ScreenSize.medium:
-        return MediumFeaturedPosts(screenSize);
+        return SlidingFeaturedPosts(screenSize);
       case ScreenSize.large:
       case ScreenSize.extraLarge:
-        return LargeFeaturedPosts(screenSize);
+        return FixedFeaturedPosts(screenSize);
     }
   }
 }
