@@ -1,31 +1,39 @@
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/featured_post/featured_post.dart';
-import 'package:a_modern_forum_project/widgets/text/page_title.dart';
 import 'package:flutter/material.dart';
 
 /// Sliding featured posts for small/medium devices
 class SlidingFeaturedPosts extends StatelessWidget {
+  /// Page title
+  final Widget pageTitle;
+
   /// Device screen size
   final ScreenSize screenSize;
 
-  /// Height and width of the featured post on an extraSmall or small deviceA
-  static const smallPostSize = 150.0;
-
-  /// Height and width of the featured post on a medium device
-  static const mediumPostSize = 300.0;
-
-  const SlidingFeaturedPosts(this.screenSize, {Key? key}) : super(key: key);
+  const SlidingFeaturedPosts(
+      {required this.pageTitle, required this.screenSize, Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final pageBoundsFlex = ResponsiveDisplay.getPageBoundsFlex(screenSize);
-    List<Widget> featuredPosts =
-        List.generate(8, (index) => buildFeaturedPost());
+    List<Widget> featuredPosts = List.generate(
+        8,
+        (index) => FeaturedPost(
+            showControls: false,
+            maxLines: 2,
+            titleFont: screenSize == ScreenSize.medium
+                ? AppTextStyle.body1
+                : AppTextStyle.body2bold,
+            descriptionFont: screenSize == ScreenSize.medium
+                ? AppTextStyle.body2
+                : AppTextStyle.body3));
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        PageTitle(text: "Trending today", screenSize: screenSize),
+        pageTitle,
         const SizedBox(
           height: 10,
         ),
@@ -34,22 +42,24 @@ class SlidingFeaturedPosts extends StatelessWidget {
             Spacer(
               flex: pageBoundsFlex,
             ),
-            Flexible(
+            Expanded(
                 flex: 100 - (2 * pageBoundsFlex),
                 child: SizedBox(
-                    height: screenSize == ScreenSize.medium
-                        ? mediumPostSize
-                        : smallPostSize,
-                    child: ListView.separated(
-                      itemBuilder: (context, index) => featuredPosts[index],
-                      separatorBuilder: (context, index) => const SizedBox(
-                        width: 10,
-                      ),
-                      scrollDirection: Axis.horizontal,
-                      physics: const BouncingScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: featuredPosts.length,
-                    ))),
+                  height: screenSize == ScreenSize.medium ? 175 : 150,
+                  child: ListView.separated(
+                    itemBuilder: (context, index) => AspectRatio(
+                      aspectRatio: 1,
+                      child: featuredPosts[index],
+                    ),
+                    separatorBuilder: (context, index) => const SizedBox(
+                      width: 10,
+                    ),
+                    scrollDirection: Axis.horizontal,
+                    physics: const BouncingScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: featuredPosts.length,
+                  ),
+                )),
             Spacer(
               flex: pageBoundsFlex,
             ),
@@ -57,29 +67,5 @@ class SlidingFeaturedPosts extends StatelessWidget {
         ),
       ],
     );
-  }
-
-  Widget buildFeaturedPost() {
-    if (screenSize == ScreenSize.extraSmall || screenSize == ScreenSize.small) {
-      return const FeaturedPost(
-        width: smallPostSize,
-        height: smallPostSize,
-        showControls: false,
-        maxLines: 2,
-        titleFont: AppTextStyle.body1,
-        descriptionFont: AppTextStyle.body3,
-      );
-    } else if (screenSize == ScreenSize.medium) {
-      return const FeaturedPost(
-        width: mediumPostSize,
-        height: mediumPostSize,
-        // showControls: true,
-        // maxLines: 4,
-        // titleFont: AppTextStyle.body1,
-        // descriptionFont: AppTextStyle.body3,
-      );
-    } else {
-      return const SizedBox.shrink();
-    }
   }
 }

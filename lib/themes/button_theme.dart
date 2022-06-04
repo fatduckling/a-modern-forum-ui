@@ -37,8 +37,10 @@ class AppButtonTheme {
 
   /// Plain button theme
   static ButtonStyle plainButtonTheme(BuildContext context) {
-    return const ButtonStyle(
-      splashFactory: NoSplash.splashFactory,
-    );
+    return ButtonStyle(
+        splashFactory: NoSplash.splashFactory,
+        textStyle: MaterialStateProperty.all<TextStyle?>(
+          AppTextTheme.body2bold(context)?.merge(const TextStyle(height: 1)),
+        ));
   }
 }

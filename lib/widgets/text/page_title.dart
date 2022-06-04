@@ -7,10 +7,14 @@ class PageTitle extends StatelessWidget {
   /// Page title
   final String text;
 
+  /// Trailing widget
+  final Widget? trailing;
+
   /// Device screen size
   final ScreenSize screenSize;
 
-  const PageTitle({required this.text, required this.screenSize, Key? key})
+  const PageTitle(
+      {required this.text, this.trailing, required this.screenSize, Key? key})
       : super(key: key);
 
   @override
@@ -24,9 +28,16 @@ class PageTitle extends StatelessWidget {
         ),
         Expanded(
           flex: 100 - (pageBoundsFlex * 2),
-          child: Text(text,
-            style: AppTextTheme.body1(context)
-                ?.merge(const TextStyle(fontWeight: FontWeight.bold)),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(text,
+                style: AppTextTheme.body1(context)
+                    ?.merge(const TextStyle(fontWeight: FontWeight.bold)),
+              ),
+              trailing ?? const SizedBox.shrink()
+            ],
           ),
         ),
         Spacer(

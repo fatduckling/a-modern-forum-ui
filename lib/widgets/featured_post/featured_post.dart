@@ -6,11 +6,6 @@ import 'package:flutter/material.dart';
 
 /// Featured post
 class FeaturedPost extends StatelessWidget {
-  /// Height of the featured post
-  final double height;
-
-  /// Width of the featured post
-  final double? width;
 
   /// Whether to show the like and comment count button
   final bool showControls;
@@ -26,8 +21,6 @@ class FeaturedPost extends StatelessWidget {
 
   const FeaturedPost({
     Key? key,
-    this.height = 300,
-    this.width,
     this.showControls = true,
     this.maxLines = 4,
     this.titleFont = AppTextStyle.h4,
@@ -50,8 +43,6 @@ class FeaturedPost extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            height: height,
-            width: width,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.start,

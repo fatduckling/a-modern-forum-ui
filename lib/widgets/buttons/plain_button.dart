@@ -1,12 +1,9 @@
 import 'package:a_modern_forum_project/themes/button_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
-import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:flutter/material.dart';
 
 /// Plain button: no border and background
 class PlainButton extends StatelessWidget {
-  /// Size of the button
-  final ScreenSize size;
 
   /// button text
   final String text;
@@ -22,7 +19,6 @@ class PlainButton extends StatelessWidget {
 
   const PlainButton(
       {required this.text,
-      this.size = ScreenSize.medium,
       this.icon,
       this.onTap,
       this.colour,
@@ -32,10 +28,7 @@ class PlainButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextButton(
-      style: AppButtonTheme.plainButtonTheme(context).copyWith(
-        foregroundColor:
-            colour == null ? null : MaterialStateProperty.all<Color>(colour!),
-      ),
+      style: AppButtonTheme.plainButtonTheme(context),
       onPressed: onTap,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -53,11 +46,11 @@ class PlainButton extends StatelessWidget {
           ),
           Flexible(
               child: Text(
-            text,
+                text,
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
             style: AppTextTheme.body2bold(context)
-                ?.merge(const TextStyle(height: 1)),
+                ?.merge(TextStyle(height: 1, color: colour)),
           ))
         ],
       ),
