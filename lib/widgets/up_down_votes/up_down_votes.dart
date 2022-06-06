@@ -1,3 +1,4 @@
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -15,58 +16,65 @@ class _UpDownVotes extends State<UpDownVotes> {
   /// If true, the user has down voted the post
   bool isDownVoted = false;
 
+  /// Up vote colour
+  static final upVoteColour = AppColourTheme.primary.w300;
+
+  /// Down vote colour
+  static final downVoteColour = AppColourTheme.tertiary.w700;
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        ClipOval(
-          child: Material(
-            color: Colors.transparent, // Button color
-            child: InkWell(
-              hoverColor: isUpVoted ? null : Colors.green.withOpacity(0.1),
-              splashFactory: NoSplash.splashFactory,
-              onTap: () {
-                setState(() {
-                  isDownVoted = false;
-                  isUpVoted = !isUpVoted;
-                });
-              },
-              child: Icon(
-                Icons.arrow_circle_up_outlined,
-                size: 28,
-                color: isUpVoted ? Colors.green : Colors.black45,
-              ),
-            ),
+        IconButton(
+          constraints: const BoxConstraints(),
+          padding: EdgeInsets.zero,
+          icon: Icon(
+            Icons.arrow_circle_up_outlined,
+            size: 24,
+            color: isUpVoted ? upVoteColour : null,
           ),
+          tooltip: 'Up vote',
+          hoverColor: isUpVoted ? null : upVoteColour.withOpacity(0.1),
+          splashRadius: 12,
+          onPressed: () {
+            setState(() {
+              isDownVoted = false;
+              isUpVoted = !isUpVoted;
+            });
+          },
         ),
         const SizedBox(
-          width: 5,
+          width: 10,
         ),
         Text("50",
-            style: AppTextTheme.body1(context)?.apply(
+            style: AppTextTheme.body2(context)?.merge(TextStyle(
+                height: 1,
                 color: isUpVoted
-                    ? Colors.green
-                    : (isDownVoted ? Colors.red : null))),
+                    ? upVoteColour
+                    : (isDownVoted ? downVoteColour : null)))),
         const SizedBox(
-          width: 5,
+          width: 10,
         ),
-        ClipOval(
-          child: Material(
-            color: Colors.transparent, // Button color
-            child: InkWell(
-              hoverColor: isDownVoted ? null : Colors.red.withOpacity(0.1),
-              splashFactory: NoSplash.splashFactory,
-              onTap: () {
-                setState(() {
-                  isUpVoted = false;
-                  isDownVoted = !isDownVoted;
-                });
-              },
-              child: Icon(Icons.arrow_circle_down_outlined,
-                  size: 28, color: isDownVoted ? Colors.red : Colors.black45),
-            ),
+        IconButton(
+          constraints: const BoxConstraints(),
+          padding: EdgeInsets.zero,
+          icon: Icon(
+            Icons.arrow_circle_down_outlined,
+            size: 24,
+            color: isDownVoted ? downVoteColour : null,
           ),
+          tooltip: 'Down vote',
+          hoverColor: isDownVoted ? null : downVoteColour.withOpacity(0.1),
+          splashRadius: 12,
+          onPressed: () {
+            setState(() {
+              isUpVoted = false;
+              isDownVoted = !isDownVoted;
+            });
+          },
         ),
       ],
     );

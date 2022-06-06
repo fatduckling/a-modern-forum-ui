@@ -1,4 +1,5 @@
 import 'package:a_modern_forum_project/themes/button_theme.dart';
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -37,9 +38,9 @@ class PlainButton extends StatelessWidget {
           icon == null
               ? const SizedBox.shrink()
               : Icon(
-                  icon,
+            icon,
                   size: 18,
-                  color: colour,
+                  color: colour ?? AppColourTheme.defaultTextColour,
                 ),
           SizedBox(
             width: icon == null ? 0 : 5,

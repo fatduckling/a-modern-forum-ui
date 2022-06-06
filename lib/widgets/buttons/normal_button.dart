@@ -1,4 +1,6 @@
 import 'package:a_modern_forum_project/themes/button_theme.dart';
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
+import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:flutter/material.dart';
 
@@ -23,18 +25,18 @@ class NormalButton extends StatelessWidget {
   final Color? backgroundColour;
 
   /// Text colour
-  final Color? textColour;
+  final Color textColour;
 
   /// Main axis size
   final MainAxisSize mainAxisSize;
 
   const NormalButton(
       {required this.text,
-      this.borderRadius = 25, // TODO use me
+      this.borderRadius = AppButtonTheme.borderRadius,
       this.size = ScreenSize.medium,
       this.icon,
       this.backgroundColour,
-      this.textColour,
+      this.textColour = AppColourTheme.light,
       this.mainAxisSize = MainAxisSize.min,
       this.onTap,
       Key? key})
@@ -49,9 +51,11 @@ class NormalButton extends StatelessWidget {
             backgroundColor: backgroundColour == null
                 ? null
                 : MaterialStateProperty.all<Color>(backgroundColour!),
-            foregroundColor: textColour == null
-                ? null
-                : MaterialStateProperty.all<Color>(textColour!),
+            foregroundColor: MaterialStateProperty.all<Color>(textColour),
+            shape: MaterialStateProperty.resolveWith<OutlinedBorder>((_) {
+              return RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(borderRadius));
+            }),
           ),
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -70,9 +74,15 @@ class NormalButton extends StatelessWidget {
               SizedBox(
                 width: icon == null ? 0 : 5,
               ),
-              Text(
+              Flexible(
+                  child: Text(
                 text,
-              )
+                maxLines: 1,
+                softWrap: true,
+                overflow: TextOverflow.ellipsis,
+                style: AppTextTheme.body3(context)?.merge(TextStyle(
+                    height: 1, color: textColour, fontWeight: FontWeight.bold)),
+              ))
             ],
           ),
           onPressed: onTap,

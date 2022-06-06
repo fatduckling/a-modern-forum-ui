@@ -76,7 +76,7 @@ class FeaturedPost extends StatelessWidget {
                           IconWithText(
                             icon: Icons.chat_bubble_outline,
                             text: "36",
-                            color: AppColourTheme.dark,
+                            colour: AppColourTheme.dark,
                           )
                         ],
                       )

@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 /// Custom button themes
 class AppButtonTheme {
   /// Border radius
-  static double borderRadius = 20;
+  static const double borderRadius = 20;
 
   /// Normal button theme
   static ButtonStyle normalButtonTheme(BuildContext context) {

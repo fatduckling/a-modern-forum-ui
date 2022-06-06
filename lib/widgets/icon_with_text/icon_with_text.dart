@@ -1,4 +1,3 @@
-import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -14,14 +13,14 @@ class IconWithText extends StatelessWidget {
   final double iconSize;
 
   /// Icon and text colour
-  final Color? color;
+  final Color? colour;
 
   const IconWithText({
     Key? key,
     required this.icon,
     required this.text,
-    this.iconSize = 28,
-    this.color,
+    this.iconSize = 24,
+    this.colour,
   }) : super(key: key);
 
   @override
@@ -33,7 +32,7 @@ class IconWithText extends StatelessWidget {
       children: [
         Icon(
           icon,
-          color: color ?? AppColourTheme.primary.normal,
+          color: colour,
           size: iconSize,
         ),
         const SizedBox(
@@ -41,8 +40,8 @@ class IconWithText extends StatelessWidget {
         ),
         Text(
           text,
-          style: AppTextTheme.body1(context)?.merge(TextStyle(
-              height: 1, color: color ?? AppColourTheme.primary.normal)),
+          style: AppTextTheme.body2(context)
+              ?.merge(TextStyle(height: 1, color: colour)),
         ),
       ],
     );

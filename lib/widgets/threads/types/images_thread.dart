@@ -86,10 +86,9 @@ class _ImageThread extends State<ImagesThread> {
       _imageWidth = info.image.width.toDouble();
       _imageHeight = info.image.height.toDouble();
     }));
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      mainAxisSize: MainAxisSize.min,
-      children: [Flexible(child: image)],
+    return Container(
+      alignment: Alignment.center,
+      child: image,
     );
   }
 }

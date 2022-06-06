@@ -37,6 +37,11 @@ class App extends StatelessWidget {
         dragDevices: {...PointerDeviceKind.values},
       ),
       theme: ThemeData(
+        textTheme: Theme.of(context).textTheme.apply(
+              bodyColor: AppColourTheme.defaultTextColour,
+              displayColor: AppColourTheme.defaultTextColour,
+            ),
+        iconTheme: IconThemeData(color: AppColourTheme.defaultTextColour),
         scaffoldBackgroundColor: AppColourTheme.neutralLight.w300,
         primaryColor: AppColourTheme.primary.normal,
         appBarTheme: const AppBarTheme(backgroundColor: AppColourTheme.light),

@@ -112,7 +112,8 @@ class ResponsiveDisplay {
   /// Get the height of a button based on its size
   static double getButtonHeight(final ScreenSize screenSize) {
     switch (screenSize) {
-      case ScreenSize.extraSmall: // TODO test me
+      case ScreenSize.extraSmall:
+        return 20;
       case ScreenSize.small:
         return 40;
       case ScreenSize.medium:

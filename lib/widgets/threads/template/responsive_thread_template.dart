@@ -6,6 +6,7 @@ import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/text/error.dart';
 import 'package:a_modern_forum_project/widgets/threads/template/large/large_thread_template.dart';
+import 'package:a_modern_forum_project/widgets/threads/template/small/small_thread_template.dart';
 import 'package:a_modern_forum_project/widgets/threads/types/images_thread.dart';
 import 'package:a_modern_forum_project/widgets/threads/types/poll_thread.dart';
 import 'package:a_modern_forum_project/widgets/threads/types/text_thread.dart';
@@ -26,8 +27,9 @@ class ResponsiveThreadTemplate extends StatelessWidget {
     final ScreenSize screenSize =
         context.watch<ScreenResizeObserver>().screenSize;
     switch (screenSize) {
-      case ScreenSize.extraSmall: // TODO test me
+      case ScreenSize.extraSmall:
       case ScreenSize.small:
+        return SmallThreadTemplate(threadModel);
       case ScreenSize.medium:
       return const UnhandledWidget("ResponsiveThreadTemplate");
       case ScreenSize.large:

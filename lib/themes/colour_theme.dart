@@ -20,6 +20,9 @@ class Palette {
 }
 
 class AppColourTheme {
+  /// Default text colour
+  static final Color defaultTextColour = neutralDark.w900;
+
   /// Primary colour theme
   static final Palette primary = Palette(
     w50: const Color(0xffB2E3FF),
