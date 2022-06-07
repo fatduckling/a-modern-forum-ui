@@ -3,6 +3,7 @@ import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 /// Featured post
 class FeaturedPost extends StatelessWidget {
@@ -74,7 +75,7 @@ class FeaturedPost extends StatelessWidget {
                         children: const [
                           UpDownVotes(),
                           IconWithText(
-                            icon: Icons.chat_bubble_outline,
+                            icon: FontAwesomeIcons.comment,
                             text: "36",
                             colour: AppColourTheme.dark,
                           )

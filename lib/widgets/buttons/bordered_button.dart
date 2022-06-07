@@ -1,6 +1,7 @@
 import 'package:a_modern_forum_project/themes/button_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 /// Bordered button: border without background color
 class BorderedButton extends StatelessWidget {
@@ -47,7 +48,7 @@ class BorderedButton extends StatelessWidget {
             children: [
               icon == null
                   ? const SizedBox.shrink()
-                  : Icon(
+                  : FaIcon(
                       icon,
                       size: 18,
                       color: colour,

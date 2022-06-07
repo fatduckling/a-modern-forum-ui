@@ -3,6 +3,7 @@ import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
 import 'package:a_modern_forum_project/widgets/sidebar/sidebar_panel_template.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 /// Popular forums panel
 class PopularForums extends StatelessWidget {
@@ -91,15 +92,14 @@ class PopularForums extends StatelessWidget {
                                       Wrap(
                                         children: const [
                                           IconWithText(
-                                              icon:
-                                                  Icons.messenger_outline_sharp,
+                                              icon: FontAwesomeIcons.comment,
                                               iconSize: 16,
                                               text: "000"),
                                           SizedBox(
                                             width: 5,
                                           ),
                                           IconWithText(
-                                            icon: Icons.wechat_outlined,
+                                            icon: FontAwesomeIcons.comments,
                                             text: "000",
                                             iconSize: 16,
                                           )

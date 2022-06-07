@@ -1,5 +1,6 @@
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class RecentPost extends StatelessWidget {
   const RecentPost({Key? key}) : super(key: key);
@@ -9,8 +10,8 @@ class RecentPost extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        const Icon(
-          Icons.circle,
+        const FaIcon(
+          FontAwesomeIcons.circleUser,
           size: 32,
         ),
         const SizedBox(

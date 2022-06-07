@@ -12,7 +12,7 @@ class CommentEditor extends StatelessWidget {
   final String placeholder;
 
   const CommentEditor(
-      {this.iconSize = 64,
+      {required this.iconSize,
       this.placeholder = "Write something great here",
       Key? key})
       : super(key: key);
@@ -23,9 +23,11 @@ class CommentEditor extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(
-          Icons.circle,
-          size: iconSize,
+        Image.asset(
+          "assets/images/avatar.png",
+          width: iconSize,
+          height: iconSize,
+          fit: BoxFit.contain,
         ),
         const SizedBox(width: 10),
         Flexible(

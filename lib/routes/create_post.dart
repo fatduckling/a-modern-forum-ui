@@ -11,6 +11,7 @@ import 'package:a_modern_forum_project/widgets/subforum_dropdown/subforum_dropdo
 import 'package:a_modern_forum_project/widgets/tag_selector/tag_selector.dart';
 import 'package:a_modern_forum_project/widgets/tag_selector/tag_selector_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 /// Used to display a thread and its comments
@@ -140,19 +141,19 @@ class _CreatePostRoute extends State<CreatePostRoute>
                           tabs: const [
                             Tab(
                               text: 'Post',
-                              icon: Icon(Icons.text_snippet_outlined),
+                              icon: FaIcon(FontAwesomeIcons.fileLines),
                             ),
                             Tab(
                               text: 'Image',
-                              icon: Icon(Icons.image),
+                              icon: FaIcon(FontAwesomeIcons.image),
                             ),
                             Tab(
                               text: 'Link',
-                              icon: Icon(Icons.link),
+                              icon: FaIcon(FontAwesomeIcons.paperclip),
                             ),
                             Tab(
                               text: 'Poll',
-                              icon: Icon(Icons.poll_outlined),
+                              icon: FaIcon(FontAwesomeIcons.chartLine),
                             ),
                           ],
                           controller: tabController,

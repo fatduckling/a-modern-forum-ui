@@ -4,10 +4,12 @@ import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
+import 'package:a_modern_forum_project/widgets/fa_icon_button/fa_icon_button.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
 import 'package:a_modern_forum_project/widgets/threads/template/responsive_thread_template.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 /// Template for displaying threads on small devices
 class SmallThreadTemplate extends StatefulWidget {
@@ -60,9 +62,9 @@ class _SmallThreadTemplate extends State<SmallThreadTemplate> {
                 children: [
                   // first row: shows user icon, subforum name, username, timestamp and save icon
                   Table(columnWidths: const {
-                    0: FlexColumnWidth(12),
-                    1: FlexColumnWidth(85),
-                    2: FixedColumnWidth(5)
+                    0: FlexColumnWidth(13),
+                    1: FlexColumnWidth(82),
+                    2: FlexColumnWidth(5),
                   }, children: [
                     TableRow(children: [
                       TableCell(
@@ -91,7 +93,10 @@ class _SmallThreadTemplate extends State<SmallThreadTemplate> {
                                       decoration: TextDecoration.underline)))
                         ],
                       ),
-                      const Icon(Icons.more_vert_outlined),
+                      FAIconButton(
+                          icon: FontAwesomeIcons.ellipsisVertical,
+                          tooltip: "More",
+                          onTap: () {}),
                     ]),
                   ]),
                   const SizedBox(
@@ -107,16 +112,11 @@ class _SmallThreadTemplate extends State<SmallThreadTemplate> {
                   const SizedBox(
                     height: 5,
                   ),
-                  // third row: thread body
-                  ResponsiveThreadTemplate.buildThreadBody(widget.threadModel),
                   // fourth row: shows flair and timestamp
-                  const SizedBox(
-                    height: 10,
-                  ),
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Expanded(
+                        Flexible(
                             child: NormalButton(
                           size: ScreenSize.extraSmall,
                           text: "no politics",
@@ -128,26 +128,48 @@ class _SmallThreadTemplate extends State<SmallThreadTemplate> {
                           width: 5,
                         ),
                         IconWithText(
-                          icon: Icons.access_time_outlined,
+                          icon: FontAwesomeIcons.clock,
                           text: "3h",
                           iconSize: 16,
                           colour: AppColourTheme.neutralDark.normal,
                         ),
                       ]),
+                  // third row: thread body
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  ResponsiveThreadTemplate.buildThreadBody(widget.threadModel),
                   // fifth row: shows up/down votes, comment count, share and save buttons
                   const SizedBox(
                     height: 10,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: const [
-                      IconWithText(
-                          icon: Icons.mode_comment_outlined, text: "37"),
-                      IconWithText(
-                          icon: Icons.bookmark_add_outlined, text: "Save"),
-                      IconWithText(icon: Icons.share_outlined, text: "Share"),
-                      UpDownVotes(),
+                    children: [
+                      const UpDownVotes(),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          FAIconButton(
+                              icon: FontAwesomeIcons.shareNodes,
+                              tooltip: "Share",
+                              onTap: () {}),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          FAIconButton(
+                              icon: FontAwesomeIcons.commentDots,
+                              tooltip: "Read comments",
+                              onTap: () {}),
+                          const SizedBox(
+                            width: 10,
+                          ),
+                          FAIconButton(
+                              icon: FontAwesomeIcons.bookmark,
+                              tooltip: "Save",
+                              onTap: () {})
+                        ],
+                      ),
                     ],
                   ),
                 ]),

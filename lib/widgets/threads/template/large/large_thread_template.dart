@@ -8,6 +8,7 @@ import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dar
 import 'package:a_modern_forum_project/widgets/threads/template/responsive_thread_template.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 /// Template for displaying threads on large devices
 class LargeThreadTemplate extends StatefulWidget {
@@ -128,12 +129,11 @@ class _LargeThreadTemplate extends State<LargeThreadTemplate> {
                   const UpDownVotes(),
                   Row(
                     children: const [
-                      IconWithText(icon: Icons.mode_comment, text: "37"),
+                      IconWithText(icon: FontAwesomeIcons.comment, text: "37"),
                       SizedBox(
                         width: 10,
                       ),
-                      IconWithText(
-                          icon: Icons.remove_red_eye_outlined, text: "38")
+                      IconWithText(icon: FontAwesomeIcons.eye, text: "38")
                     ],
                   )
                 ],

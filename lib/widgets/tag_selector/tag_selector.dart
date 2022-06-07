@@ -5,6 +5,7 @@ import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/tag_selector/tag_selector_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:outline_search_bar/outline_search_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -123,7 +124,7 @@ class _TagSelector extends State<TagSelector> {
                       onTap: () {
                         _focusNode.unfocus();
                       },
-                      child: const Icon(Icons.close_outlined),
+                      child: const FaIcon(FontAwesomeIcons.xmark),
                     )
                   ],
                 ),

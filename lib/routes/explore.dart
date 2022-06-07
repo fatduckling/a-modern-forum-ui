@@ -2,22 +2,13 @@ import 'package:a_modern_forum_project/observers/screen_resize_observer.dart';
 import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
-import 'package:a_modern_forum_project/widgets/compact_subforum/responsive_compact_subforum.dart';
-import 'package:a_modern_forum_project/widgets/expanded_subforum/responsive_expanded_subforum.dart';
 import 'package:a_modern_forum_project/widgets/scaffold/main_scaffold.dart';
+import 'package:a_modern_forum_project/widgets/subforum/responsive_subforum.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ExploreRoute extends StatefulWidget {
+class ExploreRoute extends StatelessWidget {
   const ExploreRoute({Key? key}) : super(key: key);
-
-  @override
-  _ExploreRoute createState() => _ExploreRoute();
-}
-
-class _ExploreRoute extends State<ExploreRoute> {
-  /// Whether to show the compact view or the expanded view
-  bool _isCompact = false;
 
   @override
   Widget build(BuildContext context) {
@@ -36,49 +27,9 @@ class _ExploreRoute extends State<ExploreRoute> {
           ),
           Expanded(
               flex: 100 - (pageBoundsFlex * 2),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Forum Explore",
-                    style: AppTextTheme.h1(context),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      setState(() {
-                        _isCompact = !_isCompact;
-                      });
-                    },
-                    borderRadius: BorderRadius.circular(20),
-                    child: Ink(
-                      padding: const EdgeInsets.only(top: 5, bottom: 5),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                            _isCompact ? "Compact" : "Expanded",
-                            style: AppTextTheme.h4(context),
-                          ),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                          Icon(
-                              _isCompact
-                                  ? Icons.view_comfortable_outlined
-                                  : Icons.view_compact_outlined,
-                              size: 40),
-                          const SizedBox(
-                            width: 10,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
+              child: Text(
+                "Forum Explore",
+                style: AppTextTheme.h1(context),
               )),
           Spacer(
             flex: pageBoundsFlex,
@@ -128,34 +79,21 @@ class _ExploreRoute extends State<ExploreRoute> {
                                   "General Astronomy $index",
                                   style: AppTextTheme.h2bold(context),
                                 ),
-                                children: <Widget>[
+                                children: [
                                   SizedBox(
                                     height: 10,
                                     child: Container(
                                       color: themeData.scaffoldBackgroundColor,
                                     ),
                                   ),
-                                  _isCompact
-                                      ? const ResponsiveCompactSubforum()
-                                      : const ResponsiveExpandedSubforum(),
+                                  const ResponsiveCompactSubforum(),
                                   SizedBox(
                                     height: 10,
                                     child: Container(
                                       color: themeData.scaffoldBackgroundColor,
                                     ),
                                   ),
-                                  _isCompact
-                                      ? const ResponsiveCompactSubforum()
-                                      : const ResponsiveExpandedSubforum(),
-                                  SizedBox(
-                                    height: 10,
-                                    child: Container(
-                                      color: themeData.scaffoldBackgroundColor,
-                                    ),
-                                  ),
-                                  _isCompact
-                                      ? const ResponsiveCompactSubforum()
-                                      : const ResponsiveExpandedSubforum(),
+                                  const ResponsiveCompactSubforum()
                                 ],
                               )),
                         ),

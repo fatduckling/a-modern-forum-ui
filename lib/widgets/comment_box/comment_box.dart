@@ -1,5 +1,6 @@
 import 'package:a_modern_forum_project/models/comments/comment_model.dart';
 import 'package:a_modern_forum_project/models/comments/comments_model.dart';
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/utils/time_util.dart';
@@ -9,6 +10,7 @@ import 'package:a_modern_forum_project/widgets/comment_editor/comment_editor.dar
 import 'package:a_modern_forum_project/widgets/load_more_comments/load_more_comments.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CommentBox extends StatefulWidget {
   /// Holds all the comments and their replies
@@ -34,9 +36,10 @@ class _CommentBox extends State<CommentBox> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Icon(
-                  Icons.circle,
-                  size: 48,
+                Image.asset(
+                  "assets/images/avatar.png",
+                  width: 48,
+                  height: 48,
                 ),
                 Flexible(
                     fit: FlexFit.loose,
@@ -88,8 +91,8 @@ class _CommentBox extends State<CommentBox> {
                 const SizedBox(
                   width: 5,
                 ),
-                const Icon(
-                  Icons.more_horiz,
+                const FaIcon(
+                  FontAwesomeIcons.ellipsis,
                   size: 25,
                 ),
               ],
@@ -141,10 +144,10 @@ class _CommentBox extends State<CommentBox> {
                         text: comment.showReplyTextEditor
                             ? "Hide reply editor"
                             : "Reply",
-                        colour: Colors.black45,
+                        colour: AppColourTheme.neutralDark.w50,
                         icon: comment.showReplyTextEditor
-                            ? Icons.keyboard_hide
-                            : Icons.messenger_outline,
+                            ? FontAwesomeIcons.keyboard
+                            : FontAwesomeIcons.reply,
                         onTap: () {
                           setState(() {
                             comment.showReplyTextEditor =

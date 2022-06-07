@@ -1,5 +1,6 @@
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 /// Shows an icon with text
 class IconWithText extends StatelessWidget {
@@ -27,10 +28,8 @@ class IconWithText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Icon(
+        FaIcon(
           icon,
           color: colour,
           size: iconSize,

@@ -74,7 +74,7 @@ class ViewPostRoute extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const CommentEditor(),
+                    const CommentEditor(iconSize: 64),
                     const SizedBox(
                       height: 60,
                     ),
