@@ -2,9 +2,8 @@ import 'package:a_modern_forum_project/models/thread/thread_model.dart';
 import 'package:a_modern_forum_project/routes/view_post.dart';
 import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
-import 'package:a_modern_forum_project/utils/responsive_display.dart';
-import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
 import 'package:a_modern_forum_project/widgets/fa_icon_button/fa_icon_button.dart';
+import 'package:a_modern_forum_project/widgets/flair/flair.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
 import 'package:a_modern_forum_project/widgets/threads/template/responsive_thread_template.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
@@ -53,7 +52,9 @@ class _SmallThreadTemplate extends State<SmallThreadTemplate> {
             decoration: BoxDecoration(
               color: AppColourTheme.light,
               border: Border.all(
-                  color: isHovered ? Colors.black26 : AppColourTheme.light),
+                  color: isHovered
+                      ? AppColourTheme.neutralDark.w50
+                      : AppColourTheme.light),
             ),
             padding: const EdgeInsets.all(20),
             child: Column(
@@ -116,14 +117,7 @@ class _SmallThreadTemplate extends State<SmallThreadTemplate> {
                   Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Flexible(
-                            child: NormalButton(
-                          size: ScreenSize.extraSmall,
-                          text: "no politics",
-                          borderRadius: 0,
-                          backgroundColour: AppColourTheme.neutralLight.w900,
-                          onTap: () {},
-                        )),
+                        const Flexible(child: Flair()),
                         const SizedBox(
                           width: 5,
                         ),

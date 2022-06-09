@@ -4,12 +4,12 @@ import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
 import 'package:a_modern_forum_project/widgets/file_upload/file_upload.dart';
+import 'package:a_modern_forum_project/widgets/flair_selector/flair_selector.dart';
+import 'package:a_modern_forum_project/widgets/flair_selector/flair_selector_controller.dart';
 import 'package:a_modern_forum_project/widgets/poll_editor/poll_editor.dart';
 import 'package:a_modern_forum_project/widgets/rich_text_field/rich_text_field.dart';
 import 'package:a_modern_forum_project/widgets/scaffold/main_scaffold.dart';
 import 'package:a_modern_forum_project/widgets/subforum_dropdown/subforum_dropdown.dart';
-import 'package:a_modern_forum_project/widgets/tag_selector/tag_selector.dart';
-import 'package:a_modern_forum_project/widgets/tag_selector/tag_selector_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
@@ -24,8 +24,9 @@ class CreatePostRoute extends StatefulWidget {
 
 class _CreatePostRoute extends State<CreatePostRoute>
     with TickerProviderStateMixin {
-  /// Tag selector controller
-  final TagSelectorController tagSelectorController = TagSelectorController();
+  /// Flair selector controller
+  final FlairSelectorController tagSelectorController =
+      FlairSelectorController();
 
   /// Selected tab index
   int selectedIndex = 0;
@@ -59,7 +60,7 @@ class _CreatePostRoute extends State<CreatePostRoute>
     });
     tagSelectorController.addListener((bool isMenuOpen) {
       setState(() {
-        pageWhiteSpace = isMenuOpen ? TagSelectorController.height - 50 : 40;
+        pageWhiteSpace = isMenuOpen ? FlairSelectorController.height - 50 : 40;
       });
     });
     super.initState();
@@ -211,7 +212,7 @@ class _CreatePostRoute extends State<CreatePostRoute>
                       const SizedBox(
                         height: 10,
                       ),
-                      TagSelector(controller: tagSelectorController),
+                      FlairSelector(controller: tagSelectorController),
                       const SizedBox(
                         height: 10,
                       ),

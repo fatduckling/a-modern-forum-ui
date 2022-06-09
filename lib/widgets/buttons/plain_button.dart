@@ -2,10 +2,10 @@ import 'package:a_modern_forum_project/themes/button_theme.dart';
 import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 /// Plain button: no border and background
 class PlainButton extends StatelessWidget {
-
   /// button text
   final String text;
 
@@ -19,11 +19,7 @@ class PlainButton extends StatelessWidget {
   final Color? colour;
 
   const PlainButton(
-      {required this.text,
-      this.icon,
-      this.onTap,
-      this.colour,
-      Key? key})
+      {required this.text, this.icon, this.onTap, this.colour, Key? key})
       : super(key: key);
 
   @override
@@ -37,8 +33,8 @@ class PlainButton extends StatelessWidget {
         children: [
           icon == null
               ? const SizedBox.shrink()
-              : Icon(
-            icon,
+              : FaIcon(
+                  icon,
                   size: 18,
                   color: colour ?? AppColourTheme.defaultTextColour,
                 ),

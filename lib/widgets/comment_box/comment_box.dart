@@ -55,7 +55,7 @@ class _CommentBox extends State<CommentBox> {
                             child: Center(
                                 child: Container(
                               width: 2,
-                              color: Colors.black26,
+                              color: AppColourTheme.neutralDark.w50,
                             )),
                           ),
                           onTap: () {
@@ -117,8 +117,8 @@ class _CommentBox extends State<CommentBox> {
                       const SizedBox(
                         width: 5,
                       ),
-                      const VerticalDivider(
-                        color: Colors.black45,
+                      VerticalDivider(
+                        color: AppColourTheme.neutralDark.w300,
                       ),
                       PlainButton(
                         onTap: comment.totalReplies <= 0

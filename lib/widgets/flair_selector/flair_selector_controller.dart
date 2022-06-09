@@ -1,4 +1,4 @@
-class TagSelectorController {
+class FlairSelectorController {
   /// Height of overlay
   static const int height = 400;
 

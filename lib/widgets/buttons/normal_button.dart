@@ -3,6 +3,7 @@ import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 /// Normal button: border with background colour
 class NormalButton extends StatelessWidget {
@@ -21,6 +22,9 @@ class NormalButton extends StatelessWidget {
   /// Icon
   final IconData? icon;
 
+  /// Icon size
+  final double? iconSize;
+
   /// Background colour
   final Color? backgroundColour;
 
@@ -35,6 +39,7 @@ class NormalButton extends StatelessWidget {
       this.borderRadius = AppButtonTheme.borderRadius,
       this.size = ScreenSize.medium,
       this.icon,
+      this.iconSize,
       this.backgroundColour,
       this.textColour = AppColourTheme.light,
       this.mainAxisSize = MainAxisSize.min,
@@ -66,9 +71,9 @@ class NormalButton extends StatelessWidget {
             children: [
               icon == null
                   ? const SizedBox.shrink()
-                  : Icon(
+                  : FaIcon(
                       icon,
-                      size: 18,
+                      size: iconSize,
                       color: textColour,
                     ),
               SizedBox(

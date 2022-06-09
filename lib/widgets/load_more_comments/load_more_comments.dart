@@ -1,5 +1,7 @@
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoadMoreCommentsButton extends StatefulWidget {
   const LoadMoreCommentsButton({Key? key}) : super(key: key);
@@ -26,7 +28,7 @@ class _LoadMoreComments extends State<LoadMoreCommentsButton> {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(18.0),
             ),
-            side: const BorderSide(width: 1, color: Colors.black26),
+            side: BorderSide(width: 1, color: AppColourTheme.neutralDark.w50),
           ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
@@ -35,26 +37,23 @@ class _LoadMoreComments extends State<LoadMoreCommentsButton> {
               Text("Load more comments",
                   style: AppTextTheme.body2(context)
                       ?.merge(const TextStyle(color: Colors.black, height: 1))),
+              const SizedBox(
+                width: 7,
+              ),
               isLoading
-                  ? Row(
-                      children: const [
-                        SizedBox(
-                          width: 10,
+                  ? SizedBox(
+                      height: 12,
+                      width: 12,
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          color: AppColourTheme.neutralDark.w300,
                         ),
-                        SizedBox(
-                          height: 12,
-                          width: 12,
-                          child: Center(
-                            child: CircularProgressIndicator(
-                              color: Colors.black45,
-                            ),
-                          ),
-                        )
-                      ],
+                      ),
                     )
-                  : const Icon(
-                      Icons.keyboard_arrow_down_outlined,
-                      color: Colors.black45,
+                  : FaIcon(
+                      FontAwesomeIcons.chevronDown,
+                      size: 16,
+                      color: AppColourTheme.neutralDark.w300,
                     ),
             ],
           )),

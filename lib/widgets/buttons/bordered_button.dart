@@ -1,4 +1,5 @@
 import 'package:a_modern_forum_project/themes/button_theme.dart';
+import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/utils/responsive_display.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -20,12 +21,13 @@ class BorderedButton extends StatelessWidget {
   /// Icon
   final IconData? icon;
 
-  const BorderedButton({required this.text,
-    this.size = ScreenSize.medium,
-    Key? key,
-    this.onTap,
-    this.colour,
-    this.icon})
+  const BorderedButton(
+      {required this.text,
+      this.size = ScreenSize.medium,
+      Key? key,
+      this.onTap,
+      this.colour,
+      this.icon})
       : super(key: key);
 
   @override
@@ -56,9 +58,15 @@ class BorderedButton extends StatelessWidget {
               SizedBox(
                 width: icon == null ? 0 : 5,
               ),
-              Text(
+              Flexible(
+                  child: Text(
                 text,
-              )
+                maxLines: 1,
+                softWrap: true,
+                overflow: TextOverflow.ellipsis,
+                style: AppTextTheme.body3(context)?.merge(TextStyle(
+                    height: 1, color: colour, fontWeight: FontWeight.bold)),
+              ))
             ],
           ),
           onPressed: onTap,

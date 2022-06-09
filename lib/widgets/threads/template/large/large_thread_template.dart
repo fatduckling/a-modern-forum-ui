@@ -2,8 +2,8 @@ import 'package:a_modern_forum_project/models/thread/thread_model.dart';
 import 'package:a_modern_forum_project/routes/view_post.dart';
 import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
-import 'package:a_modern_forum_project/utils/responsive_display.dart';
-import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
+import 'package:a_modern_forum_project/widgets/fa_icon_button/fa_icon_button.dart';
+import 'package:a_modern_forum_project/widgets/flair/flair.dart';
 import 'package:a_modern_forum_project/widgets/icon_with_text/icon_with_text.dart';
 import 'package:a_modern_forum_project/widgets/threads/template/responsive_thread_template.dart';
 import 'package:a_modern_forum_project/widgets/up_down_votes/up_down_votes.dart';
@@ -53,11 +53,14 @@ class _LargeThreadTemplate extends State<LargeThreadTemplate> {
             decoration: BoxDecoration(
               color: AppColourTheme.light,
               border: Border.all(
-                  color: isHovered ? Colors.black26 : AppColourTheme.light),
+                  color: isHovered
+                      ? AppColourTheme.neutralDark.w50
+                      : AppColourTheme.light),
               borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
             padding: const EdgeInsets.all(20),
-            child: Column(children: [
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
               // first row: shows user icon, subforum name, username, timestamp and save icon
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -76,40 +79,35 @@ class _LargeThreadTemplate extends State<LargeThreadTemplate> {
                         style: AppTextTheme.body3(context)
                             ?.apply(decoration: TextDecoration.underline)),
                   ]),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text("6 hours ago", style: AppTextTheme.body3(context)),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      const Icon(
-                        Icons.bookmark_border_outlined,
-                        size: 36,
-                      ),
-                    ],
-                  )
+                  FAIconButton(
+                      icon: FontAwesomeIcons.bookmark,
+                      tooltip: "Save",
+                      onTap: () {})
                 ],
               ),
               const SizedBox(
                 height: 10,
               ),
               // second row: shows the post title and flair
+              Text(
+                "Post title goes here",
+                style: AppTextTheme.body1(context)
+                    ?.merge(const TextStyle(fontWeight: FontWeight.bold)),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Expanded(
-                      child: Text(
-                    "Post title goes here",
-                    style: AppTextTheme.body1(context)
-                        ?.merge(const TextStyle(fontWeight: FontWeight.bold)),
-                  )),
-                  NormalButton(
-                    size: ScreenSize.small,
-                    text: "info",
-                    onTap: () {},
+                  const Flexible(child: Flair()),
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text("6 hours ago", style: AppTextTheme.body3(context)),
+                    ],
                   )
                 ],
               ),

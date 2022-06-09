@@ -1,5 +1,8 @@
+import 'package:a_modern_forum_project/themes/colour_theme.dart';
+import 'package:a_modern_forum_project/widgets/fa_icon_button/fa_icon_button.dart';
 import 'package:a_modern_forum_project/widgets/poll_editor/poll_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class PollOptions extends StatefulWidget {
   final PollController pollController;
@@ -27,24 +30,31 @@ class _PollOptions extends State<PollOptions> {
               }, children: [
                 TableRow(children: [
                   Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      InkWell(
-                          onTap: index == 0
-                              ? null
-                              : () {
-                                  setState(() {
-                                    final temp = controllers[index - 1];
-                                    controllers[index - 1] = controllers[index];
-                                    controllers[index] = temp;
-                                  });
-                                },
-                          child: Icon(
-                            Icons.arrow_circle_up_outlined,
-                            color: index == 0 ? Colors.black12 : Colors.black26,
-                          )),
-                      InkWell(
+                      FAIconButton(
+                        tooltip: "Move poll option up",
+                        icon: FontAwesomeIcons.circleArrowUp,
+                        iconColour: index == 0
+                            ? AppColourTheme.neutralDark.w50
+                            : AppColourTheme.neutralDark.w500,
+                        onTap: index == 0
+                            ? null
+                            : () {
+                                setState(() {
+                                  final temp = controllers[index - 1];
+                                  controllers[index - 1] = controllers[index];
+                                  controllers[index] = temp;
+                                });
+                              },
+                      ),
+                      FAIconButton(
+                        tooltip: "Move poll option down",
+                        icon: FontAwesomeIcons.circleArrowDown,
+                        iconColour: index == controllers.length - 1
+                            ? AppColourTheme.neutralDark.w50
+                            : AppColourTheme.neutralDark.w500,
                         onTap: index == controllers.length - 1
                             ? null
                             : () {
@@ -54,17 +64,11 @@ class _PollOptions extends State<PollOptions> {
                                   controllers[index] = temp;
                                 });
                               },
-                        child: Icon(
-                          Icons.arrow_circle_down_outlined,
-                          color: index == controllers.length - 1
-                              ? Colors.black12
-                              : Colors.black26,
-                        ),
-                      )
+                      ),
                     ],
-                  ),
-                  TableCell(
-                      verticalAlignment: TableCellVerticalAlignment.fill,
+                      ),
+                      TableCell(
+                          verticalAlignment: TableCellVerticalAlignment.middle,
                       child: TextField(
                         controller: controllers[index],
                         decoration: InputDecoration(
@@ -82,14 +86,14 @@ class _PollOptions extends State<PollOptions> {
                                     Future.delayed(Duration.zero,
                                         () => controller.dispose());
                                   },
-                                  icon: const Icon(
-                                    Icons.delete_outline,
-                                    color: Colors.black26,
+                                  icon: FaIcon(
+                                    FontAwesomeIcons.trashCan,
+                                    color: AppColourTheme.neutralDark.w50,
                                   ),
                                 ),
-                        ),
-                      )),
-                ]),
+                            ),
+                          )),
+                    ]),
               ]),
               const SizedBox(
                 height: 10,

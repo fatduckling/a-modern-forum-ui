@@ -22,7 +22,7 @@ class LargeSortFilterThreads extends StatelessWidget {
                 const EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 15),
             decoration: BoxDecoration(
               color: AppColourTheme.light,
-              border: Border.all(color: Colors.black26),
+              border: Border.all(color: AppColourTheme.neutralDark.w50),
               borderRadius: const BorderRadius.all(Radius.circular(10)),
             ),
             child: Row(

@@ -5,6 +5,7 @@ import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:a_modern_forum_project/widgets/buttons/normal_button.dart';
 import 'package:a_modern_forum_project/widgets/sidebar/sidebar_panel_template.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 /// Home sidebar panel
 class SidebarHome extends StatelessWidget {
@@ -34,7 +35,8 @@ class SidebarHome extends StatelessWidget {
                 ),
                 NormalButton(
                   text: "Start thread",
-                  icon: Icons.add_box_outlined,
+                  icon: FontAwesomeIcons.plus,
+                  iconSize: 16,
                   mainAxisSize: MainAxisSize.max,
                   onTap: () => Navigator.push(
                     context,
@@ -47,7 +49,8 @@ class SidebarHome extends StatelessWidget {
                 ),
                 NormalButton(
                   text: "Explore Forums",
-                  icon: Icons.grid_on_outlined,
+                  icon: FontAwesomeIcons.tableCells,
+                  iconSize: 16,
                   mainAxisSize: MainAxisSize.max,
                   backgroundColour: AppColourTheme.secondary.normal,
                   onTap: () => Navigator.push(

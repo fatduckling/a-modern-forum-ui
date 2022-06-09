@@ -6,6 +6,7 @@ import 'package:a_modern_forum_project/widgets/featured_posts/large/fixed_featur
 import 'package:a_modern_forum_project/widgets/featured_posts/small_medium/sliding_featured_posts.dart';
 import 'package:a_modern_forum_project/widgets/text/page_title.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class ResponsiveFeaturedPosts extends StatelessWidget {
@@ -18,7 +19,7 @@ class ResponsiveFeaturedPosts extends StatelessWidget {
     PageTitle pageTitle = PageTitle(
         text: "Trending today",
         trailing: PlainButton(
-          icon: Icons.read_more_outlined,
+          icon: FontAwesomeIcons.rightFromBracket,
           text: "See more",
           colour: AppColourTheme.secondary.normal,
           onTap: () {},

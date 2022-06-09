@@ -14,54 +14,56 @@ class SearchBar extends StatefulWidget {
 
 class _SearchBarState extends State<SearchBar> {
   /// Used to show an overlay which provides search suggestions
-  final FocusNode _focusNode = FocusNode();
+  final FocusNode focusNode = FocusNode();
 
   /// If true, the overlay menu will be open
-  bool _isMenuOpen = false;
+  bool isMenuOpen = false;
 
   /// Used to provide the coordinates of the overlay
-  final GlobalKey _searchKey = GlobalKey();
+  final GlobalKey searchKey = GlobalKey();
 
   /// The width of the overlay
-  double _overlayWidth = 300;
+  double overlayWidth = 300;
 
   @override
   void initState() {
     super.initState();
-    _focusNode.addListener(() {
+    focusNode.addListener(() {
       setState(() {
         updateOverlayWidth();
-        _isMenuOpen = _focusNode.hasFocus;
+        isMenuOpen = focusNode.hasFocus;
       });
     });
   }
 
   @override
   void dispose() {
-    _focusNode.dispose();
+    focusNode.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     context.watch<ScreenResizeObserver>().addListener(updateOverlayWidth);
-    return PortalEntry(
-        visible: _isMenuOpen,
-        portalAnchor: Alignment.topCenter,
-        childAnchor: Alignment.bottomCenter,
-        portal: Material(
+    return PortalTarget(
+        visible: isMenuOpen,
+        anchor: const Aligned(
+          follower: Alignment.topCenter,
+          target: Alignment.bottomCenter,
+        ),
+        portalFollower: Material(
             borderRadius: const BorderRadius.all(Radius.circular(5)),
             color: Colors.red,
             child: SizedBox(
-              width: _overlayWidth,
+              width: overlayWidth,
               height: 400,
               child: Center(
                 child: Text("App bar text", style: AppTextTheme.body1(context)),
               ),
             )),
         child: OutlineSearchBar(
-            key: _searchKey,
-            focusNode: _focusNode,
+            key: searchKey,
+            focusNode: focusNode,
             hintText: "Search",
             onTap: () {
               debugPrint("On tap!");
@@ -72,10 +74,10 @@ class _SearchBarState extends State<SearchBar> {
   }
 
   void updateOverlayWidth() {
-    RenderObject? renderObject = _searchKey.currentContext?.findRenderObject();
+    RenderObject? renderObject = searchKey.currentContext?.findRenderObject();
     if (renderObject != null) {
       RenderBox box = renderObject as RenderBox;
-      _overlayWidth = box.size.width;
+      overlayWidth = box.size.width;
     }
   }
 }

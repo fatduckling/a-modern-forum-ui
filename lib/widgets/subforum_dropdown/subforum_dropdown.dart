@@ -4,6 +4,7 @@ import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class SubforumDropdown extends StatefulWidget {
@@ -18,7 +19,7 @@ class _SubforumDropdown extends State<SubforumDropdown> {
   final FocusNode _focusNode = FocusNode();
 
   /// If true, the overlay menu will be open
-  bool _isMenuOpen = false;
+  bool isMenuOpen = false;
 
   /// Used to provide the coordinates of the overlay
   final GlobalKey _buttonKey = GlobalKey();
@@ -53,11 +54,13 @@ class _SubforumDropdown extends State<SubforumDropdown> {
         }
       }
     });
-    return PortalEntry(
-        visible: _isMenuOpen,
-        portalAnchor: Alignment.topCenter,
-        childAnchor: Alignment.bottomCenter,
-        portal: Container(
+    return PortalTarget(
+        visible: isMenuOpen,
+        anchor: const Aligned(
+          follower: Alignment.topCenter,
+          target: Alignment.bottomCenter,
+        ),
+        portalFollower: Container(
           margin: const EdgeInsets.only(top: 5),
           decoration: const BoxDecoration(
             color: Colors.red,
@@ -82,7 +85,7 @@ class _SubforumDropdown extends State<SubforumDropdown> {
             focusNode: _focusNode,
             onFocusChange: (hasFocus) {
               setState(() {
-                _isMenuOpen = hasFocus;
+                isMenuOpen = hasFocus;
               });
             },
             child: Row(
@@ -93,13 +96,13 @@ class _SubforumDropdown extends State<SubforumDropdown> {
                     style: AppTextTheme.body2(context)
                         ?.apply(color: AppColourTheme.light)
                         .merge(const TextStyle(height: 1))),
-                Icon(_isMenuOpen
-                    ? Icons.keyboard_arrow_up
-                    : Icons.keyboard_arrow_down),
+                FaIcon(isMenuOpen
+                    ? FontAwesomeIcons.angleUp
+                    : FontAwesomeIcons.angleDown),
               ],
             ),
             onPressed: () {
-              if (_isMenuOpen) {
+              if (isMenuOpen) {
                 _focusNode.unfocus();
               } else {
                 _focusNode.requestFocus();

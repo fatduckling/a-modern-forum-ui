@@ -2,109 +2,110 @@ import 'package:a_modern_forum_project/observers/scroll_observer.dart';
 import 'package:a_modern_forum_project/themes/button_theme.dart';
 import 'package:a_modern_forum_project/themes/colour_theme.dart';
 import 'package:a_modern_forum_project/themes/text_theme.dart';
-import 'package:a_modern_forum_project/widgets/tag_selector/tag_selector_controller.dart';
+import 'package:a_modern_forum_project/widgets/flair_selector/flair_selector_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_portal/flutter_portal.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:outline_search_bar/outline_search_bar.dart';
 import 'package:provider/provider.dart';
 
-/// Allows users to select tags when creating a post
-class TagSelector extends StatefulWidget {
-  /// Tag selector controller
-  final TagSelectorController controller;
+/// Allows users to select flairs when creating a post
+class FlairSelector extends StatefulWidget {
+  /// Flair selector controller
+  final FlairSelectorController controller;
 
-  const TagSelector({required this.controller, Key? key}) : super(key: key);
+  const FlairSelector({required this.controller, Key? key}) : super(key: key);
 
   @override
-  _TagSelector createState() => _TagSelector();
+  _FlairSelector createState() => _FlairSelector();
 }
 
-class _TagSelector extends State<TagSelector> {
+class _FlairSelector extends State<FlairSelector> {
   /// Used to show an overlay which provides subforum suggestions
-  final FocusNode _focusNode = FocusNode();
+  final FocusNode focusNode = FocusNode();
 
-  /// Focus node for tag filter search
-  final FocusNode _searchFocus = FocusNode();
+  /// Focus node for flair filter search
+  final FocusNode searchFocus = FocusNode();
 
   /// Scroll controller
-  final ScrollController _scrollController = ScrollController();
+  final ScrollController scrollController = ScrollController();
 
-  /// Tag field search controller
-  final TextEditingController _searchController = TextEditingController();
+  /// Flair field search controller
+  final TextEditingController searchController = TextEditingController();
 
   /// If true, the overlay menu will be open
-  bool _isMenuOpen = false;
+  bool isMenuOpen = false;
 
   /// Used to provide the coordinates of the overlay
-  final GlobalKey _buttonKey = GlobalKey();
+  final GlobalKey buttonKey = GlobalKey();
 
   /// The width of the overlay
-  double _overlayWidth = 300;
+  double overlayWidth = 300;
 
-  /// Selected tag
-  String? _selectedTag;
+  /// Selected flair
+  String? selectedFlair;
 
-  /// Tag filter
-  String _tagFilter = "";
+  /// flair filter
+  String flairFilter = "";
 
   @override
   void initState() {
     super.initState();
-    _searchFocus.addListener(() {
-      final hasFocus = _searchFocus.hasFocus;
+    searchFocus.addListener(() {
+      final hasFocus = searchFocus.hasFocus;
       if (!hasFocus) {
         setState(() {
-          _isMenuOpen = false;
-          _focusNode.unfocus();
+          isMenuOpen = false;
+          focusNode.unfocus();
         });
       }
     });
-    _searchController.addListener(() {
+    searchController.addListener(() {
       setState(() {
-        _tagFilter = _searchController.text.toLowerCase();
+        flairFilter = searchController.text.toLowerCase();
       });
     });
   }
 
   @override
   void dispose() {
-    _focusNode.dispose();
-    _searchFocus.dispose();
-    _scrollController.dispose();
-    _searchController.dispose();
+    focusNode.dispose();
+    searchFocus.dispose();
+    scrollController.dispose();
+    searchController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     context.watch<ScrollObserver>().addListener(() {
-      RenderObject? renderObject =
-          _buttonKey.currentContext?.findRenderObject();
+      RenderObject? renderObject = buttonKey.currentContext?.findRenderObject();
       if (renderObject != null) {
         RenderBox box = renderObject as RenderBox;
         Offset position = box.localToGlobal(Offset.zero);
         if (position.dy < kToolbarHeight) {
           setState(() {
-            _overlayWidth = box.size.width;
-            _focusNode.unfocus();
+            overlayWidth = box.size.width;
+            focusNode.unfocus();
           });
         }
       }
     });
-    return PortalEntry(
-        visible: _isMenuOpen,
-        portalAnchor: Alignment.topCenter,
-        childAnchor: Alignment.bottomCenter,
+    return PortalTarget(
+        visible: isMenuOpen,
+        anchor: const Aligned(
+          follower: Alignment.topCenter,
+          target: Alignment.bottomCenter,
+        ),
         closeDuration: Duration.zero,
-        portal: Container(
+        portalFollower: Container(
           margin: const EdgeInsets.only(top: 5),
           decoration: BoxDecoration(
             color: AppColourTheme.light,
             borderRadius: const BorderRadius.all(Radius.circular(5)),
-            border: Border.all(color: Colors.black26),
+            border: Border.all(color: AppColourTheme.neutralDark.w50),
           ),
-          width: _overlayWidth,
+          width: overlayWidth,
           // TODO make 100% width on mobiles
           height: 400,
           child: Container(
@@ -117,12 +118,12 @@ class _TagSelector extends State<TagSelector> {
                   children: [
                     Flexible(
                         child: Text(
-                      "Select a tag",
+                          "Select a flair",
                       style: AppTextTheme.body1(context),
                     )),
                     InkWell(
                       onTap: () {
-                        _focusNode.unfocus();
+                        focusNode.unfocus();
                       },
                       child: const FaIcon(FontAwesomeIcons.xmark),
                     )
@@ -130,26 +131,26 @@ class _TagSelector extends State<TagSelector> {
                 ),
                 const Divider(),
                 OutlineSearchBar(
-                  focusNode: _searchFocus,
-                  textEditingController: _searchController,
-                  hintText: "Search for a tag",
+                  focusNode: searchFocus,
+                  textEditingController: searchController,
+                  hintText: "Search for a flair",
                 ),
                 const SizedBox(
                   height: 10,
                 ),
                 Expanded(
                     child: Scrollbar(
-                  controller: _scrollController,
+                      controller: scrollController,
                   child: SingleChildScrollView(
-                    controller: _scrollController,
+                    controller: scrollController,
                     child: ListView.builder(
                         scrollDirection: Axis.vertical,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemCount: 30,
                         itemBuilder: (context, index) {
-                          String tagName = "Tag $index";
-                          return tagName.toLowerCase().contains(_tagFilter)
+                          String flairName = "Flair $index";
+                          return flairName.toLowerCase().contains(flairFilter)
                               ? RadioListTile<String>(
                                   contentPadding: EdgeInsets.zero,
                                   title: Container(
@@ -165,15 +166,15 @@ class _TagSelector extends State<TagSelector> {
                                           Radius.circular(10)),
                                     ),
                                     child: Text(
-                                      "Tag $index",
+                                      "Flair $index",
                                       style: AppTextTheme.body1(context),
                                     ),
                                   ),
-                                  value: tagName,
-                                  groupValue: _selectedTag,
+                                  value: flairName,
+                                  groupValue: selectedFlair,
                                   onChanged: (String? value) {
                                     setState(() {
-                                      _selectedTag = value;
+                                      selectedFlair = value;
                                     });
                                   },
                                 )
@@ -192,19 +193,19 @@ class _TagSelector extends State<TagSelector> {
             borderRadius: BorderRadius.circular(20.0),
           ),
           child: ElevatedButton(
-            key: _buttonKey,
-            focusNode: _focusNode,
+            key: buttonKey,
+            focusNode: focusNode,
             onFocusChange: (hasFocus) {
               setState(() {
-                _isMenuOpen = hasFocus || _searchFocus.hasFocus;
-                widget.controller.stateChanged(_isMenuOpen);
-                _tagFilter = "";
-                _searchController.text = "";
+                isMenuOpen = hasFocus || searchFocus.hasFocus;
+                widget.controller.stateChanged(isMenuOpen);
+                flairFilter = "";
+                searchController.text = "";
               });
             },
             style:
                 AppButtonTheme.borderedButtonTheme(context).merge(ButtonStyle(
-              backgroundColor: _selectedTag == null
+              backgroundColor: selectedFlair == null
                   ? null
                   : MaterialStateProperty.all<Color>(Colors.green),
             )),
@@ -213,29 +214,30 @@ class _TagSelector extends State<TagSelector> {
               children: <Widget>[
                 Row(
                   children: [
-                    Icon(_selectedTag == null
-                        ? Icons.bookmark_add_outlined
-                        : Icons.bookmark_added_outlined),
+                    FaIcon(FontAwesomeIcons.tag,
+                        color: selectedFlair == null
+                            ? AppColourTheme.tertiary.w700
+                            : AppColourTheme.primary.w900),
                     const SizedBox(
                       width: 5,
                     ),
                     Text(
-                      _selectedTag == null ? "Select a tag" : _selectedTag!,
+                      selectedFlair == null ? "Select a flair" : selectedFlair!,
                       style: AppTextTheme.body2(context)?.merge(const TextStyle(
                           color: AppColourTheme.light, height: 1)),
                     ),
                   ],
                 ),
-                Icon(_isMenuOpen
-                    ? Icons.keyboard_arrow_up
-                    : Icons.keyboard_arrow_down),
+                FaIcon(isMenuOpen
+                    ? FontAwesomeIcons.angleUp
+                    : FontAwesomeIcons.angleDown),
               ],
             ),
             onPressed: () {
-              if (_isMenuOpen) {
-                _focusNode.unfocus();
+              if (isMenuOpen) {
+                focusNode.unfocus();
               } else {
-                _focusNode.requestFocus();
+                focusNode.requestFocus();
               }
             },
           ),

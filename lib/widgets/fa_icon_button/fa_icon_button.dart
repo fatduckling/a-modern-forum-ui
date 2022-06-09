@@ -11,7 +11,7 @@ class FAIconButton extends StatelessWidget {
   final String tooltip;
 
   /// On tap callback
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
 
   /// Icon colour
   final Color? iconColour;
